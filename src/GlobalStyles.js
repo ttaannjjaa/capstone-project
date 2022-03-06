@@ -1,20 +1,44 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+:root {
+    --black: #000000;
+    --steelblue: #597A91;  
+    --white: #ffffff;
+    --peach: #F4E0D4;
+    --grey: #7E6F6F; 
+    --box-shadow-drop: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    --box-shadow-inset: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
 
 body {
   font-size: 1rem;
+  color: var(--black);
+  min-height: 100vh;
 }
 
-
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 
 
 `;
 
-export default GlobalStyle;
+export default GlobalStyles;
