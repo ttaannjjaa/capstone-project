@@ -2,6 +2,7 @@ import GlobalStyles from "../src/GlobalStyles.js"
 
 
 export const parameters = {
+  layout:fullscreen,
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {

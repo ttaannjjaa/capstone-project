@@ -1,10 +1,14 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import LikedFoodPage from './components/LikedFoodPage.js';
+import ErrorFallback from './ErrorFallback.js';
 
 function App() {
   return (
-    <div className="App">
-      <LikedFoodPage />
-    </div>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <div className="App">
+        <LikedFoodPage />
+      </div>
+    </ErrorBoundary>
   );
 }
 
