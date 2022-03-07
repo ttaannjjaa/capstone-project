@@ -17,6 +17,7 @@ const GlobalStyles = createGlobalStyle`
     --grey: #7E6F6F; 
     --box-shadow-drop: 0px 4px 4px rgba(0, 0, 0, 0.25);
     --box-shadow-inset: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    --box-shadow-header-drop: 0 1px 4px 0 rgba(30, 30, 33, 0.3);
   }
 
 

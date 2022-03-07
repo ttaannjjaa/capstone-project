@@ -17,6 +17,7 @@ export default function Card() {
 
 const CardStyle = styled.article`
   background-color: var(--white);
+  border-radius: 5px;
   box-shadow: var(--box-shadow-drop);
   padding: 1rem;
   min-width: 280px;
