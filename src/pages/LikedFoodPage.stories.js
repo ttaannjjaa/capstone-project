@@ -1,6 +1,6 @@
 import LikedFoodPage from './LikedFoodPage.js';
 export default {
-  title: 'LikedFoodPage',
+  title: 'Pages/LikedFoodPage',
   component: LikedFoodPage,
 };
 
