@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import Card from './Card.js';
+import Card from '../components/Card.js';
+import Navigation from '../components/Navigation.js';
 
 export default function LikedFoodPage() {
   return (
@@ -29,12 +30,15 @@ export default function LikedFoodPage() {
           </li>
         </ListStyle>
       </main>
+      <footer>
+        <Navigation data-testid={'navtest'} />
+      </footer>
     </LikedFoodPageStyle>
   );
 }
 
 const LikedFoodPageStyle = styled.section`
-  background-color: var(--peach);
+  background-color: var(--white);
   display: grid;
   grid-template-rows: 10vm 1fr 50px;
   grid-template-columns: 1;
