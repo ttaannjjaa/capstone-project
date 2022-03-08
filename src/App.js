@@ -7,12 +7,10 @@ import UnLikedFoodPage from './pages/UnLikedFoodPage.js';
 function App() {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<LikedFoodPage />} />
-          <Route path="/UnLikedFoodpage" element={<UnLikedFoodPage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<LikedFoodPage />} />
+        <Route path="/UnLikedFoodpage" element={<UnLikedFoodPage />} />
+      </Routes>
     </ErrorBoundary>
   );
 }

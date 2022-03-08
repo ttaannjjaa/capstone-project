@@ -42,7 +42,7 @@ export default function UnLikedFoodPage() {
 const LikedFoodPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 10vm 1fr 50px;
+  grid-template-rows: 20vmin 1fr 50px;
   grid-template-columns: 1;
 
   main {
@@ -53,13 +53,13 @@ const LikedFoodPageStyle = styled.section`
 
 const Header = styled.header`
   background-color: var(--white);
-  padding: 10vmin 1rem;
+  padding: 8vmin 1rem;
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 10;
   overflow: hidden;
-  box-shadow: 0 1px 4px 0 rgba(30, 30, 33, 0.3);
+  box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;
   grid-column: 1/ 2;
 
@@ -71,7 +71,7 @@ const Header = styled.header`
 `;
 
 const ListStyle = styled.ul`
-  margin-top: 30vmin;
+  margin-top: 14vmin;
   list-style: none;
   width: 100%;
   display: grid;
