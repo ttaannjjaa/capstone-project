@@ -1,17 +1,23 @@
 import styled from 'styled-components';
 
-export default function Card() {
+export default function Card({ allData }) {
   return (
-    <CardStyle role={'listbox'}>
-      <ul
-        data-testid={'cardcontent list'}
-        aria-describedby={'list of catfood properties'}
-      >
-        <li>Marke: Schnurrsatt</li>
-        <li>Sorte: Lachs</li>
-        <li>Zubereitung: Sauce</li>
-      </ul>
-    </CardStyle>
+    <>
+      {allData?.map((card, index) => (
+        <li key={index}>
+          <CardStyle role={'listbox'}>
+            <ul
+              data-testid={'cardcontent list'}
+              aria-describedby={'list of catfood properties'}
+            >
+              <li>Marke: {card.foodName}</li>
+              <li>Sorte: {card.foodTaste}</li>
+              <li>Zubereitung: {card.foodStyle}</li>
+            </ul>
+          </CardStyle>
+        </li>
+      ))}
+    </>
   );
 }
 

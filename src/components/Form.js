@@ -104,12 +104,12 @@ export default function Form({ setFormData, formData, handleSubmit, version }) {
 }
 
 const FormContainer = styled.div`
-  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--white);
+  border: red 1px solid;
 `;
 
 const FormStyled = styled.form`
@@ -126,7 +126,7 @@ const TextInput = styled.input`
   width: 100%;
   font-size: 1rem;
   line-height: 1.5rem;
-  margin: 10px 0 18px 0;
+  margin: 8px 0 18px 0;
   padding: 5px;
   background-color: var(--peach);
   box-shadow: var(--box-shadow-inputfields);
@@ -142,7 +142,7 @@ const TextField = styled.textarea`
   width: 100%;
   font-size: 1rem;
   line-height: 1.5rem;
-  margin: 10px 0 18px 0;
+  margin: 8px 0 18px 0;
   padding: 5px;
   background-color: var(--peach);
   box-shadow: var(--box-shadow-inputfields);
@@ -160,7 +160,7 @@ const Judge = styled.fieldset`
   gap: 18px;
   justify-content: space-evenly;
   align-items: center;
-  padding-top: 1.5rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   border: none;
 `;

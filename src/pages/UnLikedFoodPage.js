@@ -43,7 +43,6 @@ const LikedFoodPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
   grid-template-rows: 20vmin 1fr 50px;
-  grid-template-columns: 1;
 
   main {
     grid-row: 2 / 4;
@@ -53,7 +52,7 @@ const LikedFoodPageStyle = styled.section`
 
 const Header = styled.header`
   background-color: var(--white);
-  padding: 8vmin 1rem;
+  padding: 5vmin 1rem;
   width: 100%;
   position: fixed;
   top: 0;
@@ -61,7 +60,6 @@ const Header = styled.header`
   overflow: hidden;
   box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;
-  grid-column: 1/ 2;
 
   h1 {
     width: 100%;
@@ -75,7 +73,6 @@ const ListStyle = styled.ul`
   list-style: none;
   width: 100%;
   display: grid;
-  grid-template-columns: 1;
   grid-template-rows: 5;
   gap: 10px;
   justify-content: center;

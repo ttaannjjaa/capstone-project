@@ -31,8 +31,7 @@ export default function FormPage({
 const FormPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 10vmin 1fr 50px;
-  grid-template-columns: 1;
+  grid-template-rows: 6vmin 1fr 50px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -54,7 +53,6 @@ const Header = styled.header`
   overflow: hidden;
   box-shadow: 0 1px 4px 0 rgba(30, 30, 33, 0.3);
   grid-row: 1 / 2;
-  grid-column: 1/ 2;
 
   h1 {
     width: 100%;

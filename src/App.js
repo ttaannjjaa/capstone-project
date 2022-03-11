@@ -46,7 +46,7 @@ function App() {
               />
             }
           />
-          <Route path="/" element={<LikedFoodPage />} />
+          <Route path="/" element={<LikedFoodPage allData={allData} />} />
           <Route path="/UnLikedFoodpage" element={<UnLikedFoodPage />} />
         </Routes>
         <Navigation />
