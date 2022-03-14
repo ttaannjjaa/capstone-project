@@ -7,7 +7,7 @@ describe('UnLikedFoodPage', () => {
     render(
       <MemoryRouter>
         <UnLikedFoodPage
-          allData={[
+          storageData={[
             {
               foodJudge: 'liked',
               foodName: 'schnurrkatz',

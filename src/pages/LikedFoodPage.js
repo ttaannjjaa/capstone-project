@@ -2,15 +2,17 @@ import styled from 'styled-components';
 import Card from '../components/Card.js';
 import Navigation from '../components/Navigation.js';
 
-export default function LikedFoodPage({ allData }) {
-  const filteredLikedData = allData?.filter(data => data.foodJudge === 'liked');
+export default function LikedFoodPage({ storageData }) {
+  const filteredLikedData = storageData?.filter(
+    data => data.foodJudge === 'liked'
+  );
   return (
     <LikedFoodPageStyle>
       <Header>
         <h1>Mir schmeckt...</h1>
       </Header>
       <main>
-        {allData.length === 0 || filteredLikedData.length === 0 ? (
+        {filteredLikedData.length === 0 ? (
           <p>
             Du hast hier noch keine Listeneinträge. Listeneinträge erscheinen,
             wenn das Formular ausgefüllt und gespeichert wird.

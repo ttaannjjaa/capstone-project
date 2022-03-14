@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import Card from '../components/Card.js';
 import Navigation from '../components/Navigation.js';
 
-export default function UnLikedFoodPage({ allData }) {
-  const filteredUnLikedData = allData?.filter(
+export default function UnLikedFoodPage({ storageData }) {
+  const filteredUnLikedData = storageData?.filter(
     data => data.foodJudge === 'unliked'
   );
 
@@ -13,7 +13,7 @@ export default function UnLikedFoodPage({ allData }) {
         <h1>Ich futtere lieber etwas anderes als...</h1>
       </Header>
       <main>
-        {allData.length === 0 || filteredUnLikedData.length === 0 ? (
+        {filteredUnLikedData.length === 0 ? (
           <p>
             Du hast hier noch keine Listeneinträge. Listeneinträge erscheinen,
             wenn das Formular ausgefüllt und gespeichert wird.
