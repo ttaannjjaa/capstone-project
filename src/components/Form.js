@@ -1,6 +1,16 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
-export default function Form({ setFormData, formData, handleSubmit, version }) {
+const initialDataObject = {
+  foodName: '',
+  foodTaste: '',
+  foodStyle: '',
+  foodJudge: 'liked',
+};
+
+export default function Form({ handleData }) {
+  const [formData, setFormData] = useState(initialDataObject);
+
   const handleChange = event => {
     const target = event.target;
     const name = target.name;
@@ -8,22 +18,22 @@ export default function Form({ setFormData, formData, handleSubmit, version }) {
     setFormData({ ...formData, [name]: value });
   };
 
-  function handleSave(event) {
+  function handleSubmit(event) {
     event.preventDefault();
     event.stopPropagation();
-    handleSubmit({
+    handleData({
       foodName: formData.foodName,
       foodTaste: formData.foodTaste,
       foodStyle: formData.foodStyle,
       foodJudge: formData.foodJudge,
     });
+    event.target.reset();
   }
 
   return (
     <FormContainer>
       <FormStyled
-        key={version}
-        onSubmit={handleSave}
+        onSubmit={handleSubmit}
         formData={formData}
         setFormData={setFormData}
         id="formCatFood"
@@ -64,7 +74,7 @@ export default function Form({ setFormData, formData, handleSubmit, version }) {
           id="foodStyle"
           name="foodStyle"
           maxLength="20"
-          placeholder="z.B. Gelee, Sauce, Pastete"
+          placeholder="z.B. Gelee, Ragout, Pastete"
           onChange={event =>
             setFormData({ ...formData, foodStyle: event.target.value.trim() })
           }
@@ -74,28 +84,31 @@ export default function Form({ setFormData, formData, handleSubmit, version }) {
           <RadioStyled>
             <input
               type="radio"
+              value="liked"
+              id="liked"
               name="foodJudge"
               form="formCatFood"
-              value={true}
               onChange={handleChange}
-              checked={formData.foodJudge === 'true'}
+              checked={formData.foodJudge === 'liked'}
+              required
             />
-            <label>mag ich gerne</label>
+            <label htmlFor="liked">mag ich gerne</label>
           </RadioStyled>
           <RadioStyled>
             <input
               type="radio"
+              value="unliked"
+              id="unliked"
               name="foodJudge"
               form="formCatFood"
-              value={false}
               onChange={handleChange}
-              checked={formData.foodJudge === 'false'}
+              checked={formData.foodJudge === 'unliked'}
+              required
             />
-            <label>mag ich nicht</label>
+            <label htmlFor="unliked">mag ich nicht</label>
           </RadioStyled>
         </Judge>
       </FormStyled>
-
       <SaveButton type="submit" form="formCatFood">
         SPEICHERN
       </SaveButton>
@@ -104,12 +117,12 @@ export default function Form({ setFormData, formData, handleSubmit, version }) {
 }
 
 const FormContainer = styled.div`
+  padding: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--white);
-  border: red 1px solid;
 `;
 
 const FormStyled = styled.form`
@@ -157,11 +170,11 @@ const Judge = styled.fieldset`
   min-width: 280px;
   width: 100%;
   display: flex;
-  gap: 18px;
+  gap: 10px;
   justify-content: space-evenly;
   align-items: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   border: none;
 `;
 
@@ -177,8 +190,8 @@ const RadioStyled = styled.div`
 `;
 
 const SaveButton = styled.button`
-  min-width: 270px;
-  width: 92%;
+  min-width: 280px;
+  width: 95%;
   padding: 6px;
   margin-bottom: 1.5rem;
   line-height: 1.5rem;

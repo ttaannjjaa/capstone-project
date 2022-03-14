@@ -7,10 +7,10 @@ import iconform from '../images/icon_form.svg';
 export default function Navigation() {
   return (
     <NavigationWrapper>
-      <NavButton to="/FormPage">
+      <NavButton to="/">
         <img src={iconform} alt={'thumbdown icon'} />
       </NavButton>
-      <NavButton to="/">
+      <NavButton to="/LikedFoodPage">
         <img src={iconthumbup} alt={'thumbup icon'} />
       </NavButton>
       <NavButton to="/UnLikedFoodPage">
@@ -31,7 +31,6 @@ const NavButton = styled(NavLink)`
   background-color: var(--peach);
   min-height: 50px;
   min-width: 33%;
-  padding-top: 5px;
   display: flex;
   align-items: center;
   justify-content: center;

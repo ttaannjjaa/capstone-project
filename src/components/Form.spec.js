@@ -8,7 +8,7 @@ describe('Form', () => {
       <MemoryRouter>
         <Form
           formData={{
-            foodJudge: true,
+            foodJudge: 'liked',
             foodName: 'schnurrkatz',
             foodTaste: 'Huhn',
             foodStyle: 'Gelee',
@@ -28,7 +28,7 @@ describe('Form', () => {
     render(
       <Form
         formData={{
-          foodJudge: true,
+          foodJudge: 'liked',
           foodName: 'schnurrkatz',
           foodTaste: 'Huhn',
           foodStyle: 'Gelee',
@@ -51,7 +51,7 @@ describe('Form', () => {
     render(
       <Form
         formData={{
-          foodJudge: true,
+          foodJudge: 'liked',
           foodName: 'schnurrkatz',
           foodTaste: 'Huhn',
           foodStyle: 'Gelee',

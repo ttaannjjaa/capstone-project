@@ -9,7 +9,7 @@ const Template = args => <Form {...args} />;
 export const Default = Template.bind();
 Default.args = {
   formData: {
-    foodJudge: true,
+    foodJudge: 'liked',
     foodName: 'schnurrkatz',
     foodTaste: 'Huhn',
     foodStyle: 'Gelee',

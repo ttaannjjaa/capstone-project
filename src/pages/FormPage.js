@@ -2,24 +2,14 @@ import styled from 'styled-components';
 import Form from '../components/Form.js';
 import Navigation from '../components/Navigation.js';
 
-export default function FormPage({
-  version,
-  handleSubmit,
-  formData,
-  setFormData,
-}) {
+export default function FormPage({ handleData }) {
   return (
     <FormPageStyle>
       <Header>
         <h1>Hier kannst Du eintragen, wie es mir schmeckt...</h1>
       </Header>
       <main>
-        <Form
-          version={version}
-          handleSubmit={handleSubmit}
-          formData={formData}
-          setFormData={setFormData}
-        ></Form>
+        <Form handleData={handleData}></Form>
       </main>
       <footer>
         <Navigation />

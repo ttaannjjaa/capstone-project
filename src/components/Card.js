@@ -1,23 +1,19 @@
 import styled from 'styled-components';
 
-export default function Card({ allData }) {
+export default function Card({ foodName, foodTaste, foodJudge, foodStyle }) {
   return (
-    <>
-      {allData?.map((card, index) => (
-        <li key={index}>
-          <CardStyle role={'listbox'}>
-            <ul
-              data-testid={'cardcontent list'}
-              aria-describedby={'list of catfood properties'}
-            >
-              <li>Marke: {card.foodName}</li>
-              <li>Sorte: {card.foodTaste}</li>
-              <li>Zubereitung: {card.foodStyle}</li>
-            </ul>
-          </CardStyle>
-        </li>
-      ))}
-    </>
+    <CardStyle role="listbox">
+      <ul
+        role="list"
+        data-testid="cardcontent list"
+        aria-describedby="list of catfood properties"
+      >
+        <li>Marke: {foodName}</li>
+        <li>Sorte: {foodTaste}</li>
+        <li>Zubereitung: {foodStyle}</li>
+        <li>Bewertung: {foodJudge === 'liked' ? 'lecker' : 'mag ich nicht'}</li>
+      </ul>
+    </CardStyle>
   );
 }
 
@@ -27,7 +23,7 @@ const CardStyle = styled.article`
   box-shadow: var(--box-shadow-drop);
   padding: 1rem;
   min-width: 280px;
-  width: 96%;
+  //width: 96%;
 
   ul {
     display: flex;

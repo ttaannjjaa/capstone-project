@@ -6,7 +6,22 @@ describe('LikedFoodPage', () => {
   it('renders a headline and an unordered list of cards, the list has an accessible name', () => {
     render(
       <MemoryRouter>
-        <LikedFoodPage />
+        <LikedFoodPage
+          allData={[
+            {
+              foodJudge: 'liked',
+              foodName: 'schnurrkatz',
+              foodTaste: 'Huhn',
+              foodStyle: 'Gelee',
+            },
+            {
+              foodJudge: 'unliked',
+              foodName: 'katzlecker',
+              foodTaste: 'Lachs',
+              foodStyle: 'Ragout',
+            },
+          ]}
+        />
       </MemoryRouter>
     );
 

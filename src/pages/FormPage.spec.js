@@ -8,7 +8,7 @@ describe('FormPage', () => {
       <MemoryRouter>
         <FormPage
           formData={{
-            foodJudge: true,
+            foodJudge: 'liked',
             foodName: 'schnurrkatz',
             foodTaste: 'Huhn',
             foodStyle: 'Gelee',
