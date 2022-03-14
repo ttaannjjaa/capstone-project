@@ -2,58 +2,66 @@ import styled from 'styled-components';
 import Card from '../components/Card.js';
 import Navigation from '../components/Navigation.js';
 
-export default function UnLikedFoodPage() {
+export default function UnLikedFoodPage({ allData }) {
+  const filteredUnLikedData = allData?.filter(
+    data => data.foodJudge === 'unliked'
+  );
+
   return (
-    <LikedFoodPageStyle>
+    <UnLikedFoodPageStyled>
       <Header>
         <h1>Ich futtere lieber etwas anderes als...</h1>
       </Header>
       <main>
-        <ListStyle
-          data-testid={'unlikedlist'}
-          aria-describedby={
-            'list of cards about catfood that your cat does not like'
-          }
-        >
-          <li>
-            <Card />
-          </li>
-          <li>
-            <Card />
-          </li>
-          <li>
-            <Card />
-          </li>
-          <li>
-            <Card />
-          </li>
-          <li>
-            <Card />
-          </li>
-        </ListStyle>
+        {allData.length === 0 || filteredUnLikedData.length === 0 ? (
+          <p>
+            Du hast hier noch keine Listeneinträge. Listeneinträge erscheinen,
+            wenn das Formular ausgefüllt und gespeichert wird.
+          </p>
+        ) : (
+          <ListStyle
+            data-testid="unlikedlist"
+            aria-describedby="list of cards about catfood that your cat does not like"
+            role="list"
+          >
+            {filteredUnLikedData.map((data, index) => (
+              <li key={index}>
+                <Card
+                  foodName={data.foodName}
+                  foodTaste={data.foodTaste}
+                  foodStyle={data.foodStyle}
+                  foodJudge={data.foodJudge}
+                />
+              </li>
+            ))}
+          </ListStyle>
+        )}
       </main>
       <footer>
         <Navigation />
       </footer>
-    </LikedFoodPageStyle>
+    </UnLikedFoodPageStyled>
   );
 }
 
-const LikedFoodPageStyle = styled.section`
+const UnLikedFoodPageStyled = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 20vmin 1fr 50px;
-  grid-template-columns: 1;
+  grid-template-rows: 15vmin 1fr 50px;
 
   main {
-    grid-row: 2 / 4;
+    grid-row: 2 / 3;
     min-height: 100vh;
+  }
+
+  p {
+    padding: 2.5rem 1.5rem 0 1.5rem;
   }
 `;
 
 const Header = styled.header`
   background-color: var(--white);
-  padding: 8vmin 1rem;
+  padding: 5vmin 1rem;
   width: 100%;
   position: fixed;
   top: 0;
@@ -61,7 +69,6 @@ const Header = styled.header`
   overflow: hidden;
   box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;
-  grid-column: 1/ 2;
 
   h1 {
     width: 100%;
@@ -75,7 +82,6 @@ const ListStyle = styled.ul`
   list-style: none;
   width: 100%;
   display: grid;
-  grid-template-columns: 1;
   grid-template-rows: 5;
   gap: 10px;
   justify-content: center;

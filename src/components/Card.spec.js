@@ -2,18 +2,20 @@ import { render, screen } from '@testing-library/react';
 import Card from './Card.js';
 
 describe('Card', () => {
-  it('renders a card with 3 list elements', () => {
+  it('renders a card with 4 list elements', () => {
     render(<Card />);
 
     const showsaCard = screen.getByRole('listbox');
     const liElement1 = screen.getByText(/Marke/);
     const liElement2 = screen.getByText(/Sorte/);
     const liElement3 = screen.getByText(/Zubereitung/);
+    const liElement4 = screen.getByText(/Bewertung/);
 
     expect(showsaCard).toBeInTheDocument();
     expect(liElement1).toBeInTheDocument();
     expect(liElement2).toBeInTheDocument();
     expect(liElement3).toBeInTheDocument();
+    expect(liElement4).toBeInTheDocument();
   });
 
   it('renders an unordered list with an accessible name', () => {

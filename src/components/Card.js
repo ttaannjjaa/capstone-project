@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
-export default function Card() {
+export default function Card({ foodName, foodTaste, foodJudge, foodStyle }) {
   return (
-    <CardStyle role={'listbox'}>
+    <CardStyle role="listbox">
+      {/* eslint-disable-next-line jsx-a11y/no-redundant-roles*/}
       <ul
-        data-testid={'cardcontent list'}
-        aria-describedby={'list of catfood properties'}
+        role="list"
+        data-testid="cardcontent list"
+        aria-describedby="list of catfood properties"
       >
-        <li>Marke: Schnurrsatt</li>
-        <li>Sorte: Lachs</li>
-        <li>Zubereitung: Sauce</li>
+        <li>Marke: {foodName}</li>
+        <li>Sorte: {foodTaste}</li>
+        <li>Zubereitung: {foodStyle}</li>
+        <li>Bewertung: {foodJudge === 'liked' ? 'lecker' : 'mag ich nicht'}</li>
       </ul>
     </CardStyle>
   );
@@ -21,7 +24,7 @@ const CardStyle = styled.article`
   box-shadow: var(--box-shadow-drop);
   padding: 1rem;
   min-width: 280px;
-  width: 96%;
+  //width: 96%;
 
   ul {
     display: flex;

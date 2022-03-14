@@ -7,4 +7,19 @@ export default {
 const Template = args => <LikedFoodPage {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  allData: [
+    {
+      foodJudge: 'liked',
+      foodName: 'schnurrkatz',
+      foodTaste: 'Huhn',
+      foodStyle: 'Gelee',
+    },
+    {
+      foodJudge: 'unliked',
+      foodName: 'katzlecker',
+      foodTaste: 'Lachs',
+      foodStyle: 'Ragout',
+    },
+  ],
+};
