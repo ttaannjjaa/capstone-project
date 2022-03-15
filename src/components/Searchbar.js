@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import iconSearch from '../images/icon_magnifying-glass.svg';
 
-export default function Searchbar() {
+export default function Searchbar({ userInput, handleUserInput }) {
   return (
     <SearchbarContainer>
       <div>
@@ -12,6 +12,9 @@ export default function Searchbar() {
         type="search"
         id="catfood-search"
         placeholder="z.B. Name des Futters"
+        maxLength="22"
+        value={userInput}
+        onChange={handleUserInput}
       />
     </SearchbarContainer>
   );
@@ -20,12 +23,11 @@ export default function Searchbar() {
 const SearchbarContainer = styled.section`
   display: flex;
   flex-direction: column;
-  //border: 1px solid var(--steelblue);
+
   background-color: var(--peach);
   box-shadow: var(--box-shadow-drop);
 
   div {
-    //border: 1px solid yellowgreen;
     display: flex;
     align-items: center;
   }
@@ -33,17 +35,15 @@ const SearchbarContainer = styled.section`
   label {
     font-size: 1rem;
     padding-bottom: 5px;
-    //border: 1px black solid;
   }
 
   img {
-    //border: 1px hotpink solid;
     align-self: flex-start;
     margin-right: 3px;
   }
 
   input {
-    border-radius: 10px;
+    border-radius: 5px;
     min-width: 280px;
     width: 95%;
     font-size: 1rem;
