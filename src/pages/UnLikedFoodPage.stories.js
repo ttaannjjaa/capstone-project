@@ -8,7 +8,7 @@ const Template = args => <UnLikedFoodPage {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  allData: [
+  storageData: [
     {
       foodJudge: 'liked',
       foodName: 'schnurrkatz',
