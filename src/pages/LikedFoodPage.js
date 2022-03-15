@@ -3,19 +3,18 @@ import Card from '../components/Card.js';
 import Navigation from '../components/Navigation.js';
 
 export default function LikedFoodPage({ storageData }) {
-  const filteredLikedData = storageData?.filter(
-    data => data.foodJudge === 'liked'
-  );
+  const likedData = storageData?.filter(data => data.foodJudge === 'liked');
   return (
     <LikedFoodPageStyle>
       <Header>
         <h1>Mir schmeckt...</h1>
       </Header>
       <main>
-        {filteredLikedData.length === 0 ? (
+        {likedData.length === 0 ? (
           <p>
-            Du hast hier noch keine Listeneinträge. Listeneinträge erscheinen,
-            wenn das Formular ausgefüllt und gespeichert wird.
+            Du hast hier noch keine Listeneinträge. <br />
+            Listeneinträge erscheinen, wenn das Formular ausgefüllt und
+            gespeichert wird.
           </p>
         ) : (
           <ListStyle
@@ -23,7 +22,7 @@ export default function LikedFoodPage({ storageData }) {
             data-testid="likedlist"
             aria-describedby={'list of cards about catfood that your cat like'}
           >
-            {filteredLikedData.map((data, index) => (
+            {likedData.map((data, index) => (
               <li key={index}>
                 <Card
                   foodName={data.foodName}
@@ -46,7 +45,7 @@ export default function LikedFoodPage({ storageData }) {
 const LikedFoodPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 15vmin 1fr 50px;
+  grid-template-rows: 18vmin 1fr 50px;
 
   main {
     grid-row: 2 / 3;
@@ -59,7 +58,7 @@ const LikedFoodPageStyle = styled.section`
 `;
 
 const Header = styled.header`
-  background-color: var(--white);
+  background-color: var(--peach);
   padding: 5vmin 1rem;
   width: 100%;
   position: fixed;
@@ -72,7 +71,7 @@ const Header = styled.header`
   h1 {
     width: 100%;
     font-size: 1.2rem !important;
-    font-weight: normal;
+    color: var(--steelblue);
   }
 `;
 

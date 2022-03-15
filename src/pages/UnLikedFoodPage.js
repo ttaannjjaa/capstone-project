@@ -25,13 +25,15 @@ export default function UnLikedFoodPage({ storageData }) {
     <UnLikedFoodPageStyled>
       <Header>
         <h1>Ich futtere lieber etwas anderes als...</h1>
-        <Searchbar handleUserInput={handleUserInput} userInput={userInput} />
+        <SearchStyled>
+          <Searchbar handleUserInput={handleUserInput} userInput={userInput} />
+        </SearchStyled>
       </Header>
       <main>
         {unLikedData.length === 0 && (
           <p>
-            Du hast hier noch keine Listeneinträge. Listeneinträge erscheinen,
-            wenn das Formular ausgefüllt und gespeichert wird.
+            Du hast hier noch keine Listeneinträge. <br /> Listeneinträge
+            erscheinen, wenn das Formular ausgefüllt und gespeichert wird.
           </p>
         )}
         {userInput.length === 0 && (
@@ -87,7 +89,7 @@ export default function UnLikedFoodPage({ storageData }) {
 const UnLikedFoodPageStyled = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 15vmin 1fr 50px;
+  grid-template-rows: 150px 1fr 50px;
 
   main {
     grid-row: 2 / 3;
@@ -100,8 +102,7 @@ const UnLikedFoodPageStyled = styled.section`
 `;
 
 const Header = styled.header`
-  background-color: var(--white);
-  padding: 5vmin 1rem;
+  background-color: var(--peach);
   width: 100%;
   position: fixed;
   top: 0;
@@ -109,16 +110,29 @@ const Header = styled.header`
   overflow: hidden;
   box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;
+  display: grid;
+  grid-template-rows: 1fr 90px;
 
   h1 {
     width: 100%;
     font-size: 1.2rem !important;
-    font-weight: lighter;
+    padding: 1rem;
+    background-color: var(--peach);
+    align-self: center;
+    color: var(--steelblue);
   }
 `;
 
+const SearchStyled = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--peach);
+  margin: 5px auto;
+`;
+
 const ListStyle = styled.ul`
-  margin-top: 14vmin;
+  margin-top: 10vmin;
   list-style: none;
   width: 100%;
   display: grid;

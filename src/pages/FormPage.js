@@ -6,7 +6,9 @@ export default function FormPage({ handleData }) {
   return (
     <FormPageStyle>
       <Header>
-        <h1>Hier kannst Du eintragen, wie es mir schmeckt...</h1>
+        <h1>
+          Hier kannst Du eintragen, <br /> wie es mir schmeckt...
+        </h1>
       </Header>
       <main>
         <Form handleData={handleData}></Form>
@@ -23,8 +25,6 @@ const FormPageStyle = styled.section`
   display: grid;
   grid-template-rows: 6vmin 1fr 50px;
   width: 100%;
-  position: fixed;
-  top: 0;
 
   main {
     grid-row: 2 / 3;
@@ -34,7 +34,7 @@ const FormPageStyle = styled.section`
 `;
 
 const Header = styled.header`
-  background-color: var(--white);
+  background-color: var(--peach);
   padding: 5vmin 1rem;
   width: 100%;
   position: fixed;
@@ -47,6 +47,6 @@ const Header = styled.header`
   h1 {
     width: 100%;
     font-size: 1.2rem !important;
-    font-weight: lighter;
+    color: var(--steelblue);
   }
 `;

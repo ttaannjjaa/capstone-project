@@ -35,4 +35,35 @@ describe('UnLikedFoodPage', () => {
     expect(headline).toBeInTheDocument();
     expect(ulAccessibility).toBeInTheDocument();
   });
+
+  it('renders a searchbar with the label "Suche" and a search icon', () => {
+    render(
+      <MemoryRouter>
+        <UnLikedFoodPage
+          storageData={[
+            {
+              foodJudge: 'liked',
+              foodName: 'schnurrkatz',
+              foodTaste: 'Huhn',
+              foodStyle: 'Gelee',
+            },
+            {
+              foodJudge: 'unliked',
+              foodName: 'katzlecker',
+              foodTaste: 'Lachs',
+              foodStyle: 'Ragout',
+            },
+          ]}
+        />
+      </MemoryRouter>
+    );
+
+    const searchbar = screen.getByRole('searchbox');
+    const searchicon = screen.getByRole('img', { name: 'search icon' });
+    const searchlabel = screen.getByText('Suche');
+
+    expect(searchbar).toBeInTheDocument();
+    expect(searchicon).toBeInTheDocument();
+    expect(searchlabel).toBeInTheDocument();
+  });
 });

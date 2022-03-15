@@ -15,6 +15,7 @@ export default function Searchbar({ userInput, handleUserInput }) {
         maxLength="22"
         value={userInput}
         onChange={handleUserInput}
+        pattern="[a-zA-Z]+"
       />
     </SearchbarContainer>
   );
@@ -24,17 +25,16 @@ const SearchbarContainer = styled.section`
   display: flex;
   flex-direction: column;
 
-  background-color: var(--peach);
-  box-shadow: var(--box-shadow-drop);
-
   div {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    padding-bottom: 4px;
   }
 
   label {
-    font-size: 1rem;
-    padding-bottom: 5px;
+    font-size: 1rem !important;
+    font-weight: bold;
+    color: var(--steelblue);
   }
 
   img {
@@ -43,12 +43,17 @@ const SearchbarContainer = styled.section`
   }
 
   input {
-    border-radius: 5px;
     min-width: 280px;
-    width: 95%;
+    width: 100%;
     font-size: 1rem;
-    line-height: 1.2rem;
-    padding: 2px 2px 2px 4px;
-    box-shadow: var(--box-shadow-drop);
+    line-height: 1.5rem;
+    border-radius: 5px;
+    border: none;
+    padding: 3px 3px 3px 4px;
+    margin-bottom: 12px;
+    box-shadow: 3px 2px 0px 2px rgba(89, 122, 145, 0.44);
+    &:focus {
+      outline: 1px solid var(--steelblue);
+    }
   }
 `;
