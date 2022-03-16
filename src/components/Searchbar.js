@@ -15,7 +15,7 @@ export default function Searchbar({ userInput, handleUserInput }) {
         maxLength="22"
         value={userInput}
         onChange={handleUserInput}
-        pattern="[a-zA-Z]+"
+        pattern="^[a-zA-Z]+"
       />
     </SearchbarContainer>
   );
