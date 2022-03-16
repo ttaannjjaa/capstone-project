@@ -30,7 +30,7 @@ const NavigationWrapper = styled.nav`
 const NavButton = styled(NavLink)`
   background-color: var(--peach);
   min-height: 50px;
-  min-width: 33%;
+  min-width: 34%;
   display: flex;
   align-items: center;
   justify-content: center;

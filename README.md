@@ -14,8 +14,8 @@ You can have a look at the last update of CatYummy on Vercel: [DemoVersion](http
 
 ### Tech Stack
 
-- React v17.02
-- React Router 6.2.2
+- React
+- React Router
 - React Testing Library / Jest
 - Storybook
 - styled components
@@ -23,6 +23,10 @@ You can have a look at the last update of CatYummy on Vercel: [DemoVersion](http
 - npm
 - Vercel
 
-`npm start`
+### Start im Developer Modus
 
-Runs the app in the development mode and opens http://localhost:3000 to view it in your browser. Or you will be asked to confirm another port if this one isn't available.
+you can clone the repo
+
+exit `npm install` in the terminal to install all the files the app needs to run
+
+`npm start` runs the app in the development mode and opens http://localhost:3000 to view it in your browser. Or you will be asked to confirm another port if this one isn't available.

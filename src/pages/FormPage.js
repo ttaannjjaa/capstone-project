@@ -48,5 +48,6 @@ const Header = styled.header`
     width: 100%;
     font-size: 1.2rem !important;
     color: var(--steelblue);
+    letter-spacing: 1px;
   }
 `;
