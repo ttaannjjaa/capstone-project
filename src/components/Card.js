@@ -1,8 +1,17 @@
 import styled from 'styled-components';
+import DeleteButton from './DeleteButton.js';
 
-export default function Card({ foodName, foodTaste, foodJudge, foodStyle }) {
+export default function Card({
+  id,
+  foodName,
+  foodTaste,
+  foodJudge,
+  foodStyle,
+  handleDelete,
+}) {
   return (
     <CardStyled role="listbox">
+      <DeleteButton handleDelete={handleDelete} id={id} />
       <CardContent
         role="list"
         data-testid="cardcontent list"
@@ -21,9 +30,22 @@ const CardStyled = styled.article`
   background-color: var(--white);
   border-radius: 5px;
   box-shadow: var(--box-shadow-drop);
-  padding: 1rem;
   min-width: 280px;
-  //width: 96%;
+  margin: 0 1rem;
+  position: relative;
+
+  & {
+    --left-border-size: 0.8rem;
+    --border-size: 1px;
+    padding: 0.8rem;
+    padding-left: calc(10px + var(--left-border-size));
+    background: linear-gradient(to bottom, #597a91, #cee7f6) 0 0 /
+        var(--left-border-size) 100%,
+      linear-gradient(#fff, #fff) 0 0 / 100% var(--border-size),
+      linear-gradient(#fff, #fff) 0 100% / 100% var(--border-size),
+      linear-gradient(#fff, #fff) 100% 0 / var(--border-size) 100%;
+    background-repeat: no-repeat;
+  }
 `;
 
 const CardContent = styled.ul`

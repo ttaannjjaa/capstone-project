@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 
 const initialDataObject = {
+  id: '',
   foodName: '',
   foodTaste: '',
   foodStyle: '',
@@ -20,8 +22,8 @@ export default function Form({ handleData }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    event.stopPropagation();
     handleData({
+      id: nanoid(),
       foodName: formData.foodName,
       foodTaste: formData.foodTaste,
       foodStyle: formData.foodStyle,
@@ -68,7 +70,7 @@ export default function Form({ handleData }) {
           }}
         />
 
-        <label htmlFor="foodStyle">Zubereitung</label>
+        <label htmlFor="foodStyle">Zubereitung (Angabe optional)</label>
         <TextInput
           type="text"
           id="foodStyle"
@@ -146,7 +148,7 @@ const TextInput = styled.input`
   border-radius: 5px;
   border: none;
   &:focus {
-    outline: 1px solid var(--steelblue);
+    outline: 1px solid var(--coral);
   }
 `;
 
@@ -162,7 +164,7 @@ const TextField = styled.textarea`
   border-radius: 5px;
   border: none;
   &:focus {
-    outline: 1px solid var(--steelblue);
+    outline: 1px solid var(--coral);
   }
 `;
 

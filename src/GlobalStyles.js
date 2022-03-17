@@ -2,19 +2,20 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 
-* {
+* , *::after, *::before{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 :root {
     --black: #000000;
-    --steelblue: #597A91;  
     --white: #ffffff;
-    --peach: #F4E0D4;
     --grey: #7E6F6F; 
+    --coral: #F88379;
+    --lightblue: #CEE7F6;
+    --peach: #F4E0D4; 
+    --steelblue: #597A91;  
     --box-shadow-drop: 0px 1px 4px rgba(0, 0, 0, 0.25);
     --box-shadow-inset: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     --box-shadow-header-drop: 0 1px 4px 0 rgba(30, 30, 33, 0.3);
@@ -22,8 +23,8 @@ const GlobalStyles = createGlobalStyle`
 
 
 body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1rem;
-  color: var(--black);
   min-height: 100vh;
 }
 

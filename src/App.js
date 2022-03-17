@@ -17,6 +17,11 @@ function App() {
     navigate('/', { replace: true });
   }
 
+  function handleDelete(id) {
+    const newData = storageData.filter(storeddata => storeddata.id !== id);
+    setStorageData(newData);
+  }
+
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <div>
@@ -24,11 +29,21 @@ function App() {
           <Route path="/" element={<FormPage handleData={handleData} />} />
           <Route
             path="/LikedFoodpage"
-            element={<LikedFoodPage storageData={storageData} />}
+            element={
+              <LikedFoodPage
+                storageData={storageData}
+                handleDelete={handleDelete}
+              />
+            }
           />
           <Route
             path="/UnLikedFoodpage"
-            element={<UnLikedFoodPage storageData={storageData} />}
+            element={
+              <UnLikedFoodPage
+                storageData={storageData}
+                handleDelete={handleDelete}
+              />
+            }
           />
         </Routes>
         <Navigation />

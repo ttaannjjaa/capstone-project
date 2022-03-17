@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import Card from '../components/Card.js';
 import Navigation from '../components/Navigation.js';
 
-export default function LikedFoodPage({ storageData }) {
-  const likedData = storageData?.filter(data => data.foodJudge === 'liked');
+export default function LikedFoodPage({ storageData, handleDelete }) {
+  const likedData = storageData.filter(data => data.foodJudge === 'liked');
   return (
     <LikedFoodPageStyle>
       <Header>
@@ -22,13 +22,15 @@ export default function LikedFoodPage({ storageData }) {
             data-testid="likedlist"
             aria-describedby={'list of cards about catfood that your cat like'}
           >
-            {likedData.map((data, index) => (
-              <li key={index}>
+            {likedData.map(data => (
+              <li key={data.id}>
                 <Card
+                  id={data.id}
                   foodName={data.foodName}
                   foodTaste={data.foodTaste}
                   foodStyle={data.foodStyle}
                   foodJudge={data.foodJudge}
+                  handleDelete={() => handleDelete(data.id)}
                 />
               </li>
             ))}
@@ -45,7 +47,7 @@ export default function LikedFoodPage({ storageData }) {
 const LikedFoodPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 18vmin 1fr 50px;
+  grid-template-rows: 3.5rem 1fr 3rem;
 
   main {
     grid-row: 2 / 3;
@@ -53,13 +55,14 @@ const LikedFoodPageStyle = styled.section`
   }
 
   p {
-    padding: 1.2rem;
+    margin-top: 2rem;
+    padding: 1rem;
   }
 `;
 
 const Header = styled.header`
   background-color: var(--peach);
-  padding: 5vmin 1rem;
+  padding: 1rem;
   width: 100%;
   position: fixed;
   top: 0;
@@ -70,17 +73,18 @@ const Header = styled.header`
 
   h1 {
     width: 100%;
-    font-size: 1.2rem !important;
+    font-size: 1.2rem;
     color: var(--steelblue);
+    letter-spacing: 1px;
   }
 `;
 
 const ListStyle = styled.ul`
-  margin-top: 10vmin;
+  margin-top: 2rem;
   list-style: none;
   width: 100%;
   display: grid;
   grid-template-rows: 5;
-  gap: 10px;
+  gap: 1.5rem;
   justify-content: center;
 `;

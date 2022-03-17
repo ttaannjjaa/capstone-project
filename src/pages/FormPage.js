@@ -23,19 +23,17 @@ export default function FormPage({ handleData }) {
 const FormPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 6vmin 1fr 50px;
-  width: 100%;
+  grid-template-rows: 5.5rem 1fr 3rem;
 
   main {
     grid-row: 2 / 3;
     min-height: 100vh;
-    padding-top: 20vmin;
   }
 `;
 
 const Header = styled.header`
   background-color: var(--peach);
-  padding: 5vmin 1rem;
+  padding: 1rem;
   width: 100%;
   position: fixed;
   top: 0;
@@ -46,7 +44,8 @@ const Header = styled.header`
 
   h1 {
     width: 100%;
-    font-size: 1.2rem !important;
+    font-size: 1.2rem;
     color: var(--steelblue);
+    letter-spacing: 1px;
   }
 `;

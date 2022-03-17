@@ -4,8 +4,8 @@ import Searchbar from '../components/Searchbar.js';
 import Navigation from '../components/Navigation.js';
 import { useState } from 'react';
 
-export default function UnLikedFoodPage({ storageData }) {
-  const unLikedData = storageData?.filter(data => data.foodJudge === 'unliked');
+export default function UnLikedFoodPage({ storageData, handleDelete }) {
+  const unLikedData = storageData.filter(data => data.foodJudge === 'unliked');
 
   const [userInput, setUserInput] = useState('');
 
@@ -42,13 +42,15 @@ export default function UnLikedFoodPage({ storageData }) {
             aria-describedby="list of cards about catfood that your cat does not like"
             role="list"
           >
-            {unLikedData.map((data, index) => (
-              <li key={index}>
+            {unLikedData.map(data => (
+              <li key={data.id}>
                 <Card
+                  id={data.id}
                   foodName={data.foodName}
                   foodTaste={data.foodTaste}
                   foodStyle={data.foodStyle}
                   foodJudge={data.foodJudge}
+                  handleDelete={() => handleDelete(data.id)}
                 />
               </li>
             ))}
@@ -66,13 +68,15 @@ export default function UnLikedFoodPage({ storageData }) {
             aria-describedby="list of cards about catfood that your cat does not like"
             role="list"
           >
-            {filteredUnlikedData.map((data, index) => (
-              <li key={index}>
+            {filteredUnlikedData.map(data => (
+              <li key={data.id}>
                 <Card
+                  id={data.id}
                   foodName={data.foodName}
                   foodTaste={data.foodTaste}
                   foodStyle={data.foodStyle}
                   foodJudge={data.foodJudge}
+                  handleDelete={() => handleDelete(data.id)}
                 />
               </li>
             ))}
@@ -89,7 +93,7 @@ export default function UnLikedFoodPage({ storageData }) {
 const UnLikedFoodPageStyled = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 150px 1fr 50px;
+  grid-template-rows: 9.5rem 1fr 3rem;
 
   main {
     grid-row: 2 / 3;
@@ -97,7 +101,8 @@ const UnLikedFoodPageStyled = styled.section`
   }
 
   p {
-    padding: 2.5rem 1.5rem 0 1.5rem;
+    margin-top: 1rem;
+    padding: 1rem 1.5rem 0 1.5rem;
   }
 `;
 
@@ -111,32 +116,33 @@ const Header = styled.header`
   box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;
   display: grid;
-  grid-template-rows: 1fr 90px;
+  grid-template-rows: 4.5rem 5rem;
 
   h1 {
     width: 100%;
-    font-size: 1.2rem !important;
-    padding: 1rem;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
     background-color: var(--peach);
     align-self: center;
     color: var(--steelblue);
+    letter-spacing: 1px;
   }
 `;
 
 const SearchStyled = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  padding: 0 1rem;
+  justify-content: flex-start;
   background-color: var(--peach);
-  margin: 5px auto;
 `;
 
 const ListStyle = styled.ul`
-  margin-top: 10vmin;
+  margin-top: 1.5rem;
   list-style: none;
   width: 100%;
   display: grid;
   grid-template-rows: 5;
-  gap: 10px;
+  gap: 1.5rem;
   justify-content: center;
 `;
