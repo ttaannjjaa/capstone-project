@@ -31,6 +31,7 @@ const CardStyled = styled.article`
   border-radius: 5px;
   box-shadow: var(--box-shadow-drop);
   min-width: 280px;
+  margin: 0 1rem;
   position: relative;
 
   & {

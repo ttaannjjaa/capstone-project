@@ -138,7 +138,7 @@ const SearchStyled = styled.div`
 `;
 
 const ListStyle = styled.ul`
-  margin-top: 10vmin;
+  margin-top: 1.5rem;
   list-style: none;
   width: 100%;
   display: grid;
