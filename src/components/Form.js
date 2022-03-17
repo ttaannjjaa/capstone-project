@@ -148,7 +148,7 @@ const TextInput = styled.input`
   border-radius: 5px;
   border: none;
   &:focus {
-    outline: 1px solid var(--steelblue);
+    outline: 1px solid var(--coral);
   }
 `;
 
@@ -164,7 +164,7 @@ const TextField = styled.textarea`
   border-radius: 5px;
   border: none;
   &:focus {
-    outline: 1px solid var(--steelblue);
+    outline: 1px solid var(--coral);
   }
 `;
 

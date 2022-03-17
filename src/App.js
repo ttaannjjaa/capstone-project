@@ -20,7 +20,6 @@ function App() {
   function handleDelete(id) {
     const newData = storageData.filter(storeddata => storeddata.id !== id);
     setStorageData(newData);
-    console.log('ich wurde aufgerufen');
   }
 
   return (

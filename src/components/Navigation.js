@@ -8,33 +8,43 @@ export default function Navigation() {
   return (
     <NavigationWrapper>
       <NavButton to="/">
-        <img src={iconform} alt={'thumbdown icon'} />
+        <img src={iconform} alt={'thumbdown icon'} width="34px" height="34px" />
       </NavButton>
       <NavButton to="/LikedFoodPage">
-        <img src={iconthumbup} alt={'thumbup icon'} />
+        <img
+          src={iconthumbup}
+          alt={'thumbup icon'}
+          width="26px"
+          height="26px"
+        />
       </NavButton>
       <NavButton to="/UnLikedFoodPage">
-        <img src={iconthumbdown} alt={'thumbdown icon'} />
+        <img
+          src={iconthumbdown}
+          alt={'thumbdown icon'}
+          width="26px"
+          height="26px"
+        />
       </NavButton>
     </NavigationWrapper>
   );
 }
 
 const NavigationWrapper = styled.nav`
-  display: flex;
+  display: grid;
   position: fixed;
   bottom: 0;
   width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
 `;
 
 const NavButton = styled(NavLink)`
   background-color: var(--peach);
   min-height: 50px;
-  min-width: 34%;
   display: flex;
   align-items: center;
   justify-content: center;
   &.active {
-    background-color: ${'var(--steelblue)'};
+    border-top: 5px solid ${'var(--coral)'};
   }
 `;

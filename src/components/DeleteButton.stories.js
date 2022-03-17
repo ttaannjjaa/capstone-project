@@ -1,6 +1,6 @@
 import DeleteButton from './DeleteButton';
 export default {
-  title: 'DeleteButton',
+  title: 'Components/DeleteButton',
   component: DeleteButton,
 };
 
