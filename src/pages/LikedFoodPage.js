@@ -1,10 +1,33 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 import Card from '../components/Card.js';
 import Navigation from '../components/Navigation.js';
 import { SortButtonStyled } from '../components/SortButtonStyled.js';
 
 export default function LikedFoodPage({ storageData, handleDelete }) {
   const likedData = storageData.filter(data => data.foodJudge === 'liked');
+
+  const [sortValue, setSortValue] = useState('');
+
+  function sortData() {
+    if (!sortValue) {
+      return likedData;
+    }
+    const sortResult = likedData.slice().sort((a, b) => {
+      let sortValueA = a[sortValue].toLowerCase();
+      let sortValueB = b[sortValue].toLowerCase();
+
+      if (sortValueA > sortValueB) {
+        return +1;
+      }
+      if (sortValueA < sortValueB) {
+        return -1;
+      }
+      return 0;
+    });
+    return sortResult;
+  }
+
   return (
     <LikedFoodPageStyle>
       <Header>
@@ -12,26 +35,49 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
         <section>
           <span>Du kannst sortieren nach...</span>
           <div>
-            <SortButtonStyled type="button">Marke</SortButtonStyled>
-            <SortButtonStyled type="button">Sorte</SortButtonStyled>
-            <SortButtonStyled type="button">Zubereitung</SortButtonStyled>
+            <SortButtonStyled
+              type="button"
+              onClick={() => setSortValue('foodName')}
+            >
+              Marke
+            </SortButtonStyled>
+            <SortButtonStyled
+              type="button"
+              onClick={() => setSortValue('foodTaste')}
+            >
+              Sorte
+            </SortButtonStyled>
+            <SortButtonStyled
+              type="button"
+              onClick={() => setSortValue('foodStyle')}
+            >
+              Zubereitung
+            </SortButtonStyled>
+            <SortButtonStyled
+              type="button"
+              style={{ color: 'var(--coral)' }}
+              onClick={() => setSortValue('')}
+            >
+              rückgängig
+            </SortButtonStyled>
           </div>
         </section>
       </Header>
       <main>
-        {likedData.length === 0 ? (
+        {likedData.length === 0 && (
           <p>
             Du hast hier noch keine Listeneinträge. <br />
             Listeneinträge erscheinen, wenn das Formular ausgefüllt und
             gespeichert wird.
           </p>
-        ) : (
+        )}
+        {likedData.length > 0 && (
           <ListStyle
             role="list"
             data-testid="likedlist"
             aria-describedby={'list of cards about catfood that your cat like'}
           >
-            {likedData.map(data => (
+            {sortData().map(data => (
               <li key={data.id}>
                 <Card
                   id={data.id}
@@ -98,6 +144,11 @@ const Header = styled.header`
 
     span {
       padding-bottom: 4px;
+    }
+
+    div {
+      display: flex;
+      flex-wrap: nowrap;
     }
   }
 `;
