@@ -8,7 +8,7 @@ import FormPage from './pages/FormPage.js';
 import useLocalStorage from './hooks/useLocalStorage.js';
 
 function App() {
-  const navigate = useNavigate('');
+  const navigate = useNavigate();
   const [storageData, setStorageData] = useLocalStorage('storageData', []);
 
   function handleData(formData) {

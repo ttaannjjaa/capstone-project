@@ -119,6 +119,7 @@ export default function Form({ handleData }) {
 }
 
 const FormContainer = styled.div`
+  margin-top: 2rem;
   padding: 5px;
   display: flex;
   flex-direction: column;
