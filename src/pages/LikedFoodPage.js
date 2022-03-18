@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Card from '../components/Card.js';
 import Navigation from '../components/Navigation.js';
+import { SortButtonStyled } from '../components/SortButtonStyled.js';
 
 export default function LikedFoodPage({ storageData, handleDelete }) {
   const likedData = storageData.filter(data => data.foodJudge === 'liked');
@@ -8,6 +9,14 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
     <LikedFoodPageStyle>
       <Header>
         <h1>Mir schmeckt...</h1>
+        <section>
+          <span>Du kannst sortieren nach...</span>
+          <div>
+            <SortButtonStyled type="button">Marke</SortButtonStyled>
+            <SortButtonStyled type="button">Sorte</SortButtonStyled>
+            <SortButtonStyled type="button">Zubereitung</SortButtonStyled>
+          </div>
+        </section>
       </Header>
       <main>
         {likedData.length === 0 ? (
@@ -47,7 +56,7 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
 const LikedFoodPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 3.5rem 1fr 3rem;
+  grid-template-rows: 8.5rem 1fr 3rem;
 
   main {
     grid-row: 2 / 3;
@@ -76,11 +85,25 @@ const Header = styled.header`
     font-size: 1.2rem;
     color: var(--steelblue);
     letter-spacing: 1px;
+    padding-bottom: 1rem;
+  }
+
+  section {
+    border-top: 1px solid var(--steelblue);
+    padding-top: 0.3rem;
+    color: var(--steelblue);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    span {
+      padding-bottom: 4px;
+    }
   }
 `;
 
 const ListStyle = styled.ul`
-  margin-top: 2rem;
+  margin-top: 1rem;
   list-style: none;
   width: 100%;
   display: grid;
