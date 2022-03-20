@@ -1,13 +1,16 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from './ErrorFallback.js';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import Navigation from './components/Navigation.js';
-import LikedFoodPage from './pages/LikedFoodPage.js';
-import UnLikedFoodPage from './pages/UnLikedFoodPage.js';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import FormPage from './pages/FormPage.js';
+import LandingPage from './pages/Landingpage.js';
+import LikedFoodPage from './pages/LikedFoodPage.js';
+import Navigation from './components/Navigation.js';
+import UnLikedFoodPage from './pages/UnLikedFoodPage.js';
+
 import useLocalStorage from './hooks/useLocalStorage.js';
 
 function App() {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const [storageData, setStorageData] = useLocalStorage('storageData', []);
 
@@ -26,7 +29,11 @@ function App() {
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <div>
         <Routes>
-          <Route path="/" element={<FormPage handleData={handleData} />} />
+          <Route path="/" exact={true} element={<LandingPage />} />
+          <Route
+            path="/FormPage"
+            element={<FormPage handleData={handleData} />}
+          />
           <Route
             path="/LikedFoodpage"
             element={
@@ -46,7 +53,7 @@ function App() {
             }
           />
         </Routes>
-        <Navigation />
+        {pathname !== '/' && <Navigation />}
       </div>
     </ErrorBoundary>
   );

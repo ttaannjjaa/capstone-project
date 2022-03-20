@@ -7,7 +7,7 @@ import iconform from '../images/icon_form.svg';
 export default function Navigation() {
   return (
     <NavigationWrapper>
-      <NavButton to="/">
+      <NavButton to="/FormPage">
         <img src={iconform} alt={'thumbdown icon'} width="34px" height="34px" />
       </NavButton>
       <NavButton to="/LikedFoodPage">
