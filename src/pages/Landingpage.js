@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import catPictureBackground from '../images/cat_pic_450_700.svg';
 import headline_styled from '../images/heading_CATYUMMY_styled.svg';
-import { useNavigate } from 'react-router-dom';
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const StyledLandingPage = styled.main`
   grid-template-rows: 1fr 1fr 1fr;
   place-items: center;
   @media (orientation: landscape) {
-    grid-template-rows: 170px 1fr 1fr;
+    grid-template-rows: 180px 180px 1fr;
   }
 
   h1 {
@@ -60,13 +60,18 @@ const StartNavigation = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
+  @media (orientation: landscape) {
+    gap: 20px;
+  }
 `;
 
 const StartButton = styled.button`
   background-color: var(--steelblue);
   color: var(--white);
-  height: 36px;
+  height: 40px;
   width: 250px;
-  border-radius: 5px;
+  border: 2px solid var(--steelblue);
+  border-radius: 10px;
+  box-shadow: var(--box-shadow-inset);
 `;

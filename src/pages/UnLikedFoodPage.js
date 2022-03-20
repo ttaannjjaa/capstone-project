@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import Card from '../components/Card.js';
-import Searchbar from '../components/Searchbar.js';
-import Navigation from '../components/Navigation.js';
 import { useState } from 'react';
+import Card from '../components/Card.js';
+import ExitButton from '../components/ExitButton.js';
+import Navigation from '../components/Navigation.js';
+import Searchbar from '../components/Searchbar.js';
 
 export default function UnLikedFoodPage({ storageData, handleDelete }) {
   const unLikedData = storageData.filter(data => data.foodJudge === 'unliked');
@@ -24,7 +25,10 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
   return (
     <UnLikedFoodPageStyled>
       <Header>
-        <h1>Ich futtere lieber etwas anderes als...</h1>
+        <HeadingStyled>
+          <h1>Ich futtere lieber etwas anderes als...</h1>
+          <ExitButton />
+        </HeadingStyled>
         <SearchStyled>
           <Searchbar handleUserInput={handleUserInput} userInput={userInput} />
         </SearchStyled>
@@ -127,6 +131,12 @@ const Header = styled.header`
     color: var(--steelblue);
     letter-spacing: 1px;
   }
+`;
+
+const HeadingStyled = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-right: 1rem;
 `;
 
 const SearchStyled = styled.div`

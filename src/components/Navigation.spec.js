@@ -1,6 +1,6 @@
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import Navigation from './Navigation';
-import { MemoryRouter } from 'react-router-dom';
 
 describe('Navigation', () => {
   it('renders two navigation links and two images', () => {

@@ -1,6 +1,7 @@
-import styled from 'styled-components';
-import Form from '../components/Form.js';
 import Navigation from '../components/Navigation.js';
+import styled from 'styled-components';
+import ExitButton from '../components/ExitButton.js';
+import Form from '../components/Form.js';
 
 export default function FormPage({ handleData }) {
   return (
@@ -9,6 +10,7 @@ export default function FormPage({ handleData }) {
         <h1>
           Hier kannst Du eintragen, <br /> wie es mir schmeckt...
         </h1>
+        <ExitButton />
       </Header>
       <main>
         <Form handleData={handleData}></Form>
@@ -41,6 +43,8 @@ const Header = styled.header`
   overflow: hidden;
   box-shadow: 0 1px 4px 0 rgba(30, 30, 33, 0.3);
   grid-row: 1 / 2;
+  display: flex;
+  justify-content: space-between;
 
   h1 {
     width: 100%;
