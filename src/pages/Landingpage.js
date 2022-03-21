@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import catPictureBackground from '../images/cat_pic_450_700.svg';
-import headline_styled from '../images/heading_CATYUMMY_styled.svg';
+import headlinestyled from '../images/headingCatyummyStyled.svg';
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ export default function LandingPage() {
       <h1>
         <span className="sr-only">CATYUMMY</span>
         <img
-          src={headline_styled}
+          src={headlinestyled}
           alt="headline CATYUMMY"
           width="310px"
           height="150px"
