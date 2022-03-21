@@ -8,6 +8,7 @@ export default function LandingPage() {
   return (
     <StyledLandingPage>
       <h1>
+        <span className="sr-only">CATYUMMY</span>
         <img
           src={headline_styled}
           alt="headline CATYUMMY"
@@ -56,7 +57,7 @@ const StyledLandingPage = styled.main`
   }
 `;
 
-const StartNavigation = styled.section`
+const StartNavigation = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;

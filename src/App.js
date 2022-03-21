@@ -27,34 +27,32 @@ function App() {
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <div>
-        <Routes>
-          <Route path="/" exact={true} element={<LandingPage />} />
-          <Route
-            path="/FormPage"
-            element={<FormPage handleData={handleData} />}
-          />
-          <Route
-            path="/LikedFoodpage"
-            element={
-              <LikedFoodPage
-                storageData={storageData}
-                handleDelete={handleDelete}
-              />
-            }
-          />
-          <Route
-            path="/UnLikedFoodpage"
-            element={
-              <UnLikedFoodPage
-                storageData={storageData}
-                handleDelete={handleDelete}
-              />
-            }
-          />
-        </Routes>
-        {pathname !== '/' && <Navigation />}
-      </div>
+      <Routes>
+        <Route path="/" exact={true} element={<LandingPage />} />
+        <Route
+          path="/FormPage"
+          element={<FormPage handleData={handleData} />}
+        />
+        <Route
+          path="/LikedFoodpage"
+          element={
+            <LikedFoodPage
+              storageData={storageData}
+              handleDelete={handleDelete}
+            />
+          }
+        />
+        <Route
+          path="/UnLikedFoodpage"
+          element={
+            <UnLikedFoodPage
+              storageData={storageData}
+              handleDelete={handleDelete}
+            />
+          }
+        />
+      </Routes>
+      {pathname !== '/' && <Navigation />}
     </ErrorBoundary>
   );
 }
