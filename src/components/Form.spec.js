@@ -1,6 +1,6 @@
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import Form from './Form.js';
-import { MemoryRouter } from 'react-router-dom';
 
 describe('Form', () => {
   it('renders a form with an accessible name', () => {

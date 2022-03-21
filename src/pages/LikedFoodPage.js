@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import Card from '../components/Card.js';
-import Navigation from '../components/Navigation.js';
+import ExitButton from '../components/ExitButton.js';
 import { SortButtonStyled } from '../components/SortButtonStyled.js';
 
 export default function LikedFoodPage({ storageData, handleDelete }) {
@@ -31,7 +31,10 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
   return (
     <LikedFoodPageStyle>
       <Header>
-        <h1>Mir schmeckt...</h1>
+        <div>
+          <h1>Mir schmeckt...</h1>
+          <ExitButton />
+        </div>
         <section>
           <span>Du kannst sortieren nach...</span>
           <div>
@@ -92,9 +95,6 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
           </ListStyle>
         )}
       </main>
-      <footer>
-        <Navigation />
-      </footer>
     </LikedFoodPageStyle>
   );
 }
@@ -125,6 +125,11 @@ const Header = styled.header`
   overflow: hidden;
   box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
 
   h1 {
     width: 100%;

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import iconthumbup from '../images/icon_Thumbup.svg';
-import iconthumbdown from '../images/icon_Thumbdown.svg';
 import iconform from '../images/icon_form.svg';
+import iconthumbdown from '../images/icon_Thumbdown.svg';
+import iconthumbup from '../images/icon_Thumbup.svg';
 
 export default function Navigation() {
   return (
     <NavigationWrapper>
-      <NavButton to="/">
+      <NavButton to="/FormPage">
         <img src={iconform} alt={'thumbdown icon'} width="34px" height="34px" />
       </NavButton>
       <NavButton to="/LikedFoodPage">

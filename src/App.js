@@ -1,20 +1,20 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from './ErrorFallback.js';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import Navigation from './components/Navigation.js';
-import LikedFoodPage from './pages/LikedFoodPage.js';
-import UnLikedFoodPage from './pages/UnLikedFoodPage.js';
+import { Routes, Route } from 'react-router-dom';
 import FormPage from './pages/FormPage.js';
+import LandingPage from './pages/Landingpage.js';
+import LikedFoodPage from './pages/LikedFoodPage.js';
+import Navigation from './components/Navigation.js';
+import UnLikedFoodPage from './pages/UnLikedFoodPage.js';
+
 import useLocalStorage from './hooks/useLocalStorage.js';
 
 function App() {
-  const navigate = useNavigate();
   const [storageData, setStorageData] = useLocalStorage('storageData', []);
 
   function handleData(formData) {
     const data = [formData, ...storageData];
     setStorageData(data);
-    navigate('/', { replace: true });
   }
 
   function handleDelete(id) {
@@ -24,30 +24,43 @@ function App() {
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <div>
-        <Routes>
-          <Route path="/" element={<FormPage handleData={handleData} />} />
-          <Route
-            path="/LikedFoodpage"
-            element={
+      <Routes>
+        <Route path="/" exact={true} element={<LandingPage />} />
+        <Route
+          path="/FormPage"
+          element={
+            <>
+              <FormPage handleData={handleData} />
+              <Navigation />
+            </>
+          }
+        />
+
+        <Route
+          path="/LikedFoodpage"
+          element={
+            <>
               <LikedFoodPage
                 storageData={storageData}
                 handleDelete={handleDelete}
-              />
-            }
-          />
-          <Route
-            path="/UnLikedFoodpage"
-            element={
+              />{' '}
+              <Navigation />
+            </>
+          }
+        />
+        <Route
+          path="/UnLikedFoodpage"
+          element={
+            <>
               <UnLikedFoodPage
                 storageData={storageData}
                 handleDelete={handleDelete}
               />
-            }
-          />
-        </Routes>
-        <Navigation />
-      </div>
+              <Navigation />
+            </>
+          }
+        />
+      </Routes>
     </ErrorBoundary>
   );
 }
