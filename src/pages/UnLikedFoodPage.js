@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import Card from '../components/Card.js';
 import ExitButton from '../components/ExitButton.js';
-import Navigation from '../components/Navigation.js';
 import Searchbar from '../components/Searchbar.js';
 
 export default function UnLikedFoodPage({ storageData, handleDelete }) {
@@ -87,9 +86,6 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
           </ListStyle>
         )}
       </main>
-      <footer>
-        <Navigation />
-      </footer>
     </UnLikedFoodPageStyled>
   );
 }

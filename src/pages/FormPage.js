@@ -1,4 +1,3 @@
-import Navigation from '../components/Navigation.js';
 import styled from 'styled-components';
 import ExitButton from '../components/ExitButton.js';
 import Form from '../components/Form.js';
@@ -15,9 +14,6 @@ export default function FormPage({ handleData }) {
       <main>
         <Form handleData={handleData}></Form>
       </main>
-      <footer>
-        <Navigation />
-      </footer>
     </FormPageStyle>
   );
 }

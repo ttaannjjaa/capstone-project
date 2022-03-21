@@ -1,6 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from './ErrorFallback.js';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import FormPage from './pages/FormPage.js';
 import LandingPage from './pages/Landingpage.js';
 import LikedFoodPage from './pages/LikedFoodPage.js';
@@ -10,14 +10,11 @@ import UnLikedFoodPage from './pages/UnLikedFoodPage.js';
 import useLocalStorage from './hooks/useLocalStorage.js';
 
 function App() {
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
   const [storageData, setStorageData] = useLocalStorage('storageData', []);
 
   function handleData(formData) {
     const data = [formData, ...storageData];
     setStorageData(data);
-    navigate('/', { replace: true });
   }
 
   function handleDelete(id) {
@@ -31,28 +28,39 @@ function App() {
         <Route path="/" exact={true} element={<LandingPage />} />
         <Route
           path="/FormPage"
-          element={<FormPage handleData={handleData} />}
+          element={
+            <>
+              <FormPage handleData={handleData} />
+              <Navigation />
+            </>
+          }
         />
+
         <Route
           path="/LikedFoodpage"
           element={
-            <LikedFoodPage
-              storageData={storageData}
-              handleDelete={handleDelete}
-            />
+            <>
+              <LikedFoodPage
+                storageData={storageData}
+                handleDelete={handleDelete}
+              />{' '}
+              <Navigation />
+            </>
           }
         />
         <Route
           path="/UnLikedFoodpage"
           element={
-            <UnLikedFoodPage
-              storageData={storageData}
-              handleDelete={handleDelete}
-            />
+            <>
+              <UnLikedFoodPage
+                storageData={storageData}
+                handleDelete={handleDelete}
+              />
+              <Navigation />
+            </>
           }
         />
       </Routes>
-      {pathname !== '/' && <Navigation />}
     </ErrorBoundary>
   );
 }

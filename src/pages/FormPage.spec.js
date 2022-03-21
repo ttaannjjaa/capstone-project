@@ -3,7 +3,7 @@ import FormPage from './FormPage.js';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('FormPage', () => {
-  it('renders a page with a heading, a button and a navigation', () => {
+  it('renders a page with a heading, a form and a button', () => {
     render(
       <MemoryRouter>
         <FormPage
@@ -18,11 +18,11 @@ describe('FormPage', () => {
     );
 
     const formHeading = screen.getByText(/Hier kannst Du/i);
+    const form = screen.getByTestId('form');
     const buttonSave = screen.getByRole('button', { name: 'SPEICHERN' });
-    const navigationLink = screen.getAllByRole('link');
 
     expect(formHeading).toBeInTheDocument();
     expect(buttonSave).toBeInTheDocument();
-    expect(navigationLink).toHaveLength(3);
+    expect(form).toBeInTheDocument();
   });
 });
