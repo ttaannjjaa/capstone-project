@@ -1,6 +1,7 @@
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import Form from './Form.js';
+import { act } from 'react-dom/test-utils';
 
 describe('Form', () => {
   it('renders a form with an accessible name', () => {
@@ -47,22 +48,33 @@ describe('Form', () => {
     expect(group).toBeInTheDocument();
   });
 
-  it('renders a required input element and a required textarea', () => {
+  it('renders a submit button', () => {
     render(
-      <Form
-        formData={{
-          foodJudge: 'liked',
-          foodName: 'schnurrkatz',
-          foodTaste: 'Huhn',
-          foodStyle: 'Gelee',
-        }}
-      />
+      <MemoryRouter>
+        <Form />
+      </MemoryRouter>
     );
 
-    const requiredInputElement = screen.getByLabelText(/Markenname/i);
-    const requiredTextareaElement = screen.getByLabelText(/Sorte/i);
+    const submitButton = screen.getByRole('button', { name: /Speichern/i });
+    expect(submitButton).toBeInTheDocument();
+  });
 
-    expect(requiredInputElement).toBeRequired();
-    expect(requiredTextareaElement).toBeRequired();
+  it('does not call the submit function when the submit button is clicked and the required fields are not filled', () => {
+    const handleSubmit = jest.fn();
+    const onSubmit = jest.fn();
+
+    render(
+      <MemoryRouter>
+        <Form onSubmit={handleSubmit(onSubmit)} />
+      </MemoryRouter>
+    );
+
+    const submitButton = screen.getByRole('button');
+    act(() => {
+      submitButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(handleSubmit).toHaveBeenCalled();
+    expect(onSubmit).not.toHaveBeenCalled();
   });
 });
