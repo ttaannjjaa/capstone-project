@@ -1,43 +1,40 @@
 import styled from 'styled-components';
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
-
-const initialDataObject = {
-  id: '',
-  foodName: '',
-  foodTaste: '',
-  foodStyle: '',
-  foodJudge: 'liked',
-};
+import { useForm } from 'react-hook-form';
 
 export default function Form({ handleData }) {
-  const [formData, setFormData] = useState(initialDataObject);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      foodName: '',
+      foodTaste: '',
+      foodStyle: '',
+      foodJudge: '',
+    },
+  });
 
-  const handleChange = event => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    handleData({
+  const onSubmit = data => {
+    const message = `Die Bewertung wurde erfolgreich gespeichert.`;
+    alert(JSON.stringify(message));
+    const formData = {
       id: nanoid(),
-      foodName: formData.foodName,
-      foodTaste: formData.foodTaste,
-      foodStyle: formData.foodStyle,
-      foodJudge: formData.foodJudge,
-    });
-    event.target.reset();
-  }
+      foodName: data.foodName,
+      foodTaste: data.foodTaste,
+      foodStyle: data.foodStyle,
+      foodJudge: data.foodJudge,
+    };
+    handleData(formData);
+    reset();
+  };
 
   return (
     <FormContainer>
       <FormStyled
-        onSubmit={handleSubmit}
-        formData={formData}
-        setFormData={setFormData}
+        onSubmit={handleSubmit(onSubmit)}
         id="formCatFood"
         autocomplete="off"
         aria-describedby="form to document the judgement of your cat about its food"
@@ -47,73 +44,81 @@ export default function Form({ handleData }) {
         <TextInput
           id="foodName"
           type="text"
-          required
-          maxLength="20"
-          onChange={event => {
-            setFormData({ ...formData, foodName: event.target.value.trim() });
-          }}
+          maxLength="21"
+          aria-invalid={errors.foodName ? 'true' : 'false'}
+          {...register('foodName', {
+            required: {
+              value: true,
+              message: 'Wie willst Du etwas wiederfinden ohne Namen?',
+            },
+            maxLength: {
+              value: 20,
+              message: 'ups, Limit von 2o Buchstaben erreicht',
+            },
+            pattern: { value: /^[A-Za-z]+/ },
+          })}
         />
-
+        {errors.foodName && <span>{errors.foodName.message}</span>}
         <label htmlFor="foodTaste">Sorte *</label>
         <TextField
           id="foodTaste"
-          name="foodTaste"
-          required
-          maxLength="84"
-          placeholder="z.B. Huhn, Lachs, Rind"
+          maxLength="85"
           rows="4"
-          onChange={event => {
-            setFormData({
-              ...formData,
-              foodTaste: event.target.value.trim(),
-            });
-          }}
+          placeholder="z.B. Huhn, Lachs, Rind"
+          aria-invalid={errors.foodTaste ? 'true' : 'false'}
+          {...register('foodTaste', {
+            required: {
+              value: true,
+              message: 'Ohne diese Angabe kann die App nicht funktionieren.',
+            },
+            maxLength: {
+              value: 84,
+              message: '84 Buchstaben sollten doch reichen.',
+            },
+            pattern: { value: /^[A-Za-z]+/ },
+          })}
         />
-
+        {errors.foodTaste && <span>{errors.foodTaste.message}</span>}
         <label htmlFor="foodStyle">Zubereitung (Angabe optional)</label>
         <TextInput
-          type="text"
           id="foodStyle"
-          name="foodStyle"
-          maxLength="20"
+          type="text"
+          maxLength="21"
           placeholder="z.B. Gelee, Ragout, Pastete"
-          onChange={event =>
-            setFormData({ ...formData, foodStyle: event.target.value.trim() })
-          }
+          aria-invalid={errors.foodStyle ? 'true' : 'false'}
+          {...register('foodStyle', {
+            maxLength: {
+              value: 20,
+              message: 'ups, Limit von 2o Buchstaben erreicht',
+            },
+            pattern: { value: /^[A-Za-z]+/ },
+          })}
         />
+        {errors.foodStyle && <span>{errors.foodStyle.message}</span>}
 
         <Judge>
           <RadioStyled>
             <input
+              id="liked"
               type="radio"
               value="liked"
-              id="liked"
-              name="foodJudge"
-              form="formCatFood"
-              onChange={handleChange}
-              checked={formData.foodJudge === 'liked'}
-              required
+              {...register('foodJudge', { required: { value: true } })}
+              defaultChecked
             />
-            <label htmlFor="liked">mag ich gerne</label>
+            <label htmlFor="liked">lecker</label>
           </RadioStyled>
           <RadioStyled>
             <input
+              id="unliked"
               type="radio"
               value="unliked"
-              id="unliked"
-              name="foodJudge"
-              form="formCatFood"
-              onChange={handleChange}
-              checked={formData.foodJudge === 'unliked'}
-              required
+              {...register('foodJudge', { required: { value: true } })}
             />
             <label htmlFor="unliked">mag ich nicht</label>
           </RadioStyled>
         </Judge>
+        <SaveButton type="submit">SPEICHERN</SaveButton>
       </FormStyled>
-      <SaveButton type="submit" form="formCatFood">
-        SPEICHERN
-      </SaveButton>
     </FormContainer>
   );
 }
