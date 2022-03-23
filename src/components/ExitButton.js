@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import exitCat from '../images/black_cat_with_door.svg';
+import exitCat from '../images/cat_with_door.svg';
 import { useNavigate } from 'react-router-dom';
 
 export default function ExitButton() {

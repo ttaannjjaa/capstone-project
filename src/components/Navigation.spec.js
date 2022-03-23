@@ -12,7 +12,7 @@ describe('Navigation', () => {
 
     const images = screen.getAllByRole('img');
     const navigationButtons = screen.getAllByRole('link');
-    expect(navigationButtons).toHaveLength(3);
-    expect(images).toHaveLength(3);
+    expect(navigationButtons).toHaveLength(4);
+    expect(images).toHaveLength(4);
   });
 });
