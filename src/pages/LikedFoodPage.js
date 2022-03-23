@@ -88,6 +88,7 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
                   foodTaste={data.foodTaste}
                   foodStyle={data.foodStyle}
                   foodJudge={data.foodJudge}
+                  selectedDate={data.selectedDate}
                   handleDelete={() => handleDelete(data.id)}
                 />
               </li>

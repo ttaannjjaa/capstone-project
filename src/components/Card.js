@@ -7,6 +7,7 @@ export default function Card({
   foodTaste,
   foodJudge,
   foodStyle,
+  selectedDate,
   handleDelete,
 }) {
   return (
@@ -17,10 +18,26 @@ export default function Card({
         data-testid="cardcontent list"
         aria-describedby="list of catfood properties"
       >
-        <li>Marke: {foodName}</li>
-        <li>Sorte: {foodTaste}</li>
-        <li>Zubereitung: {foodStyle}</li>
-        <li>Bewertung: {foodJudge === 'liked' ? 'lecker' : 'mag ich nicht'}</li>
+        <li>
+          <span>Marke: </span>
+          {foodName}
+        </li>
+        <li>
+          <span>Sorte: </span>
+          {foodTaste}
+        </li>
+        <li>
+          <span>Zubereitung: </span>
+          {foodStyle}
+        </li>
+        <li>
+          <span>Bewertung: </span>
+          {foodJudge === 'liked' ? 'lecker' : 'mag ich nicht'}
+        </li>
+        <li>
+          <span>verfüttert am: </span>
+          {selectedDate}
+        </li>
       </CardContent>
     </CardStyled>
   );
@@ -45,6 +62,13 @@ const CardStyled = styled.article`
       linear-gradient(#fff, #fff) 0 100% / 100% var(--border-size),
       linear-gradient(#fff, #fff) 100% 0 / var(--border-size) 100%;
     background-repeat: no-repeat;
+  }
+
+  span {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--steelblue);
+    opacity: 0.9;
   }
 `;
 

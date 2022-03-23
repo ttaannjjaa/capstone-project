@@ -1,43 +1,42 @@
 import styled from 'styled-components';
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
-
-const initialDataObject = {
-  id: '',
-  foodName: '',
-  foodTaste: '',
-  foodStyle: '',
-  foodJudge: 'liked',
-};
+import { useForm } from 'react-hook-form';
 
 export default function Form({ handleData }) {
-  const [formData, setFormData] = useState(initialDataObject);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      foodName: '',
+      foodTaste: '',
+      foodStyle: '',
+      foodJudge: '',
+      date: '',
+    },
+  });
 
-  const handleChange = event => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    handleData({
+  const onSubmit = data => {
+    const message = `Die Bewertung wurde erfolgreich gespeichert.`;
+    alert(JSON.stringify(message));
+    const formData = {
       id: nanoid(),
-      foodName: formData.foodName,
-      foodTaste: formData.foodTaste,
-      foodStyle: formData.foodStyle,
-      foodJudge: formData.foodJudge,
-    });
-    event.target.reset();
-  }
+      foodName: data.foodName.trim(),
+      foodTaste: data.foodTaste.trim(),
+      foodStyle: data.foodStyle.trim(),
+      foodJudge: data.foodJudge.trim(),
+      selectedDate: data.date,
+    };
+    handleData(formData);
+    reset();
+  };
 
   return (
     <FormContainer>
       <FormStyled
-        onSubmit={handleSubmit}
-        formData={formData}
-        setFormData={setFormData}
+        onSubmit={handleSubmit(onSubmit)}
         id="formCatFood"
         autocomplete="off"
         aria-describedby="form to document the judgement of your cat about its food"
@@ -47,79 +46,99 @@ export default function Form({ handleData }) {
         <TextInput
           id="foodName"
           type="text"
-          required
-          maxLength="20"
-          onChange={event => {
-            setFormData({ ...formData, foodName: event.target.value.trim() });
-          }}
+          maxLength="21"
+          aria-invalid={errors.foodName ? 'true' : 'false'}
+          {...register('foodName', {
+            required: {
+              value: true,
+              message: 'Wie willst Du etwas wiederfinden ohne Namen?',
+            },
+            maxLength: {
+              value: 20,
+              message: 'ups, Limit von 2o Buchstaben erreicht',
+            },
+            pattern: {
+              value: /^[A-Za-z]+/i,
+              message: 'bitte Text eingeben',
+            },
+          })}
         />
-
+        {errors.foodName && <span>{errors.foodName.message}</span>}
         <label htmlFor="foodTaste">Sorte *</label>
         <TextField
           id="foodTaste"
-          name="foodTaste"
-          required
-          maxLength="84"
-          placeholder="z.B. Huhn, Lachs, Rind"
+          maxLength="85"
           rows="4"
-          onChange={event => {
-            setFormData({
-              ...formData,
-              foodTaste: event.target.value.trim(),
-            });
-          }}
+          placeholder="z.B. Huhn, Lachs, Rind"
+          aria-invalid={errors.foodTaste ? 'true' : 'false'}
+          {...register('foodTaste', {
+            required: {
+              value: true,
+              message: 'Ohne diese Angabe kann die App nicht funktionieren.',
+            },
+            maxLength: {
+              value: 84,
+              message: '84 Buchstaben sollten doch reichen.',
+            },
+            pattern: {
+              value: /^[A-Za-z]+/i,
+              message: 'bitte Text eingeben',
+            },
+          })}
         />
-
+        {errors.foodTaste && <span>{errors.foodTaste.message}</span>}
         <label htmlFor="foodStyle">Zubereitung (Angabe optional)</label>
         <TextInput
-          type="text"
           id="foodStyle"
-          name="foodStyle"
-          maxLength="20"
+          type="text"
+          maxLength="21"
           placeholder="z.B. Gelee, Ragout, Pastete"
-          onChange={event =>
-            setFormData({ ...formData, foodStyle: event.target.value.trim() })
-          }
+          aria-invalid={errors.foodStyle ? 'true' : 'false'}
+          {...register('foodStyle', {
+            maxLength: {
+              value: 20,
+              message: 'ups, Limit von 2o Buchstaben erreicht',
+            },
+            pattern: {
+              value: /^[A-Za-z]+/i,
+              message: 'bitte Text eingeben',
+            },
+          })}
         />
+        {errors.foodStyle && <span>{errors.foodStyle.message}</span>}
 
         <Judge>
           <RadioStyled>
-            <input
-              type="radio"
-              value="liked"
+            <RadioButton
               id="liked"
               name="foodJudge"
-              form="formCatFood"
-              onChange={handleChange}
-              checked={formData.foodJudge === 'liked'}
-              required
+              type="radio"
+              value="liked"
+              {...register('foodJudge', { required: { value: true } })}
+              defaultChecked
             />
-            <label htmlFor="liked">mag ich gerne</label>
+            <label htmlFor="liked">lecker</label>
           </RadioStyled>
           <RadioStyled>
-            <input
-              type="radio"
-              value="unliked"
+            <RadioButton
               id="unliked"
               name="foodJudge"
-              form="formCatFood"
-              onChange={handleChange}
-              checked={formData.foodJudge === 'unliked'}
-              required
+              type="radio"
+              value="unliked"
+              {...register('foodJudge', { required: { value: true } })}
             />
             <label htmlFor="unliked">mag ich nicht</label>
           </RadioStyled>
         </Judge>
+        <label htmlFor="date">verfüttert am </label>
+        <DateInput id="date" name="date" type="date" {...register('date')} />
+        <SaveButton type="submit">SPEICHERN</SaveButton>
       </FormStyled>
-      <SaveButton type="submit" form="formCatFood">
-        SPEICHERN
-      </SaveButton>
     </FormContainer>
   );
 }
 
 const FormContainer = styled.div`
-  margin-top: 2rem;
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -135,6 +154,17 @@ const FormStyled = styled.form`
   flex-direction: column;
   align-items: flex-start;
   padding: 10px 0;
+
+  label {
+    margin-top: 15px;
+  }
+
+  span {
+    color: var(--coral);
+    font-size: 0.7rem;
+    padding: 3px;
+    margin: 0;
+  }
 `;
 
 const TextInput = styled.input`
@@ -142,7 +172,7 @@ const TextInput = styled.input`
   width: 100%;
   font-size: 1rem;
   line-height: 1.5rem;
-  margin: 8px 0 18px 0;
+  margin-top: 8px;
   padding: 5px;
   background-color: var(--peach);
   box-shadow: var(--box-shadow-inputfields);
@@ -158,7 +188,7 @@ const TextField = styled.textarea`
   width: 100%;
   font-size: 1rem;
   line-height: 1.5rem;
-  margin: 8px 0 18px 0;
+  margin-top: 8px;
   padding: 5px;
   background-color: var(--peach);
   box-shadow: var(--box-shadow-inputfields);
@@ -177,18 +207,53 @@ const Judge = styled.fieldset`
   justify-content: space-evenly;
   align-items: center;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   border: none;
+  margin-top: 8px;
 `;
 
 const RadioStyled = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 1rem;
+  margin-bottom: 1rem;
+`;
 
-  & > input {
-    margin: 10px;
+const RadioButton = styled.input`
+  margin-right: 10px;
+  margin-top: 18px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid var(--steelblue);
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+  :checked::before {
+    transform: scale(1);
+  }
+  &::before {
+    content: '';
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: var(--coral);
+  }
+`;
+
+const DateInput = styled.input`
+  background-color: var(--peach);
+  border: none;
+  padding: 5px;
+  margin: 8px 0 18px 0;
+  border-radius: 5px;
+  font-family: inherit;
+  &:focus {
+    outline: 1px solid var(--coral);
   }
 `;
 
@@ -203,4 +268,5 @@ const SaveButton = styled.button`
   background-color: var(--steelblue);
   box-shadow: var(--box-shadow-inset);
   border-radius: 10px;
+  letter-spacing: 1px;
 `;

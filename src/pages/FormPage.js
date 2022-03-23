@@ -21,7 +21,7 @@ export default function FormPage({ handleData }) {
 const FormPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 5.5rem 1fr 3rem;
+  grid-template-rows: 6rem 1fr 3rem;
 
   main {
     grid-row: 2 / 3;

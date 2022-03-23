@@ -8,9 +8,9 @@ export default function ExitButton() {
   return (
     <ExitButtonStyled
       onClick={() => navigate('/')}
-      aria-describedby="button to leave the app"
       data-testid="button to leave the app"
     >
+      <span className="sr-only">ExitButton</span>
       <img
         src={exitCat}
         alt="black cat wanting to walk through open door - icon for leaving the app"
