@@ -13,6 +13,7 @@ describe('Form', () => {
             foodName: 'schnurrkatz',
             foodTaste: 'Huhn',
             foodStyle: 'Gelee',
+            selectedDate: '2022-03-22',
           }}
         />
       </MemoryRouter>
@@ -25,7 +26,7 @@ describe('Form', () => {
     expect(FormComponent).toBeInTheDocument();
   });
 
-  it('renders two inputfields, one textarea and one button', () => {
+  it('renders two inputfields, one textarea, two radio-buttons, a date inputfield and one button', () => {
     render(
       <Form
         formData={{
@@ -33,11 +34,13 @@ describe('Form', () => {
           foodName: 'schnurrkatz',
           foodTaste: 'Huhn',
           foodStyle: 'Gelee',
+          selectedDate: '2022-03-22',
         }}
       />
     );
 
     const inputFields = screen.getAllByRole('textbox');
+    const inputDate = screen.getByLabelText(/verfüttert am/i);
     const radiobuttons = screen.getAllByRole('radio');
     const group = screen.getByRole('group');
     const buttonForm = screen.getByRole('button');
@@ -46,6 +49,7 @@ describe('Form', () => {
     expect(inputFields).toHaveLength(3);
     expect(buttonForm).toBeInTheDocument();
     expect(group).toBeInTheDocument();
+    expect(inputDate).toBeInTheDocument();
   });
 
   it('renders a submit button', () => {

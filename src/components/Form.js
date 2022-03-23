@@ -14,6 +14,7 @@ export default function Form({ handleData }) {
       foodTaste: '',
       foodStyle: '',
       foodJudge: '',
+      date: '',
     },
   });
 
@@ -26,6 +27,7 @@ export default function Form({ handleData }) {
       foodTaste: data.foodTaste.trim(),
       foodStyle: data.foodStyle.trim(),
       foodJudge: data.foodJudge.trim(),
+      selectedDate: data.date,
     };
     handleData(formData);
     reset();
@@ -128,6 +130,8 @@ export default function Form({ handleData }) {
             <label htmlFor="unliked">mag ich nicht</label>
           </RadioStyled>
         </Judge>
+        <label htmlFor="date">verfüttert am </label>
+        <DateInput id="date" name="date" type="date" {...register('date')} />
         <SaveButton type="submit">SPEICHERN</SaveButton>
       </FormStyled>
     </FormContainer>
@@ -135,7 +139,6 @@ export default function Form({ handleData }) {
 }
 
 const FormContainer = styled.div`
-  margin-top: 1rem;
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -204,7 +207,6 @@ const Judge = styled.fieldset`
   justify-content: space-evenly;
   align-items: center;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   border: none;
   margin-top: 8px;
 `;
@@ -240,6 +242,18 @@ const RadioButton = styled.input`
     transform: scale(0);
     transition: 120ms transform ease-in-out;
     background-color: var(--coral);
+  }
+`;
+
+const DateInput = styled.input`
+  background-color: var(--peach);
+  border: none;
+  padding: 5px;
+  margin: 8px 0 18px 0;
+  border-radius: 5px;
+  font-family: inherit;
+  &:focus {
+    outline: 1px solid var(--coral);
   }
 `;
 
