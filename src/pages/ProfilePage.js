@@ -1,11 +1,38 @@
+import axios from 'axios';
 import styled from 'styled-components';
 import useLocalStorage from '../hooks/useLocalStorage.js';
 import { useState } from 'react';
 import ExitButton from '../components/ExitButton.js';
 import iconpencil from '../images/icon_pencil.svg';
-import katercarlo from '../images/katercarlo.jpg';
+import iconrotate from '../images/icon_rotate.svg';
+
+const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
+const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
 export default function ProfilePage() {
+  const [image, setImage] = useLocalStorage('Bild', '');
+
+  function upload(event) {
+    const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
+
+    const formData = new FormData();
+    formData.append('file', event.target.files[0]);
+    formData.append('upload_preset', PRESET);
+
+    axios
+      .post(url, formData, {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        },
+      })
+      .then(onImageSave)
+      .catch(err => console.error(err));
+  }
+
+  function onImageSave(response) {
+    setImage(response.data.url);
+  }
+
   const [catName, setCatName] = useLocalStorage('catName', 'Katzenname');
   const [editingNameValue, setEditingNameValue] = useState(catName);
 
@@ -44,7 +71,7 @@ export default function ProfilePage() {
     }
   };
 
-  const [note, setStorageNote] = useLocalStorage('note', '');
+  const [note, setStorageNote] = useLocalStorage('note', '...');
 
   const [editingNoteValue, setEditingNoteValue] = useState(note);
 
@@ -65,14 +92,18 @@ export default function ProfilePage() {
   return (
     <FormPageStyle>
       <Header>
-        <h1 className="sr-only">Profilseite</h1>
+        <h1>Mein Katzenprofil</h1>
         <ExitButton />
       </Header>
       <main>
-        <figure>
-          <img src={katercarlo} alt="word YUMMY" width="280px" height="165px" />
-        </figure>
-        <UploadButton>neues Bild laden</UploadButton>
+        <ImgContainer>
+          <img src={image} alt="" width="280px" height="165px" />
+          <input id="imgUpload" type="file" onChange={upload} hidden />
+          <UploadButton htmlFor="imgUpload">
+            <span className="sr-only">Image upload and change</span>
+            <img src={iconrotate} alt="icon rotate arrow to the left" />
+          </UploadButton>
+        </ImgContainer>
 
         <FormContainer>
           <div>
@@ -116,7 +147,7 @@ export default function ProfilePage() {
                 onKeyDown={onKeyDown}
                 onBlur={onBlurCatAge}
                 maxLength={2}
-                pattern="/^[0-9]{1,2}$/"
+                pattern={/^[0-9]{1,2}$/}
               />{' '}
               Jahre
             </LabelAgeStyled>
@@ -156,10 +187,6 @@ const FormPageStyle = styled.section`
     flex-direction: column;
     align-items: center;
   }
-
-  figure {
-    margin-bottom: 2rem;
-  }
 `;
 
 const Header = styled.header`
@@ -184,27 +211,47 @@ const Header = styled.header`
   }
 `;
 
+const ImgContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+  position: relative;
+
+  img {
+    margin-bottom: 1rem;
+    border-radius: 5px;
+  }
+`;
+
+const UploadButton = styled.label`
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  margin-bottom: 2rem;
+  line-height: 1.2rem;
+  font-size: 1rem;
+  background-color: transparent;
+  box-shadow: var(--box-shadow-inset);
+  border-radius: 10px;
+  position: absolute;
+  top: 150px;
+  right: 0;
+
+  & > img {
+    z-index: 2;
+  }
+`;
+
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-top: 2rem;
 
   img {
     margin-right: 15px;
   }
-`;
-
-const UploadButton = styled.button`
-  min-width: 100px;
-  width: 45%;
-  padding: 3px;
-  margin-bottom: 2rem;
-  line-height: 1.5rem;
-  font-size: 1rem;
-  color: var(--white);
-  background-color: var(--steelblue);
-  box-shadow: var(--box-shadow-inset);
-  border-radius: 10px;
 `;
 
 const InputTextStyled = styled.input`
@@ -236,6 +283,9 @@ const InputAgeStyled = styled.input`
   outline: none;
   &:focus {
     outline: 1px solid var(--coral);
+  }
+  &:hover {
+    cursor: pointer;
   }
 `;
 

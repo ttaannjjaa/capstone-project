@@ -9,6 +9,6 @@ describe('ProfilePage', () => {
         <ProfilePage />
       </MemoryRouter>
     );
-    expect(screen.getByText('Das ist meine Seite')).toBeInTheDocument();
+    expect(screen.getByText('Mein Katzenprofil')).toBeInTheDocument();
   });
 });
