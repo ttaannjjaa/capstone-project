@@ -17,7 +17,7 @@ describe('ProfilePage', () => {
     expect(exitButton).toBeInTheDocument();
   });
 
-  it('renders an bin-icon and an update-icon', () => {
+  it('renders an binicon and an updateicon', () => {
     render(
       <MemoryRouter>
         <ProfilePage />
@@ -31,7 +31,7 @@ describe('ProfilePage', () => {
     expect(updateicon).toBeInTheDocument();
   });
 
-  it('renders 3 input-Elements for text, 1 input-Element for file and one textarea', () => {
+  it('renders 3 inputelements for text, 1 inputelement for file and one textarea', () => {
     render(
       <MemoryRouter>
         <ProfilePage />

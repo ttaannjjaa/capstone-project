@@ -150,7 +150,7 @@ export default function ProfilePage() {
               maxLength={30}
             />
             <label htmlFor="petName" className="sr-only">
-              Kosename des Katze
+              Kosename der Katze
             </label>
           </div>
           <div>
