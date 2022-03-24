@@ -103,12 +103,18 @@ export default function ProfilePage() {
       <main>
         <ImgContainer min-width="280px" min-height="165px">
           <img src={image} alt="" width="280px" height="165px" />
-          <RemoveButton onClick={onImageRemove}>
+          <RemoveButton onClick={onImageRemove} data-testid="buttonRemove">
             <span className="sr-only">Image remove button</span>
             <img src={iconbin} alt="icon rotate arrow to the left" />
           </RemoveButton>
-          <input id="imgUpload" type="file" onChange={upload} hidden />
-          <UploadButton htmlFor="imgUpload">
+          <input
+            data-testid="inputImgUpload"
+            id="imgUpload"
+            type="file"
+            onChange={upload}
+            hidden
+          />
+          <UploadButton htmlFor="imgUpload" data-testid="inputLabelImgUpload">
             <span className="sr-only">Image upload and change</span>
             <img src={iconrotate} alt="bin icon" />
           </UploadButton>
@@ -118,6 +124,7 @@ export default function ProfilePage() {
           <div>
             <img src={iconpencil} width="20px" height="20px" alt="pen" />
             <InputTextStyled
+              data-testid="inputCatName"
               type="text"
               id="catname"
               value={editingNameValue}
@@ -135,6 +142,7 @@ export default function ProfilePage() {
             <InputTextStyled
               type="text"
               id="petname"
+              data-testid="inputPetName"
               value={editingCutieNameValue}
               onChange={event => setEditingCutieNameValue(event.target.value)}
               onKeyDown={onKeyDown}
