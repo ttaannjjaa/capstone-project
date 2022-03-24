@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import iconform from '../images/icon_form.svg';
-import iconthumbdown from '../images/icon_thumbdown.svg';
-import iconthumbup from '../images/icon_thumbup.svg';
+import iconthumbdown from '../images/icon_newThumbdown.svg';
+import iconthumbup from '../images/icon_newThumbup.svg';
 import iconcathead from '../images/icon_cathead.svg';
 
 export default function Navigation() {
