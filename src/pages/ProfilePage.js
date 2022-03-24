@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import useLocalStorage from '../hooks/useLocalStorage.js';
 import { useState } from 'react';
 import ExitButton from '../components/ExitButton.js';
+import iconbin from '../images/icon_bin.svg';
 import iconpencil from '../images/icon_pencil.svg';
 import iconrotate from '../images/icon_rotate.svg';
 
@@ -31,6 +32,10 @@ export default function ProfilePage() {
 
   function onImageSave(response) {
     setImage(response.data.url);
+  }
+  console.log(image);
+  function onImageRemove() {
+    setImage('');
   }
 
   const [catName, setCatName] = useLocalStorage('catName', 'Katzenname');
@@ -96,12 +101,16 @@ export default function ProfilePage() {
         <ExitButton />
       </Header>
       <main>
-        <ImgContainer>
+        <ImgContainer min-width="280px" min-height="165px">
           <img src={image} alt="" width="280px" height="165px" />
+          <RemoveButton onClick={onImageRemove}>
+            <span className="sr-only">Image remove button</span>
+            <img src={iconbin} alt="icon rotate arrow to the left" />
+          </RemoveButton>
           <input id="imgUpload" type="file" onChange={upload} hidden />
           <UploadButton htmlFor="imgUpload">
             <span className="sr-only">Image upload and change</span>
-            <img src={iconrotate} alt="icon rotate arrow to the left" />
+            <img src={iconrotate} alt="bin icon" />
           </UploadButton>
         </ImgContainer>
 
@@ -228,15 +237,25 @@ const UploadButton = styled.label`
   width: 30px;
   height: 30px;
   padding: 4px;
-  margin-bottom: 2rem;
-  line-height: 1.2rem;
-  font-size: 1rem;
   background-color: transparent;
   box-shadow: var(--box-shadow-inset);
   border-radius: 10px;
   position: absolute;
-  top: 150px;
+  bottom: 14px;
   right: 0;
+`;
+
+const RemoveButton = styled.button`
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  background-color: transparent;
+  box-shadow: var(--box-shadow-inset);
+  border-radius: 10px;
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  border: none;
 
   & > img {
     z-index: 2;
