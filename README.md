@@ -6,12 +6,13 @@ CatYummy allows you to track your cat's decisions about its food. After adding t
 
 CatYummy is under construction.
 
-So far there are three pages you can visit. A good start is the form to add another listcontent according to how your cat accepted the last food you gave to it. You can now see the new listitem on the according page. The data is stored in the local storage of your browser, so the app will (most probably) not loose them, when you reload or re-open the app. The newest feature is that I added a searchbar in the list of not liked food, so you can search for catfood (you have already added) with its name, taste or its preparation without scrolling along the whole list. Cats don't change their mind so often, but maybe you want to remove an item from one of your lists nevertheless. You can do this now with a click of the bin in the upper right corner of each listed card. On the page with the list of cat food your cat like so far I have added a function to sort the listitems acoording to key words, also used in the form.
-The onboarding of this app has now made a huge step forward as I implemented a landing page where you can make your choice which page you want to visit first by entering the app. I found the perfect image for my design of "the first impression" of my project on Unsplash and say many thanks for an really awesome picture .
+So far there are three pages you can visit. A good start is the form to add another listcontent according to how your cat accepted the last food you gave to it. You can now see the new listitem on the according page. The data is stored in the local storage of your browser, so the app will (most probably) not loose them, when you reload or re-open the app. The newest feature is that I added a searchbar in the list of not liked food, so you can search for catfood (you have already added) with its name, taste or its preparation without scrolling along the whole list. Cats don't change their mind so often, but maybe you want to remove an item from one of your lists nevertheless. You can do this now with a click of the bin in the upper right corner of each listed card. On the page with the list of cat food your cat like so far I have added a function to sort the listitems according to key words, also used in the form (as i added the date later, this item cannot get sorted at the moment).
+For a smooth onboarding you can make already at the landing page your choice which page you want to visit first by entering the app with an one-Click step to the most important features. I found the perfect background-image for my landing-page on Unsplash and say many thanks for an really awesome picture .
 
 Photo by [Charlie Deets](https://unsplash.com/@charliedeets?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@charliedeets?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 As the design goes with "mobile first" you will have to use your mobile in portrait orientation to get the full effect of that image.
+Well, now there is also an editable profile page with an image upload (which is unfortunately quite slow), but works.
 
 ### Deployment
 
@@ -26,6 +27,7 @@ You can have a look at the last update of CatYummy on Vercel: [DemoVersion](http
 - [styled components](https://styled-components.com/)
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript#tutorials)
 - [npm](https://www.npmjs.com/package/npm)
+- [axios](https://axios-http.com/)
 - [nanoid](https://www.npmjs.com/package/nanoid)
 - [Vercel](https://vercel.com)
 
