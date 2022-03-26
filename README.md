@@ -38,3 +38,5 @@ you can clone this repository
 exit `npm install` in the terminal to install all the files and dependencies the app needs to run
 
 `npm start` runs the app and opens http://localhost:3000 to view it in your browser. Or you will be asked to confirm another port if this one isn't available.
+
+`.env.local` API_KEY=example123456-3456similar You need this file with an api_key from [The Cat API](https://thecatapi.com/) for the CatInfoPage, please check whether you have added `env.local` in your `.gitignore`
