@@ -25,7 +25,7 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
     <UnLikedFoodPageStyled>
       <Header>
         <HeadingStyled>
-          <h1>Ich futtere lieber etwas anderes als...</h1>
+          <h1>not my taste...</h1>
           <ExitButton />
         </HeadingStyled>
         <SearchStyled>
@@ -109,12 +109,13 @@ const UnLikedFoodPageStyled = styled.section`
 `;
 
 const Header = styled.header`
-  background-color: var(--peach);
+  background-color: var(--lightsteel);
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 10;
   overflow: hidden;
+  border-bottom: 2px solid var(--steelblue);
   box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;
   display: grid;
@@ -122,11 +123,11 @@ const Header = styled.header`
 
   h1 {
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 0.5rem 1rem;
-    background-color: var(--peach);
+    background-color: var(--lightsteel);
     align-self: center;
-    color: var(--steelblue);
+    color: var(--black);
     letter-spacing: 1px;
   }
 `;
@@ -142,7 +143,7 @@ const SearchStyled = styled.div`
   display: flex;
   padding: 0 1rem;
   justify-content: flex-start;
-  background-color: var(--peach);
+  background-color: var(--lightsteel);
 `;
 
 const ListStyle = styled.ul`

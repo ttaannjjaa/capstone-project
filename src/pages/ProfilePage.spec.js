@@ -10,7 +10,7 @@ describe('ProfilePage', () => {
       </MemoryRouter>
     );
 
-    const headline = screen.getByText('Mein Katzenprofil');
+    const headline = screen.getByText('Cat Profile');
     const exitButton = screen.getByTestId('button to leave the app');
 
     expect(headline).toBeInTheDocument();

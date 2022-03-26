@@ -25,7 +25,7 @@ describe('LikedFoodPage', () => {
       </MemoryRouter>
     );
 
-    const headline = screen.getByText('Mir schmeckt...');
+    const headline = screen.getByText('I really like to eat...');
     const ulAccessibility = screen.getByTestId('likedlist', {
       accessibleName: 'list of cards about catfood that your cat like',
     });

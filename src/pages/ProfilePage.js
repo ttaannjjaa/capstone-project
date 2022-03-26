@@ -4,6 +4,7 @@ import useLocalStorage from '../hooks/useLocalStorage.js';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ExitButton from '../components/ExitButton.js';
+import coralcatright from '../images/coral_cat_head_right.svg';
 import iconbin from '../images/icon_bin.svg';
 import iconpencil from '../images/icon_pencil.svg';
 import iconrotate from '../images/icon_rotate.svg';
@@ -35,7 +36,7 @@ export default function ProfilePage() {
   function onImageSave(response) {
     setImage(response.data.url);
   }
-  console.log(image);
+
   function onImageRemove() {
     setImage('');
   }
@@ -99,7 +100,7 @@ export default function ProfilePage() {
   return (
     <FormPageStyle>
       <Header>
-        <h1>Mein Katzenprofil</h1>
+        <h1>Cat Profile</h1>
         <ExitButton />
       </Header>
       <main>
@@ -113,7 +114,10 @@ export default function ProfilePage() {
             data-testid="inputImgUpload"
             id="imgUpload"
             type="file"
-            onChange={upload}
+            onChange={event => {
+              event.stopPropagation();
+              upload();
+            }}
             hidden
           />
           <UploadButton htmlFor="imgUpload" data-testid="inputLabelImgUpload">
@@ -188,9 +192,19 @@ export default function ProfilePage() {
             />
           </NoteContainer>
         </FormContainer>
-        <button onClick={() => navigate('/CatInfoPage', { replace: true })}>
-          Information about cat breeds
-        </button>
+        <div>
+          <CatInfoPageButton
+            onClick={() => navigate('/CatInfoPage', { replace: true })}
+          >
+            <span className="sr-only">about cat breeds</span>
+            <img
+              src={coralcatright}
+              alt="little cat looking to the right"
+              width="28"
+              height="28"
+            />
+          </CatInfoPageButton>
+        </div>
       </main>
     </FormPageStyle>
   );
@@ -200,6 +214,7 @@ const FormPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
   grid-template-rows: 2.5rem 1fr 3rem;
+  position: relative;
 
   main {
     grid-row: 2 / 3;
@@ -212,7 +227,7 @@ const FormPageStyle = styled.section`
 `;
 
 const Header = styled.header`
-  background-color: var(--peach);
+  background-color: var(--lightsteel);
   padding: 1rem;
   width: 100%;
   position: fixed;
@@ -224,11 +239,12 @@ const Header = styled.header`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  border-bottom: 2px solid var(--steelblue);
 
   h1 {
     width: 100%;
-    font-size: 1.2rem;
-    color: var(--steelblue);
+    font-size: 1.1rem;
+    color: var(--black);
     letter-spacing: 1px;
   }
 `;
@@ -347,4 +363,16 @@ const NoteContainer = styled.div`
       outline: 1px solid var(--coral);
     }
   }
+`;
+
+const CatInfoPageButton = styled.button`
+  padding: 2px;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  border: none;
+  text-decoration: none;
+  background-color: var(--white);
+  position: absolute;
+  bottom: 65px;
+  right: 1.5rem;
 `;
