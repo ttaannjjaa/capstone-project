@@ -55,6 +55,18 @@ export default function CatInfoPage() {
               <li key={cat.id}>
                 <CatCard>
                   <CatCardHeading name={cat.name}>{cat.name}</CatCardHeading>
+                  {cat.image ? (
+                    <CatCardFetchedImage
+                      src={cat.image.url}
+                      alt=""
+                      width="320px"
+                      height="250px"
+                    />
+                  ) : (
+                    <CatCardImageErrorMessage>
+                      sorry, no image available here
+                    </CatCardImageErrorMessage>
+                  )}
                   <p origin={cat.origin}>
                     <span>origin: </span>
                     {cat.origin}
@@ -66,7 +78,11 @@ export default function CatInfoPage() {
             ))}
           </UL>
         )}
-        {!catData && <p>Sorry, there is a problem. Please try again later. </p>}
+        {!catData && (
+          <CatDataFetchErrorMessage>
+            Sorry, there is a problem. Please try again later.{' '}
+          </CatDataFetchErrorMessage>
+        )}
       </Main>
     </>
   );
@@ -111,7 +127,7 @@ const UL = styled.ul`
 
 const CatCard = styled.article`
   display: grid;
-  grid-template-rows: 25px 20px 20% 1fr;
+  grid-template-rows: 30px 1fr 30px fit-content fit-content;
   border: 1px solid yellowgreen;
   justify-content: flex-start;
   padding: 0.5rem;
@@ -132,4 +148,21 @@ const CatCardHeading = styled.h2`
   justify-self: center;
   line-height: 1.2rem;
   font-size: 1.1rem;
+`;
+
+const CatCardFetchedImage = styled.img`
+  justify-self: center;
+  max-width: 300px;
+  max-height: 500px;
+  display: block;
+`;
+
+const CatCardImageErrorMessage = styled.p`
+  padding: 0.5rem;
+  color: var(--steelblue);
+`;
+
+const CatDataFetchErrorMessage = styled.p`
+  padding: 0.5rem;
+  color: var(--steelblue);
 `;
