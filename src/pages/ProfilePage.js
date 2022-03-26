@@ -1,6 +1,7 @@
 import axios from 'axios';
 import styled from 'styled-components';
 import useLocalStorage from '../hooks/useLocalStorage.js';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ExitButton from '../components/ExitButton.js';
 import iconbin from '../images/icon_bin.svg';
@@ -11,6 +12,7 @@ const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
 export default function ProfilePage() {
+  const navigate = useNavigate();
   const [image, setImage] = useLocalStorage('Bild', '');
 
   function upload(event) {
@@ -186,6 +188,9 @@ export default function ProfilePage() {
             />
           </NoteContainer>
         </FormContainer>
+        <button onClick={() => navigate('/CatInfoPage', { replace: true })}>
+          Information about cat breeds
+        </button>
       </main>
     </FormPageStyle>
   );

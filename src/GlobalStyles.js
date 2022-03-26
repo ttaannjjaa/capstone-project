@@ -11,9 +11,11 @@ const GlobalStyles = createGlobalStyle`
 :root {
     --black: #000000;
     --white: #ffffff;
-    --grey: #7E6F6F; 
+    --citrus: #ECF99B;
     --coral: #F88379;
+    --grey: #7E6F6F; 
     --lightblue: #CEE7F6;
+    --lightsteel: #e5f5f2;
     --peach: #F4E0D4; 
     --steelblue: #597A91;  
     --box-shadow-drop: 0px 1px 4px rgba(0, 0, 0, 0.25);
