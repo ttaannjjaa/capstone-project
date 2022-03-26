@@ -37,15 +37,6 @@ describe('CatInfoPage', () => {
     );
 
     const catDataList = screen.getByRole('list');
-    // const catDataName = screen.getByText('Aegean');
-    // const catDataOrigin = screen.getByText('Greece');
-    // const catDataTemperament = screen.getByText(
-    //   'Affectionate, Social, Intelligent, Playful, Active'
-    // );
-    // const catDataDescription = screen.getByText(
-    //   'Native to the Greek islands known as the Cyclades in the Aegean Sea'
-    //
-
     expect(catDataList).toBeInTheDocument();
   });
 });
