@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+import iconarrowleft from '../images/icon_arrow_left_circle_fill.svg';
 import coralcatleft from '../images/coral_cat_head_left.svg';
 
 export default function CatInfoPage() {
@@ -38,7 +39,8 @@ export default function CatInfoPage() {
           type="button"
           onClick={() => navigate('/ProfilePage', { replace: true })}
         >
-          <span className="sr-only">zurück</span>
+          <span className="sr-only">back button</span>
+          <img src={iconarrowleft} alt="arrow icon showing to the left" />
           <img
             src={coralcatleft}
             alt="cat icon with the head to the left"

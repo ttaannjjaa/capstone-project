@@ -26,7 +26,7 @@ describe('UnLikedFoodPage', () => {
     );
 
     const headline = screen.getByRole('heading', {
-      textcontent: 'Ich futtere lieber etwas anderes als...',
+      textcontent: 'Not my taste...',
     });
     const ulAccessibility = screen.getByTestId('unlikedlist', {
       accessibleName: 'list of cards about catfood that your cat does not like',
@@ -60,7 +60,7 @@ describe('UnLikedFoodPage', () => {
 
     const searchbar = screen.getByRole('searchbox');
     const searchicon = screen.getByRole('img', { name: 'search icon' });
-    const searchlabel = screen.getByText('Suche');
+    const searchlabel = screen.getByText('Search');
 
     expect(searchbar).toBeInTheDocument();
     expect(searchicon).toBeInTheDocument();

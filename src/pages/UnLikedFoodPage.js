@@ -95,11 +95,13 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
 const UnLikedFoodPageStyled = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 9.5rem 1fr 3rem;
+  grid-template-rows: fit-content 1fr 3rem;
 
   main {
+    margin-top: 6rem;
     grid-row: 2 / 3;
     min-height: 100vh;
+    background-color: var(--peach);
   }
 
   p {
@@ -119,7 +121,7 @@ const Header = styled.header`
   box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;
   display: grid;
-  grid-template-rows: 4.5rem 5rem;
+  grid-template-rows: fit-content fit-content;
 
   h1 {
     width: 100%;
@@ -135,6 +137,7 @@ const Header = styled.header`
 const HeadingStyled = styled.div`
   display: flex;
   justify-content: space-between;
+  padding-top: 0.5rem;
   margin-right: 1rem;
 `;
 

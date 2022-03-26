@@ -19,7 +19,7 @@ describe('FormPage', () => {
 
     const formHeading = screen.getByText(/My Vote/i);
     const form = screen.getByTestId('form');
-    const buttonSave = screen.getByRole('button', { name: 'SPEICHERN' });
+    const buttonSave = screen.getByRole('button', { name: 'SAVE' });
 
     expect(formHeading).toBeInTheDocument();
     expect(buttonSave).toBeInTheDocument();

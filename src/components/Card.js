@@ -44,7 +44,7 @@ export default function Card({
 }
 
 const CardStyled = styled.article`
-  background-color: var(--white);
+  background-color: var(--white) !important;
   border-radius: 5px;
   box-shadow: var(--box-shadow-drop);
   min-width: 280px;

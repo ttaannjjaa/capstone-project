@@ -14,8 +14,8 @@ export default function ExitButton() {
       <img
         src={exitCat}
         alt="black cat wanting to walk through open door - icon for leaving the app"
-        width="70px"
-        height="42px"
+        width="55px"
+        height="40px"
       />
     </ExitButtonStyled>
   );
@@ -25,4 +25,8 @@ const ExitButtonStyled = styled.button`
   text-decoration: none;
   border: none;
   background-color: var(--lightsteel);
+  &:hover {
+    cursor: pointer;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 `;
