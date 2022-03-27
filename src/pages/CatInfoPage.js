@@ -82,7 +82,7 @@ export default function CatInfoPage() {
         )}
         {!catData && (
           <CatDataFetchErrorMessage>
-            Sorry, there is a problem. Please try again later.{' '}
+            Sorry, there is a problem. Please try again later.
           </CatDataFetchErrorMessage>
         )}
       </Main>

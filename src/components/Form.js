@@ -58,11 +58,11 @@ export default function Form({ handleData }) {
             },
             maxLength: {
               value: 20,
-              message: 'ups, limit of 2o letters reached',
+              message: 'ups, limit of 2o characters reached',
             },
             pattern: {
               value: /^[A-Za-z ]+$/,
-              message: 'please enter text',
+              message: 'no numbers or special characters allowed',
             },
           })}
         />
@@ -85,7 +85,7 @@ export default function Form({ handleData }) {
             },
             pattern: {
               value: /^[A-Za-z ]+$/,
-              message: 'please enter text',
+              message: 'no numbers or special characters allowed',
             },
           })}
         />
@@ -100,11 +100,11 @@ export default function Form({ handleData }) {
           {...register('foodStyle', {
             maxLength: {
               value: 20,
-              message: 'ups, limit of 2o letters reached',
+              message: 'ups, limit of 2o characters reached',
             },
             pattern: {
               value: /^[A-Za-z ]+$/,
-              message: 'please enter text',
+              message: 'no numbers or special characters allowed',
             },
           })}
         />
