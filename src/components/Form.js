@@ -33,6 +33,8 @@ export default function Form({ handleData }) {
     reset();
   };
 
+  const dateToday = new Date().toISOString().substring(0, 10);
+
   return (
     <FormContainer>
       <FormStyled
@@ -132,7 +134,13 @@ export default function Form({ handleData }) {
           </RadioStyled>
         </Judge>
         <label htmlFor="date">fed on </label>
-        <DateInput id="date" name="date" type="date" {...register('date')} />
+        <DateInput
+          id="date"
+          name="date"
+          type="date"
+          max={dateToday}
+          {...register('date')}
+        />
         <SaveButton type="submit">SAVE</SaveButton>
       </FormStyled>
     </FormContainer>

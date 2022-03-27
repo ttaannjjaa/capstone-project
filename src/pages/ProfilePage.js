@@ -9,7 +9,7 @@ import iconarrowright from '../images/icon_arrow_right_circle_fill.svg';
 import iconbin from '../images/icon_bin.svg';
 import iconpencil from '../images/icon_pencil.svg';
 import iconrotate from '../images/icon_rotate.svg';
-import katercarlo from '../images/katercarlo.jpg';
+//import katercarlo from '../images/katercarlo.jpg';
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
@@ -107,16 +107,8 @@ export default function ProfilePage() {
       </Header>
       <main>
         <ImgContainer min-width="280px" min-height="165px">
-          {image ? (
-            <img src={image} alt="" width="280px" height="165px" />
-          ) : (
-            <img
-              src={katercarlo}
-              alt="black white cat laying"
-              width="280px"
-              height="165px"
-            />
-          )}
+          <img src={image} alt="" width="280px" height="165px" />
+
           <RemoveButton onClick={onImageRemove} data-testid="buttonRemove">
             <span className="sr-only">Image remove button</span>
             <img src={iconbin} alt="icon rotate arrow to the left" />
@@ -125,8 +117,8 @@ export default function ProfilePage() {
             data-testid="inputImgUpload"
             id="imgUpload"
             type="file"
-            onChange={() => {
-              upload();
+            onChange={event => {
+              upload(event);
             }}
             hidden
           />
