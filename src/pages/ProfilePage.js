@@ -42,61 +42,60 @@ export default function ProfilePage() {
   function onImageRemove() {
     setImage('');
   }
-
-  const [catName, setCatName] = useLocalStorage('catName', 'Katzenname');
-  const [editingNameValue, setEditingNameValue] = useState(catName);
-
-  const onBlurName = event => {
-    if (event.target.value.trim() === '') {
-      setEditingNameValue(catName);
-    } else {
-      setCatName(event.target.value);
-    }
-  };
-
-  const [catCutieName, setStorageCatCutieName] = useLocalStorage(
-    'cutieCatName',
-    'Kosename'
+  const [storedProfileData, setStoredProfileData] = useLocalStorage(
+    'profileData',
+    {}
   );
-  const [editingCutieNameValue, setEditingCutieNameValue] =
-    useState(catCutieName);
 
-  const onBlurCutieName = event => {
-    if (event.target.value.trim() === '') {
-      setEditingCutieNameValue(catCutieName);
-    } else {
-      setStorageCatCutieName(event.target.value);
-    }
+  const [profileData, setProfileData] = useState({
+    profileName: storedProfileData?.profileName
+      ? storedProfileData.profileName
+      : 'Garfield',
+    profilePetName: storedProfileData?.profileData
+      ? storedProfileData.profilePetName
+      : 'cutie',
+    profileAge: storedProfileData?.profileAge
+      ? storedProfileData.profileAge
+      : '0',
+    profileNote: storedProfileData?.profileNote
+      ? storedProfileData.profileNote
+      : '...',
+  });
+
+  const onKeyDownName = event => {
+    event.key === 'Enter'
+      ? setStoredProfileData({
+          ...storedProfileData,
+          profileName: event.target.value,
+        })
+      : setStoredProfileData(profileData);
   };
 
-  const [catAge, setStorageCatAge] = useLocalStorage('catAge', 0);
-
-  const [editingCatAgeValue, setEditingCatAgeValue] = useState(catAge);
-
-  const onBlurCatAge = event => {
-    if (event.target.value.trim() === '') {
-      setEditingCutieNameValue(catAge);
-    } else {
-      setStorageCatAge(event.target.value);
-    }
+  const onKeyDownPetName = event => {
+    event.key === 'Enter'
+      ? setStoredProfileData({
+          ...storedProfileData,
+          profilePetName: event.target.value,
+        })
+      : setStoredProfileData(profileData);
   };
 
-  const [note, setStorageNote] = useLocalStorage('note', '...');
-
-  const [editingNoteValue, setEditingNoteValue] = useState(note);
-
-  const onBlurNote = event => {
-    if (event.target.value.trim() === '') {
-      setEditingNoteValue(note);
-    } else {
-      setStorageNote(event.target.value);
-    }
+  const onKeyDownAge = event => {
+    event.key === 'Enter'
+      ? setStoredProfileData({
+          ...storedProfileData,
+          profileAge: event.target.value,
+        })
+      : setStoredProfileData(profileData);
   };
 
-  const onKeyDown = event => {
-    if (event.key === 'Enter' || event.key === 'Escape') {
-      event.target.blur();
-    }
+  const onKeyDownNote = event => {
+    event.key === 'Enter'
+      ? setStoredProfileData({
+          ...storedProfileData,
+          profileNote: event.target.value.trim(),
+        })
+      : setStoredProfileData(profileData);
   };
 
   return (
@@ -128,69 +127,110 @@ export default function ProfilePage() {
           </UploadButton>
         </ImgContainer>
 
-        <FormContainer>
+        <FormContainer title="after editing press enter">
           <div>
-            <img src={iconpencil} width="20px" height="20px" alt="pen" />
-            <InputTextStyled
-              data-testid="inputCatName"
-              type="text"
-              id="catname"
-              value={editingNameValue}
-              onChange={event => setEditingNameValue(event.target.value)}
-              onKeyDown={onKeyDown}
-              onBlur={onBlurName}
-              maxLength={30}
+            <img
+              src={iconpencil}
+              width="20px"
+              height="20px"
+              alt="pen"
+              title="after editing press enter"
             />
-            <label className="sr-only" htmlFor="catname">
-              Katzenname
+            <InputTextStyled
+              id="profileName"
+              type="text"
+              maxLength="25"
+              pattern={/^[A-Za-z ]+$/}
+              value={profileData.profileName}
+              onChange={event =>
+                setProfileData({
+                  ...profileData,
+                  profileName: event.target.value,
+                })
+              }
+              onKeyDown={onKeyDownName}
+            />
+            <label className="sr-only" htmlFor="profileName">
+              cat name
             </label>
           </div>
           <div>
-            <img src={iconpencil} width="20px" height="20px" alt="pen" />
-            <InputTextStyled
-              type="text"
-              id="petname"
-              data-testid="inputPetName"
-              value={editingCutieNameValue}
-              onChange={event => setEditingCutieNameValue(event.target.value)}
-              onKeyDown={onKeyDown}
-              onBlur={onBlurCutieName}
-              maxLength={30}
+            <img
+              src={iconpencil}
+              width="20px"
+              height="20px"
+              alt="pen"
+              title="after editing press enter"
             />
-            <label htmlFor="petName" className="sr-only">
-              Kosename der Katze
+            <InputTextStyled
+              id="profilePetName"
+              type="text"
+              maxLength="25"
+              pattern={/^[A-Za-z ]+$/}
+              value={profileData.profilePetName}
+              onChange={event =>
+                setProfileData({
+                  ...profileData,
+                  profilePetName: event.target.value,
+                })
+              }
+              onKeyDown={onKeyDownPetName}
+            />
+            <label htmlFor="profilePetName" className="sr-only">
+              petname
             </label>
           </div>
           <div>
-            <img src={iconpencil} width="20px" height="20px" alt="pen" />
-            <LabelAgeStyled htmlFor="catage">
+            <img
+              src={iconpencil}
+              width="20px"
+              height="20px"
+              alt="pen"
+              title="after editing press enter"
+            />
+            <LabelAgeStyled htmlFor="profileAge">
               <InputAgeStyled
-                type="text"
-                id="catage"
-                value={editingCatAgeValue}
-                onChange={event => setEditingCatAgeValue(event.target.value)}
-                onKeyDown={onKeyDown}
-                onBlur={onBlurCatAge}
-                maxLength={2}
-                pattern={/^[0-9]{1,2}$/}
-              />{' '}
-              Jahre
+                id="profileAge"
+                type="number"
+                maxLength="25"
+                min="0"
+                max="30"
+                pattern={/^[0-9{1,2}]+$/}
+                value={profileData.profileAge}
+                onChange={event =>
+                  setProfileData({
+                    ...profileData,
+                    profileAge: event.target.value.trim(),
+                  })
+                }
+                onKeyDown={onKeyDownAge}
+              />
+              years
             </LabelAgeStyled>
           </div>
           <NoteContainer>
             <div>
-              <img src={iconpencil} width="20px" height="20px" alt="pen" />
-              <label htmlFor="note">Notiz </label>
+              <img
+                src={iconpencil}
+                width="20px"
+                height="20px"
+                alt="pen"
+                title="after editing press enter"
+              />
+              <label htmlFor="note">Note </label>
             </div>
             <textarea
-              type="text"
               id="note"
-              value={editingNoteValue}
-              onChange={event => setEditingNoteValue(event.target.value)}
-              onKeyDown={onKeyDown}
-              onBlur={onBlurNote}
-              maxLength={300}
-              rows="5"
+              type="text"
+              rows="10"
+              value={profileData.profileNote}
+              onChange={event =>
+                setProfileData({
+                  ...profileData,
+                  profileNote: event.target.value,
+                })
+              }
+              onKeyDown={onKeyDownNote}
             />
           </NoteContainer>
         </FormContainer>
@@ -198,9 +238,7 @@ export default function ProfilePage() {
           <CatInfoPageButton
             onClick={() => navigate('/CatInfoPage', { replace: true })}
           >
-            <span className="sr-only">
-              button to the info page with information about cat breeds
-            </span>
+            <span>about cat breeds</span>
             <img
               src={coralcatright}
               alt="little cat looking to the right"
@@ -331,7 +369,7 @@ const InputTextStyled = styled.input`
 `;
 
 const InputAgeStyled = styled.input`
-  max-width: 25px;
+  max-width: 50px;
   border: none;
   background-color: var(--peach);
   box-shadow: var(--box-shadow-inputfields);
@@ -370,7 +408,8 @@ const NoteContainer = styled.div`
     background-color: var(--peach);
     border: none;
     border-radius: 5px;
-    padding: 3px;
+    padding: 5px;
+    font-family: inherit;
     font-size: 0.9rem;
     &:focus {
       outline: 1px solid var(--coral);
