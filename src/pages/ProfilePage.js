@@ -9,7 +9,7 @@ import iconarrowright from '../images/icon_arrow_right_circle_fill.svg';
 import iconbin from '../images/icon_bin.svg';
 import iconpencil from '../images/icon_pencil.svg';
 import iconrotate from '../images/icon_rotate.svg';
-//import katercarlo from '../images/katercarlo.jpg';
+import imageUploadInfo from '../images/imageUploadInfo.svg';
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
@@ -106,8 +106,16 @@ export default function ProfilePage() {
       </Header>
       <main>
         <ImgContainer min-width="280px" min-height="165px">
-          <img src={image} alt="" width="280px" height="165px" />
-
+          {image ? (
+            <UploadedImg src={image} alt="" width="280px" height="165px" />
+          ) : (
+            <DefaultImg
+              src={imageUploadInfo}
+              alt="photoupload by clicking button with curved arrow right-hand-side, removing it by clicking the button with the bin on the left"
+              width="280px"
+              height="130px"
+            />
+          )}
           <RemoveButton onClick={onImageRemove} data-testid="buttonRemove">
             <span className="sr-only">Image remove button</span>
             <img src={iconbin} alt="icon rotate arrow to the left" />
@@ -298,11 +306,15 @@ const ImgContainer = styled.div`
   align-items: center;
   margin-top: 0.5rem;
   position: relative;
+`;
 
-  img {
-    margin-bottom: 1rem;
-    border-radius: 5px;
-  }
+const UploadedImg = styled.img`
+  margin-bottom: 1rem;
+  border-radius: 5px;
+`;
+
+const DefaultImg = styled.img`
+  margin-bottom: 3rem;
 `;
 
 const UploadButton = styled.label`
