@@ -107,7 +107,13 @@ export default function ProfilePage() {
       <main>
         <ImgContainer min-width="280px" min-height="165px">
           {image ? (
-            <UploadedImg src={image} alt="" width="280px" height="165px" />
+            <UploadedImg
+              data-testid="inputImgUpload"
+              src={image}
+              alt=""
+              width="280px"
+              height="165px"
+            />
           ) : (
             <DefaultImg
               src={imageUploadInfo}
@@ -146,6 +152,7 @@ export default function ProfilePage() {
             />
             <InputTextStyled
               id="profileName"
+              data-testid="inputCatName"
               type="text"
               maxLength="25"
               pattern={/^[A-Za-z ]+$/}
@@ -172,6 +179,7 @@ export default function ProfilePage() {
             />
             <InputTextStyled
               id="profilePetName"
+              data-testid="inputPetName"
               type="text"
               maxLength="25"
               pattern={/^[A-Za-z ]+$/}
@@ -199,6 +207,7 @@ export default function ProfilePage() {
             <LabelAgeStyled htmlFor="profileAge">
               <InputAgeStyled
                 id="profileAge"
+                data-testid="inputAge"
                 type="number"
                 maxLength="25"
                 min="0"
