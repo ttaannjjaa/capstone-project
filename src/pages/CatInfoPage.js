@@ -48,7 +48,7 @@ export default function CatInfoPage() {
             height="28px"
           />
         </button>
-        <h1>Cat Breeds</h1>
+        <h1>CAT BREEDS</h1>
       </Header>
       <Main>
         {catData && (
@@ -110,6 +110,14 @@ const Header = styled.header`
       cursor: pointer;
       transition: cubic-bezier(0.075, 0.82, 0.165, 1);
     }
+  }
+
+  h1 {
+    font-size: 1.1rem;
+    text-overflow: ellipsis;
+    color: var(--black);
+    letter-spacing: 1px;
+    padding: 0.5rem 0;
   }
 `;
 

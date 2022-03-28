@@ -65,7 +65,7 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
             </SortButtonStyled>
             <SortButtonStyled
               type="button"
-              style={{ color: 'var(--black)' }}
+              style={{ color: 'var(--coral)' }}
               onClick={() => setSortValue('')}
             >
               all

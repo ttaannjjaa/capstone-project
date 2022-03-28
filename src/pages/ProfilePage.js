@@ -101,7 +101,7 @@ export default function ProfilePage() {
   return (
     <FormPageStyle>
       <Header>
-        <h1>Cat Profile</h1>
+        <h1>CAT PROFILE</h1>
         <ExitButton />
       </Header>
       <main>
@@ -239,7 +239,7 @@ export default function ProfilePage() {
             <textarea
               id="note"
               type="text"
-              rows="10"
+              rows="8"
               value={profileData.profileNote}
               onChange={event =>
                 setProfileData({
@@ -304,6 +304,7 @@ const Header = styled.header`
   h1 {
     width: 100%;
     font-size: 1.1rem;
+    text-overflow: ellipsis;
     color: var(--black);
     letter-spacing: 1px;
   }
@@ -432,6 +433,7 @@ const NoteContainer = styled.div`
     padding: 5px;
     font-family: inherit;
     font-size: 0.9rem;
+    text-overflow: ellipsis;
     &:focus {
       outline: 1px solid var(--coral);
     }
