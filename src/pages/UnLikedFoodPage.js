@@ -130,7 +130,6 @@ const Header = styled.header`
     background-color: var(--lightsteel);
     align-self: center;
     color: var(--black);
-    letter-spacing: 1px;
   }
 `;
 
@@ -155,6 +154,6 @@ const ListStyle = styled.ul`
   width: 100%;
   display: grid;
   grid-template-rows: 5;
-  gap: 1.5rem;
+  gap: 1rem;
   justify-content: center;
 `;

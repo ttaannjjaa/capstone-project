@@ -32,7 +32,7 @@ export default function Card({
         </li>
         <li>
           <span>rating: </span>
-          {foodRating === 'liked' ? 'lecker' : 'mag ich nicht'}
+          {foodRating === 'liked' ? 'yummy' : 'not for me'}
         </li>
         <li>
           <span>fed on: </span>

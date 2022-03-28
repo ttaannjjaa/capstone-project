@@ -5,7 +5,7 @@ import ExitButton from '../components/ExitButton.js';
 import { SortButtonStyled } from '../components/SortButtonStyled.js';
 
 export default function LikedFoodPage({ storageData, handleDelete }) {
-  const likedData = storageData.filter(data => data.foodJudge === 'liked');
+  const likedData = storageData.filter(data => data.foodRating === 'liked');
 
   const [sortValue, setSortValue] = useState('');
 
@@ -32,36 +32,43 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
     <LikedFoodPageStyle>
       <Header>
         <div>
-          <h1>I really like to eat...</h1>
+          <h1>WHAT I LIKE TO EAT</h1>
           <ExitButton />
         </div>
         <section>
-          <span>Du kannst sortieren nach...</span>
+          <span>Sort by ...</span>
           <div>
             <SortButtonStyled
               type="button"
               onClick={() => setSortValue('foodName')}
             >
-              Marke
+              name
             </SortButtonStyled>
             <SortButtonStyled
               type="button"
               onClick={() => setSortValue('foodTaste')}
             >
-              Sorte
+              taste
             </SortButtonStyled>
             <SortButtonStyled
               type="button"
               onClick={() => setSortValue('foodStyle')}
             >
-              Zubereitung
+              preparation
+            </SortButtonStyled>
+
+            <SortButtonStyled
+              type="button"
+              onClick={() => setSortValue('selectedDate')}
+            >
+              date
             </SortButtonStyled>
             <SortButtonStyled
               type="button"
-              style={{ color: 'var(--coral)' }}
+              style={{ color: 'var(--black)' }}
               onClick={() => setSortValue('')}
             >
-              rückgängig
+              all
             </SortButtonStyled>
           </div>
         </section>
@@ -69,9 +76,8 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
       <main>
         {likedData.length === 0 && (
           <p>
-            Du hast hier noch keine Listeneinträge. <br />
-            Listeneinträge erscheinen, wenn das Formular ausgefüllt und
-            gespeichert wird.
+            You don't have any list entries here yet. List entries appear when
+            the form is filled out and saved.
           </p>
         )}
         {likedData.length > 0 && (
@@ -87,7 +93,7 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
                   foodName={data.foodName}
                   foodTaste={data.foodTaste}
                   foodStyle={data.foodStyle}
-                  foodJudge={data.foodJudge}
+                  foodRating={data.foodRating}
                   selectedDate={data.selectedDate}
                   handleDelete={() => handleDelete(data.id)}
                 />
@@ -107,6 +113,7 @@ const LikedFoodPageStyle = styled.section`
   main {
     grid-row: 2 / 3;
     min-height: 100vh;
+    background-color: var(--peach);
   }
 
   p {
@@ -136,8 +143,8 @@ const Header = styled.header`
   h1 {
     width: 100%;
     font-size: 1.1rem;
+    text-overflow: ellipsis;
     color: var(--black);
-    letter-spacing: 1px;
     padding-bottom: 1rem;
   }
 
@@ -150,7 +157,7 @@ const Header = styled.header`
     flex-wrap: nowrap;
 
     span {
-      padding: 4px 0;
+      padding: 2px 0 6px 0;
     }
 
     div {
@@ -166,6 +173,6 @@ const ListStyle = styled.ul`
   width: 100%;
   display: grid;
   grid-template-rows: 5;
-  gap: 1.5rem;
+  gap: 1rem;
   justify-content: center;
 `;
