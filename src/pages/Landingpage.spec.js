@@ -1,9 +1,11 @@
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import Landingpage from './Landingpage';
+import { act } from 'react-dom/test-utils';
+//import { userEvent } from '@storybook/testing-library';
 
 describe('Landingpage', () => {
-  it('renders a h1 headline and three buttons', () => {
+  it('renders a h1 headline, three buttons', () => {
     render(
       <MemoryRouter>
         <Landingpage />
@@ -13,11 +15,11 @@ describe('Landingpage', () => {
     const button1 = screen.getByRole('button', {
       name: 'CAT FOOD RATING',
     });
-    const button3 = screen.getByRole('button', {
-      name: 'CAT FOOD ❌',
-    });
     const button2 = screen.getByRole('button', {
-      name: 'CAT FOOD ♥️',
+      name: 'CAT FOOD icon white heart',
+    });
+    const button3 = screen.getByRole('button', {
+      name: 'CAT FOOD icon red crossmark',
     });
 
     expect(headline).toBeInTheDocument();

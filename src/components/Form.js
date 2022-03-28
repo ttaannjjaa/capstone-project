@@ -286,4 +286,13 @@ const SaveButton = styled.button`
   border-radius: 10px;
   letter-spacing: 1px;
   align-self: center;
+  :hover {
+    background-color: var(--lightsteel);
+    color: var(--black);
+    border: 1px var(--coral) solid;
+  }
+  &:active {
+    opacity: 0.9;
+    border: 2px solid var(--steelblue);
+  }
 `;

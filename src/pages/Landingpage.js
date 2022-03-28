@@ -33,7 +33,7 @@ export default function LandingPage() {
           onMouseEnter={() => handleMouseHover()}
           onMouseLeave={() => handleMouseLeave()}
         >
-          CAT FOOD{' '}
+          CAT FOOD
           {mouseOnHover ? (
             <ImgIcon
               src={iconheartblack}
@@ -44,7 +44,7 @@ export default function LandingPage() {
           ) : (
             <ImgIcon
               src={iconheartwhite}
-              alt="icon black heart"
+              alt="icon white heart"
               width="14px"
               height="14px"
             />
@@ -56,7 +56,7 @@ export default function LandingPage() {
           CAT FOOD
           <ImgIcon
             src={iconcrossmarkred}
-            alt="icon black heart"
+            alt="icon red crossmark"
             width="14px"
             height="14px"
           />
