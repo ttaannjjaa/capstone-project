@@ -11,13 +11,13 @@ describe('Landingpage', () => {
     );
     const headline = screen.getByRole('heading');
     const button1 = screen.getByRole('button', {
-      name: 'Katzenfutter bewerten',
-    });
-    const button2 = screen.getByRole('button', {
-      name: 'Liste Katzenfutter ❌',
+      name: 'CAT FOOD RATING',
     });
     const button3 = screen.getByRole('button', {
-      name: 'Liste Katzenfutter ♥️',
+      name: 'CAT FOOD ❌',
+    });
+    const button2 = screen.getByRole('button', {
+      name: 'CAT FOOD ♥️',
     });
 
     expect(headline).toBeInTheDocument();

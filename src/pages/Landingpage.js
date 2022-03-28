@@ -13,17 +13,17 @@ export default function LandingPage() {
       </h1>
       <StartNavigation>
         <StartButton onClick={() => navigate('/FormPage', { replace: true })}>
-          Katzenfutter bewerten
+          CAT FOOD RATING
+        </StartButton>{' '}
+        <StartButton
+          onClick={() => navigate('/LikedFoodPage', { replace: true })}
+        >
+          CAT FOOD ♥️
         </StartButton>
         <StartButton
           onClick={() => navigate('/UnLikedFoodPage', { replace: true })}
         >
-          Liste Katzenfutter ❌
-        </StartButton>
-        <StartButton
-          onClick={() => navigate('/LikedFoodPage', { replace: true })}
-        >
-          Liste Katzenfutter ♥️
+          CAT FOOD ❌
         </StartButton>
       </StartNavigation>
     </StyledLandingPage>
@@ -70,4 +70,5 @@ const StartButton = styled.button`
   border: 2px solid var(--steelblue);
   border-radius: 10px;
   box-shadow: var(--box-shadow-inset);
+  letter-spacing: 1px;
 `;
