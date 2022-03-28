@@ -59,7 +59,7 @@ export default function ProfilePage() {
       : '0',
     profileNote: storedProfileData?.profileNote
       ? storedProfileData.profileNote
-      : '...',
+      : ' ',
   });
 
   const onKeyDownName = event => {
@@ -143,7 +143,7 @@ export default function ProfilePage() {
 
         <FormContainer title="after editing press enter">
           <div>
-            <img
+            <IconPencil
               src={iconpencil}
               width="20px"
               height="20px"
@@ -170,7 +170,7 @@ export default function ProfilePage() {
             </label>
           </div>
           <div>
-            <img
+            <IconPencil
               src={iconpencil}
               width="20px"
               height="20px"
@@ -197,7 +197,7 @@ export default function ProfilePage() {
             </label>
           </div>
           <div>
-            <img
+            <IconPencil
               src={iconpencil}
               width="20px"
               height="20px"
@@ -227,7 +227,7 @@ export default function ProfilePage() {
           </div>
           <NoteContainer>
             <div>
-              <img
+              <IconPencil
                 src={iconpencil}
                 width="20px"
                 height="20px"
@@ -249,22 +249,23 @@ export default function ProfilePage() {
               }
               onKeyDown={onKeyDownNote}
             />
+            <CatInfoPageButton
+              onClick={() => navigate('/catinfopage', { replace: true })}
+            >
+              <span>cat breeds</span>
+              <IconCatCoralRight
+                src={coralcatright}
+                alt="little cat looking to the right"
+                width="28"
+                height="28"
+              />
+              <IconArrowRight
+                src={iconarrowright}
+                alt="arrow icon showing to the right"
+              />
+            </CatInfoPageButton>
           </NoteContainer>
         </FormContainer>
-        <div>
-          <CatInfoPageButton
-            onClick={() => navigate('/catinfopage', { replace: true })}
-          >
-            <span>about cat breeds</span>
-            <img
-              src={coralcatright}
-              alt="little cat looking to the right"
-              width="28"
-              height="28"
-            />
-            <img src={iconarrowright} alt="arrow icon showing to the right" />
-          </CatInfoPageButton>
-        </div>
       </main>
     </FormPageStyle>
   );
@@ -274,7 +275,6 @@ const FormPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
   grid-template-rows: 2.5rem 1fr 3rem;
-  position: relative;
 
   main {
     grid-row: 2 / 3;
@@ -369,10 +369,6 @@ const FormContainer = styled.form`
   flex-direction: column;
   gap: 10px;
   margin-top: 2rem;
-
-  img {
-    margin-right: 15px;
-  }
 `;
 
 const InputTextStyled = styled.input`
@@ -421,12 +417,14 @@ const LabelAgeStyled = styled.label`
 `;
 
 const NoteContainer = styled.div`
+  position: relative;
   div {
     margin: 10px 0 5px 0;
   }
 
   textarea {
     width: 100%;
+
     background-color: var(--peach);
     border: none;
     border-radius: 5px;
@@ -448,10 +446,22 @@ const CatInfoPageButton = styled.button`
   text-decoration: none;
   background-color: var(--white);
   position: absolute;
-  bottom: 65px;
-  right: 1.5rem;
+  right: -4px;
+  top: 0px;
   &:hover {
     cursor: pointer;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
+`;
+
+const IconPencil = styled.img`
+  margin-right: 12px;
+`;
+
+const IconArrowRight = styled.img`
+  margin-right: 2px;
+`;
+
+const IconCatCoralRight = styled.img`
+  margin-right: 2px;
 `;
