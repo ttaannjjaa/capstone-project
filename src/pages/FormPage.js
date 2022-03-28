@@ -6,7 +6,7 @@ export default function FormPage({ handleData }) {
   return (
     <FormPageStyle>
       <Header>
-        <h1>My Vote</h1>
+        <h1>CAT FOOD RATING</h1>
         <ExitButton />
       </Header>
       <main>

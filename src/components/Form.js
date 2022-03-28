@@ -18,6 +18,8 @@ export default function Form({ handleData }) {
     },
   });
 
+  const dateToday = new Date().toISOString().substring(0, 10);
+
   const onSubmit = data => {
     const message = `successfully saved`;
     alert(JSON.stringify(message));
@@ -32,8 +34,6 @@ export default function Form({ handleData }) {
     handleData(formData);
     reset();
   };
-
-  const dateToday = new Date().toISOString().substring(0, 10);
 
   return (
     <FormContainer>
@@ -110,7 +110,7 @@ export default function Form({ handleData }) {
         />
         {errors.foodStyle && <span>{errors.foodStyle.message}</span>}
 
-        <Judge>
+        <RatingField>
           <RadioStyled>
             <RadioButton
               id="liked"
@@ -132,7 +132,7 @@ export default function Form({ handleData }) {
             />
             <label htmlFor="unliked">not liked</label>
           </RadioStyled>
-        </Judge>
+        </RatingField>
         <label htmlFor="date">fed on </label>
         <DateInput
           id="date"
@@ -179,6 +179,7 @@ const FormStyled = styled.form`
 const TextInput = styled.input`
   min-width: 280px;
   width: 100%;
+  font-family: inherit;
   font-size: 1rem;
   line-height: 1.5rem;
   margin-top: 8px;
@@ -195,6 +196,7 @@ const TextInput = styled.input`
 const TextField = styled.textarea`
   min-width: 280px;
   width: 100%;
+  font-family: inherit;
   font-size: 1rem;
   line-height: 1.5rem;
   margin-top: 8px;
@@ -208,7 +210,7 @@ const TextField = styled.textarea`
   }
 `;
 
-const Judge = styled.fieldset`
+const RatingField = styled.fieldset`
   min-width: 280px;
   width: 100%;
   display: flex;
@@ -222,7 +224,7 @@ const Judge = styled.fieldset`
 
 const RadioStyled = styled.div`
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 const RadioButton = styled.input`
@@ -278,4 +280,5 @@ const SaveButton = styled.button`
   box-shadow: var(--box-shadow-inset);
   border-radius: 10px;
   letter-spacing: 1px;
+  align-self: center;
 `;
