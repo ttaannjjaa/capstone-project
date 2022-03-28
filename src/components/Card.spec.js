@@ -5,14 +5,14 @@ describe('Card', () => {
   it('renders a card with 5 list elements', () => {
     render(<Card />);
 
-    const showsaCard = screen.getByRole('listbox');
-    const liElement1 = screen.getByText(/Marke/);
-    const liElement2 = screen.getByText(/Sorte/);
-    const liElement3 = screen.getByText(/Zubereitung/);
-    const liElement4 = screen.getByText(/Bewertung/);
-    const liElement5 = screen.getByText(/verfüttert am/i);
+    const showsCard = screen.getByRole('listbox');
+    const liElement1 = screen.getByText(/name/);
+    const liElement2 = screen.getByText(/taste/);
+    const liElement3 = screen.getByText(/preparation/);
+    const liElement4 = screen.getByText(/rating/);
+    const liElement5 = screen.getByText(/fed on/i);
 
-    expect(showsaCard).toBeInTheDocument();
+    expect(showsCard).toBeInTheDocument();
     expect(liElement1).toBeInTheDocument();
     expect(liElement2).toBeInTheDocument();
     expect(liElement3).toBeInTheDocument();

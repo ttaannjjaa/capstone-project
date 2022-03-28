@@ -9,7 +9,7 @@ describe('Form', () => {
       <MemoryRouter>
         <Form
           formData={{
-            foodJudge: 'liked',
+            foodRating: 'liked',
             foodName: 'purrkitty',
             foodTaste: 'chicken',
             foodStyle: 'jelly',
@@ -29,7 +29,7 @@ describe('Form', () => {
     render(
       <Form
         formData={{
-          foodJudge: 'liked',
+          foodRating: 'liked',
           foodName: 'purrkitty',
           foodTaste: 'chicken',
           foodStyle: 'jelly',

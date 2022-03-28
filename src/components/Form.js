@@ -13,7 +13,7 @@ export default function Form({ handleData }) {
       foodName: '',
       foodTaste: '',
       foodStyle: '',
-      foodJudge: '',
+      foodRating: '',
       date: '',
     },
   });
@@ -28,7 +28,7 @@ export default function Form({ handleData }) {
       foodName: data.foodName.trim(),
       foodTaste: data.foodTaste.trim(),
       foodStyle: data.foodStyle.trim(),
-      foodJudge: data.foodJudge.trim(),
+      foodRating: data.foodRating.trim(),
       selectedDate: data.date,
     };
     handleData(formData);
@@ -114,10 +114,10 @@ export default function Form({ handleData }) {
           <RadioStyled>
             <RadioButton
               id="liked"
-              name="foodJudge"
+              name="foodRating"
               type="radio"
               value="liked"
-              {...register('foodJudge', { required: { value: true } })}
+              {...register('foodRating', { required: { value: true } })}
               defaultChecked
             />
             <label htmlFor="liked">yummy</label>
@@ -125,10 +125,10 @@ export default function Form({ handleData }) {
           <RadioStyled>
             <RadioButton
               id="unliked"
-              name="foodJudge"
+              name="foodRating"
               type="radio"
               value="unliked"
-              {...register('foodJudge', { required: { value: true } })}
+              {...register('foodRating', { required: { value: true } })}
             />
             <label htmlFor="unliked">not liked</label>
           </RadioStyled>
