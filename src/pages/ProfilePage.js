@@ -307,7 +307,6 @@ const Header = styled.header`
     font-size: 1.1rem;
     text-overflow: ellipsis;
     color: var(--black);
-    letter-spacing: 1px;
   }
 `;
 

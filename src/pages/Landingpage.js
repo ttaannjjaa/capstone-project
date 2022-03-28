@@ -60,7 +60,6 @@ export default function LandingPage() {
             width="14px"
             height="14px"
           />
-          {console.log(mouseOnHover)}
         </StartButton>
       </StartNavigation>
     </StyledLandingPage>

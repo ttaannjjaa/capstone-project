@@ -35,43 +35,45 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
           <h1>WHAT I LIKE TO EAT</h1>
           <ExitButton />
         </div>
-        <section>
-          <span>Sort by ...</span>
-          <div>
-            <SortButtonStyled
-              type="button"
-              onClick={() => setSortValue('foodName')}
-            >
-              name
-            </SortButtonStyled>
-            <SortButtonStyled
-              type="button"
-              onClick={() => setSortValue('foodTaste')}
-            >
-              taste
-            </SortButtonStyled>
-            <SortButtonStyled
-              type="button"
-              onClick={() => setSortValue('foodStyle')}
-            >
-              preparation
-            </SortButtonStyled>
+        {likedData.length > 0 && (
+          <section>
+            <span>Sort by ...</span>
+            <div>
+              <SortButtonStyled
+                type="button"
+                onClick={() => setSortValue('foodName')}
+              >
+                name
+              </SortButtonStyled>
+              <SortButtonStyled
+                type="button"
+                onClick={() => setSortValue('foodTaste')}
+              >
+                taste
+              </SortButtonStyled>
+              <SortButtonStyled
+                type="button"
+                onClick={() => setSortValue('foodStyle')}
+              >
+                preparation
+              </SortButtonStyled>
 
-            <SortButtonStyled
-              type="button"
-              onClick={() => setSortValue('selectedDate')}
-            >
-              date
-            </SortButtonStyled>
-            <SortButtonStyled
-              type="button"
-              style={{ color: 'var(--coral)' }}
-              onClick={() => setSortValue('')}
-            >
-              all
-            </SortButtonStyled>
-          </div>
-        </section>
+              <SortButtonStyled
+                type="button"
+                onClick={() => setSortValue('selectedDate')}
+              >
+                date
+              </SortButtonStyled>
+              <SortButtonStyled
+                type="button"
+                style={{ color: 'var(--coral)' }}
+                onClick={() => setSortValue('')}
+              >
+                all
+              </SortButtonStyled>
+            </div>
+          </section>
+        )}
       </Header>
       <main>
         {likedData.length === 0 && (
@@ -108,7 +110,7 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
 
 const LikedFoodPageStyle = styled.section`
   display: grid;
-  grid-template-rows: 8.5rem 1fr 3rem;
+  grid-template-rows: fit-content 1fr 3rem;
 
   main {
     grid-row: 2 / 3;
@@ -117,7 +119,7 @@ const LikedFoodPageStyle = styled.section`
   }
 
   p {
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding: 1rem;
   }
 `;
