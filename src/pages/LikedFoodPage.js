@@ -126,10 +126,8 @@ const Header = styled.header`
   background-color: var(--lightsteel);
   padding: 1rem;
   width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 10;
   overflow: hidden;
+  border-top: 4px solid var(--steelblue);
   border-bottom: 2px solid var(--steelblue);
   box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;

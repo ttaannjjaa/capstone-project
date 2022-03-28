@@ -117,6 +117,7 @@ const Header = styled.header`
   top: 0;
   z-index: 10;
   overflow: hidden;
+  border-top: 4px solid var(--steelblue);
   border-bottom: 2px solid var(--steelblue);
   box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;
@@ -149,7 +150,7 @@ const SearchStyled = styled.div`
 `;
 
 const ListStyle = styled.ul`
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   list-style: none;
   width: 100%;
   display: grid;

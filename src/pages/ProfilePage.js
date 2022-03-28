@@ -287,6 +287,7 @@ const FormPageStyle = styled.section`
 `;
 
 const Header = styled.header`
+  border-top: 4px solid var(--steelblue);
   background-color: var(--lightsteel);
   padding: 1rem;
   width: 100%;

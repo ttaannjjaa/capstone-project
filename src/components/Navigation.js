@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import iconform from '../images/icon_form.svg';
-import iconthumbdown from '../images/icon_newThumbdown.svg';
-import iconthumbup from '../images/icon_newThumbup.svg';
+import iconheartblack from '../images/icon_heartfilled_black.svg';
+import iconcrossmarkred from '../images/icon_crossmark_red.svg';
 import iconcathead from '../images/icon_cathead.svg';
 
 export default function Navigation() {
@@ -13,7 +13,7 @@ export default function Navigation() {
       </NavButton>
       <NavButton to="/LikedFoodPage">
         <img
-          src={iconthumbup}
+          src={iconheartblack}
           alt={'thumbup icon'}
           width="25px"
           height="25px"
@@ -21,10 +21,10 @@ export default function Navigation() {
       </NavButton>
       <NavButton to="/UnLikedFoodPage">
         <img
-          src={iconthumbdown}
+          src={iconcrossmarkred}
           alt={'thumbdown icon'}
-          width="25px"
-          height="25px"
+          width="22px"
+          height="22px"
         />
       </NavButton>
       <NavButton to="/ProfilePage">

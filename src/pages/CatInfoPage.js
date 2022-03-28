@@ -95,6 +95,7 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   padding: 0.5rem;
+  border-top: 4px solid var(--steelblue);
   border-bottom: 2px solid var(--steelblue);
   box-shadow: var(--box-shadow-header-drop);
   position: relative;

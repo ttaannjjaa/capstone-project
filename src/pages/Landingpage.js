@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import catPictureBackground from '../images/backgroundimg.png';
+import iconheartwhite from '../images/icon_heartfilled_white.svg';
+import iconcrossmarkred from '../images/icon_crossmark_red.svg';
 import { ReactComponent as Headlinestyled } from '../images/headingCatyummyStyled.svg';
 
 export default function LandingPage() {
@@ -14,16 +16,28 @@ export default function LandingPage() {
       <StartNavigation>
         <StartButton onClick={() => navigate('/FormPage', { replace: true })}>
           CAT FOOD RATING
-        </StartButton>{' '}
+        </StartButton>
         <StartButton
           onClick={() => navigate('/LikedFoodPage', { replace: true })}
         >
-          CAT FOOD ♥️
+          CAT FOOD
+          <ImgIcon
+            src={iconheartwhite}
+            alt="icon black heart"
+            width="14px"
+            height="14px"
+          />
         </StartButton>
         <StartButton
           onClick={() => navigate('/UnLikedFoodPage', { replace: true })}
         >
-          CAT FOOD ❌
+          CAT FOOD
+          <ImgIcon
+            src={iconcrossmarkred}
+            alt="icon black heart"
+            width="14px"
+            height="14px"
+          />
         </StartButton>
       </StartNavigation>
     </StyledLandingPage>
@@ -62,6 +76,10 @@ const StartNavigation = styled.nav`
   }
 `;
 
+const ImgIcon = styled.img`
+  margin-left: 6px;
+`;
+
 const StartButton = styled.button`
   background-color: var(--steelblue);
   color: var(--white);
@@ -71,4 +89,7 @@ const StartButton = styled.button`
   border-radius: 10px;
   box-shadow: var(--box-shadow-inset);
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
