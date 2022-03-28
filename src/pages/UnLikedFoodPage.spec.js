@@ -9,16 +9,18 @@ describe('UnLikedFoodPage', () => {
         <UnLikedFoodPage
           storageData={[
             {
-              foodJudge: 'liked',
-              foodName: 'schnurrkatz',
-              foodTaste: 'Huhn',
-              foodStyle: 'Gelee',
+              foodRating: 'liked',
+              foodName: 'purrcat',
+              foodTaste: 'chicken',
+              foodStyle: 'jelly',
+              selectedDate: '2022-03-22',
             },
             {
-              foodJudge: 'unliked',
-              foodName: 'katzlecker',
-              foodTaste: 'Lachs',
-              foodStyle: 'Ragout',
+              foodRating: 'unliked',
+              foodName: 'catmax',
+              foodTaste: 'salmon',
+              foodStyle: 'ragu',
+              selectedDate: '2022-03-22',
             },
           ]}
         />
@@ -26,7 +28,7 @@ describe('UnLikedFoodPage', () => {
     );
 
     const headline = screen.getByRole('heading', {
-      textcontent: 'Not my taste...',
+      textcontent: 'NOT MY TASTE',
     });
     const ulAccessibility = screen.getByTestId('unlikedlist', {
       accessibleName: 'list of cards about catfood that your cat does not like',
@@ -42,16 +44,18 @@ describe('UnLikedFoodPage', () => {
         <UnLikedFoodPage
           storageData={[
             {
-              foodJudge: 'liked',
-              foodName: 'schnurrkatz',
-              foodTaste: 'Huhn',
-              foodStyle: 'Gelee',
+              foodRating: 'liked',
+              foodName: 'purrcat',
+              foodTaste: 'chicken',
+              foodStyle: 'jelly',
+              selectedDate: '2022-03-22',
             },
             {
-              foodJudge: 'unliked',
-              foodName: 'katzlecker',
-              foodTaste: 'Lachs',
-              foodStyle: 'Ragout',
+              foodRating: 'unliked',
+              foodName: 'catmax',
+              foodTaste: 'salmon',
+              foodStyle: 'ragu',
+              selectedDate: '2022-03-22',
             },
           ]}
         />

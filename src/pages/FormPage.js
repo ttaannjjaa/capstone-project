@@ -25,6 +25,10 @@ const FormPageStyle = styled.section`
     grid-row: 2 / 3;
     min-height: 100vh;
   }
+
+  h1 {
+    text-overflow: ellipsis;
+  }
 `;
 
 const Header = styled.header`

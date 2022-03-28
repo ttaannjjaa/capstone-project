@@ -182,6 +182,7 @@ const TextInput = styled.input`
   font-family: inherit;
   font-size: 1rem;
   line-height: 1.5rem;
+  text-overflow: ellipsis;
   margin-top: 8px;
   padding: 5px;
   background-color: var(--peach);
@@ -199,6 +200,7 @@ const TextField = styled.textarea`
   font-family: inherit;
   font-size: 1rem;
   line-height: 1.5rem;
+  text-overflow: ellipsis;
   margin-top: 8px;
   padding: 5px;
   background-color: var(--peach);

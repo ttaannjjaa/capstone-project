@@ -5,7 +5,7 @@ import ExitButton from '../components/ExitButton.js';
 import Searchbar from '../components/Searchbar.js';
 
 export default function UnLikedFoodPage({ storageData, handleDelete }) {
-  const unLikedData = storageData.filter(data => data.foodJudge === 'unliked');
+  const unLikedData = storageData.filter(data => data.foodRating === 'unliked');
 
   const [userInput, setUserInput] = useState('');
 
@@ -25,7 +25,7 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
     <UnLikedFoodPageStyled>
       <Header>
         <HeadingStyled>
-          <h1>not my taste...</h1>
+          <h1>NOT MY TASTE</h1>
           <ExitButton />
         </HeadingStyled>
         <SearchStyled>
@@ -35,8 +35,8 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
       <main>
         {unLikedData.length === 0 && (
           <p>
-            Du hast hier noch keine Listeneinträge. <br /> Listeneinträge
-            erscheinen, wenn das Formular ausgefüllt und gespeichert wird.
+            You don't have any list entries here yet. List entries appear when
+            the form is filled out and saved.
           </p>
         )}
         {userInput.length === 0 && (
@@ -52,7 +52,7 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
                   foodName={data.foodName}
                   foodTaste={data.foodTaste}
                   foodStyle={data.foodStyle}
-                  foodJudge={data.foodJudge}
+                  foodRating={data.foodRating}
                   selectedDate={data.selectedDate}
                   handleDelete={() => handleDelete(data.id)}
                 />
@@ -62,8 +62,8 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
         )}
         {userInput.length > 0 && filteredUnlikedData.length === 0 && (
           <p>
-            Entweder mag deine Katze das Futter oder es ist hier noch nicht als
-            Listeneintrag vorhanden.
+            Either your cat likes the food or it's not here yet as list entry
+            available.
           </p>
         )}
         {userInput.length > 0 && filteredUnlikedData.length > 0 && (
@@ -79,7 +79,7 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
                   foodName={data.foodName}
                   foodTaste={data.foodTaste}
                   foodStyle={data.foodStyle}
-                  foodJudge={data.foodJudge}
+                  foodRating={data.foodRating}
                   selectedDate={data.selectedDate}
                   handleDelete={() => handleDelete(data.id)}
                 />

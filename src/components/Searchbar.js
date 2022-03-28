@@ -27,7 +27,6 @@ const SearchbarContainer = styled.section`
   align-items: center;
 
   img {
-    margin-right: 3px;
     padding-bottom: 6px;
   }
 
@@ -36,12 +35,11 @@ const SearchbarContainer = styled.section`
     font-weight: bold;
     color: var(--black);
     margin-right: 5px;
-    padding-bottom: 6px;
+    padding-bottom: 10px;
   }
 
   input {
-    max-width: 200px;
-    min-width: 100px;
+    width: fit-content;
     font-size: 1rem;
     text-overflow: ellipsis;
     border-radius: 5px;
@@ -51,6 +49,14 @@ const SearchbarContainer = styled.section`
     box-shadow: 3px 2px 0px 2px rgba(89, 122, 145, 0.44);
     &:focus {
       outline: 1px solid var(--coral);
+    }
+
+    @media (max-width: 350px) {
+      max-width: 200px;
+    }
+    @media (min-width: 350px) {
+      flex-grow: 1;
+      max-width: 330px;
     }
   }
 `;
