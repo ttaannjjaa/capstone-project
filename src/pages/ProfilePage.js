@@ -253,7 +253,7 @@ export default function ProfilePage() {
         </FormContainer>
         <div>
           <CatInfoPageButton
-            onClick={() => navigate('/CatInfoPage', { replace: true })}
+            onClick={() => navigate('/catinfopage', { replace: true })}
           >
             <span>about cat breeds</span>
             <img

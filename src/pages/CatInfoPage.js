@@ -37,7 +37,7 @@ export default function CatInfoPage() {
       <Header>
         <button
           type="button"
-          onClick={() => navigate('/ProfilePage', { replace: true })}
+          onClick={() => navigate('/profilepage', { replace: true })}
         >
           <span className="sr-only">back button</span>
           <img src={iconarrowleft} alt="arrow icon showing to the left" />

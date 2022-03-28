@@ -14,11 +14,11 @@ export default function LandingPage() {
         <Headlinestyled width="310px" height="150px" />
       </h1>
       <StartNavigation>
-        <StartButton onClick={() => navigate('/FormPage', { replace: true })}>
+        <StartButton onClick={() => navigate('/formpage', { replace: true })}>
           CAT FOOD RATING
         </StartButton>
         <StartButton
-          onClick={() => navigate('/LikedFoodPage', { replace: true })}
+          onClick={() => navigate('/likedfoodpage', { replace: true })}
         >
           CAT FOOD
           <ImgIcon
@@ -29,7 +29,7 @@ export default function LandingPage() {
           />
         </StartButton>
         <StartButton
-          onClick={() => navigate('/UnLikedFoodPage', { replace: true })}
+          onClick={() => navigate('/unlikedfoodpage', { replace: true })}
         >
           CAT FOOD
           <ImgIcon
