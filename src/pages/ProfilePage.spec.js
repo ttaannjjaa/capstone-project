@@ -10,7 +10,7 @@ describe('ProfilePage', () => {
       </MemoryRouter>
     );
 
-    const headline = screen.getByText('Mein Katzenprofil');
+    const headline = screen.getByText('Cat Profile');
     const exitButton = screen.getByTestId('button to leave the app');
 
     expect(headline).toBeInTheDocument();
@@ -31,15 +31,15 @@ describe('ProfilePage', () => {
     expect(updateicon).toBeInTheDocument();
   });
 
-  it('renders 3 inputelements for text, 1 inputelement for file and one textarea', () => {
+  it('renders 2 inputelements for text, 1 inputelement for file, 1 inputelement for a number and one textarea', () => {
     render(
       <MemoryRouter>
         <ProfilePage />
       </MemoryRouter>
     );
 
-    const inputElementNote = screen.getByRole('textbox', { name: 'Notiz' });
-    const inputElementAge = screen.getByRole('textbox', { name: 'Jahre' });
+    const inputElementNote = screen.getByRole('textbox', { name: 'Note' });
+    const inputElementAge = screen.getByTestId('inputAge');
     const inputElementPetName = screen.getByTestId('inputPetName');
     const inputElementName = screen.getByTestId('inputCatName');
     const inputElementImg = screen.getByTestId('inputImgUpload');

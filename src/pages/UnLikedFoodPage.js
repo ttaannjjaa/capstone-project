@@ -25,7 +25,7 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
     <UnLikedFoodPageStyled>
       <Header>
         <HeadingStyled>
-          <h1>Ich futtere lieber etwas anderes als...</h1>
+          <h1>not my taste...</h1>
           <ExitButton />
         </HeadingStyled>
         <SearchStyled>
@@ -95,11 +95,13 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
 const UnLikedFoodPageStyled = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 9.5rem 1fr 3rem;
+  grid-template-rows: fit-content 1fr 3rem;
 
   main {
+    margin-top: 6rem;
     grid-row: 2 / 3;
     min-height: 100vh;
+    background-color: var(--peach);
   }
 
   p {
@@ -109,24 +111,25 @@ const UnLikedFoodPageStyled = styled.section`
 `;
 
 const Header = styled.header`
-  background-color: var(--peach);
+  background-color: var(--lightsteel);
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 10;
   overflow: hidden;
+  border-bottom: 2px solid var(--steelblue);
   box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;
   display: grid;
-  grid-template-rows: 4.5rem 5rem;
+  grid-template-rows: fit-content fit-content;
 
   h1 {
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 0.5rem 1rem;
-    background-color: var(--peach);
+    background-color: var(--lightsteel);
     align-self: center;
-    color: var(--steelblue);
+    color: var(--black);
     letter-spacing: 1px;
   }
 `;
@@ -134,6 +137,7 @@ const Header = styled.header`
 const HeadingStyled = styled.div`
   display: flex;
   justify-content: space-between;
+  padding-top: 0.5rem;
   margin-right: 1rem;
 `;
 
@@ -142,7 +146,7 @@ const SearchStyled = styled.div`
   display: flex;
   padding: 0 1rem;
   justify-content: flex-start;
-  background-color: var(--peach);
+  background-color: var(--lightsteel);
 `;
 
 const ListStyle = styled.ul`

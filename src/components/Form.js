@@ -19,7 +19,7 @@ export default function Form({ handleData }) {
   });
 
   const onSubmit = data => {
-    const message = `Die Bewertung wurde erfolgreich gespeichert.`;
+    const message = `successfully saved`;
     alert(JSON.stringify(message));
     const formData = {
       id: nanoid(),
@@ -33,6 +33,8 @@ export default function Form({ handleData }) {
     reset();
   };
 
+  const dateToday = new Date().toISOString().substring(0, 10);
+
   return (
     <FormContainer>
       <FormStyled
@@ -42,7 +44,7 @@ export default function Form({ handleData }) {
         aria-describedby="form to document the judgement of your cat about its food"
         data-testid="form"
       >
-        <label htmlFor="foodName">Markenname *</label>
+        <label htmlFor="foodName">brand name *</label>
         <TextInput
           id="foodName"
           type="text"
@@ -51,57 +53,58 @@ export default function Form({ handleData }) {
           {...register('foodName', {
             required: {
               value: true,
-              message: 'Wie willst Du etwas wiederfinden ohne Namen?',
+              message:
+                'How do you want to find something again without a name?',
             },
             maxLength: {
               value: 20,
-              message: 'ups, Limit von 2o Buchstaben erreicht',
+              message: 'ups, limit of 2o characters reached',
             },
             pattern: {
-              value: /^[A-Za-z]+/i,
-              message: 'bitte Text eingeben',
+              value: /^[A-Za-z ]+$/,
+              message: 'no numbers or special characters allowed',
             },
           })}
         />
         {errors.foodName && <span>{errors.foodName.message}</span>}
-        <label htmlFor="foodTaste">Sorte *</label>
+        <label htmlFor="foodTaste">variety/taste *</label>
         <TextField
           id="foodTaste"
           maxLength="85"
           rows="4"
-          placeholder="z.B. Huhn, Lachs, Rind"
+          placeholder="z.B. chicken, salmon"
           aria-invalid={errors.foodTaste ? 'true' : 'false'}
           {...register('foodTaste', {
             required: {
               value: true,
-              message: 'Ohne diese Angabe kann die App nicht funktionieren.',
+              message: 'The app cannot function without this information.',
             },
             maxLength: {
               value: 84,
-              message: '84 Buchstaben sollten doch reichen.',
+              message: '84 letters should be enough.',
             },
             pattern: {
-              value: /^[A-Za-z]+/i,
-              message: 'bitte Text eingeben',
+              value: /^[A-Za-z ]+$/,
+              message: 'no numbers or special characters allowed',
             },
           })}
         />
         {errors.foodTaste && <span>{errors.foodTaste.message}</span>}
-        <label htmlFor="foodStyle">Zubereitung (Angabe optional)</label>
+        <label htmlFor="foodStyle">preparation (input optional)</label>
         <TextInput
           id="foodStyle"
           type="text"
           maxLength="21"
-          placeholder="z.B. Gelee, Ragout, Pastete"
+          placeholder="e.g. jelly, ragu, pate"
           aria-invalid={errors.foodStyle ? 'true' : 'false'}
           {...register('foodStyle', {
             maxLength: {
               value: 20,
-              message: 'ups, Limit von 2o Buchstaben erreicht',
+              message: 'ups, limit of 2o characters reached',
             },
             pattern: {
-              value: /^[A-Za-z]+/i,
-              message: 'bitte Text eingeben',
+              value: /^[A-Za-z ]+$/,
+              message: 'no numbers or special characters allowed',
             },
           })}
         />
@@ -117,7 +120,7 @@ export default function Form({ handleData }) {
               {...register('foodJudge', { required: { value: true } })}
               defaultChecked
             />
-            <label htmlFor="liked">lecker</label>
+            <label htmlFor="liked">yummy</label>
           </RadioStyled>
           <RadioStyled>
             <RadioButton
@@ -127,12 +130,18 @@ export default function Form({ handleData }) {
               value="unliked"
               {...register('foodJudge', { required: { value: true } })}
             />
-            <label htmlFor="unliked">mag ich nicht</label>
+            <label htmlFor="unliked">not liked</label>
           </RadioStyled>
         </Judge>
-        <label htmlFor="date">verfüttert am </label>
-        <DateInput id="date" name="date" type="date" {...register('date')} />
-        <SaveButton type="submit">SPEICHERN</SaveButton>
+        <label htmlFor="date">fed on </label>
+        <DateInput
+          id="date"
+          name="date"
+          type="date"
+          max={dateToday}
+          {...register('date')}
+        />
+        <SaveButton type="submit">SAVE</SaveButton>
       </FormStyled>
     </FormContainer>
   );

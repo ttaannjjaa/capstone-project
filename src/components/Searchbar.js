@@ -4,18 +4,16 @@ import iconSearch from '../images/icon_magnifying-glass.svg';
 export default function Searchbar({ userInput, handleUserInput }) {
   return (
     <SearchbarContainer>
-      <div>
-        <img src={iconSearch} alt="search icon" width="26px" height="26px" />
-        <label htmlFor="catfood-search">Suche</label>
-      </div>
+      <img src={iconSearch} alt="search icon" width="26px" height="26px" />
+      <label htmlFor="catfood-search">Search</label>
       <input
         type="search"
         id="catfood-search"
-        placeholder="z.B. Name des Futters"
-        maxLength="80"
+        placeholder="e.g. name of food"
+        maxLength="50"
         value={userInput}
         onChange={handleUserInput}
-        pattern="^[a-zA-Z]+$"
+        pattern={/^[a-zA-Z ]+$/}
       />
     </SearchbarContainer>
   );
@@ -23,34 +21,29 @@ export default function Searchbar({ userInput, handleUserInput }) {
 
 const SearchbarContainer = styled.section`
   display: flex;
-  flex-direction: column;
   width: 100%;
+  border-top: 1px solid var(--steelblue);
+  padding: 0.5rem 0;
+  align-items: center;
 
-  div {
-    display: flex;
-    align-items: flex-start;
-    padding: 4px 0;
-    width: 100%;
-    border-top: 1px solid var(--steelblue);
+  img {
+    margin-right: 3px;
+    padding-bottom: 6px;
   }
 
   label {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
-    color: var(--steelblue);
-  }
-
-  img {
-    align-self: flex-start;
-    margin-right: 3px;
+    color: var(--black);
+    margin-right: 5px;
+    padding-bottom: 6px;
   }
 
   input {
-    min-width: 300px;
-    width: 100%;
+    max-width: 200px;
+    min-width: 100px;
     font-size: 1rem;
     text-overflow: ellipsis;
-    line-height: 1.5rem;
     border-radius: 5px;
     border: none;
     padding: 3px 3px 3px 4px;

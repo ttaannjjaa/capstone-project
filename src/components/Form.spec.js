@@ -40,7 +40,7 @@ describe('Form', () => {
     );
 
     const inputFields = screen.getAllByRole('textbox');
-    const inputDate = screen.getByLabelText(/verfüttert am/i);
+    const inputDate = screen.getByLabelText(/fed on/i);
     const radiobuttons = screen.getAllByRole('radio');
     const group = screen.getByRole('group');
     const buttonForm = screen.getByRole('button');
@@ -59,7 +59,7 @@ describe('Form', () => {
       </MemoryRouter>
     );
 
-    const submitButton = screen.getByRole('button', { name: /Speichern/i });
+    const submitButton = screen.getByRole('button', { name: /Save/i });
     expect(submitButton).toBeInTheDocument();
   });
 

@@ -1,16 +1,21 @@
 import axios from 'axios';
 import styled from 'styled-components';
 import useLocalStorage from '../hooks/useLocalStorage.js';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ExitButton from '../components/ExitButton.js';
+import coralcatright from '../images/coral_cat_head_right.svg';
+import iconarrowright from '../images/icon_arrow_right_circle_fill.svg';
 import iconbin from '../images/icon_bin.svg';
 import iconpencil from '../images/icon_pencil.svg';
 import iconrotate from '../images/icon_rotate.svg';
+import imageUploadInfo from '../images/imageUploadInfo.svg';
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
 export default function ProfilePage() {
+  const navigate = useNavigate();
   const [image, setImage] = useLocalStorage('Bild', '');
 
   function upload(event) {
@@ -33,76 +38,90 @@ export default function ProfilePage() {
   function onImageSave(response) {
     setImage(response.data.url);
   }
-  console.log(image);
+
   function onImageRemove() {
     setImage('');
   }
-
-  const [catName, setCatName] = useLocalStorage('catName', 'Katzenname');
-  const [editingNameValue, setEditingNameValue] = useState(catName);
-
-  const onBlurName = event => {
-    if (event.target.value.trim() === '') {
-      setEditingNameValue(catName);
-    } else {
-      setCatName(event.target.value);
-    }
-  };
-
-  const [catCutieName, setStorageCatCutieName] = useLocalStorage(
-    'cutieCatName',
-    'Kosename'
+  const [storedProfileData, setStoredProfileData] = useLocalStorage(
+    'profileData',
+    {}
   );
-  const [editingCutieNameValue, setEditingCutieNameValue] =
-    useState(catCutieName);
 
-  const onBlurCutieName = event => {
-    if (event.target.value.trim() === '') {
-      setEditingCutieNameValue(catCutieName);
-    } else {
-      setStorageCatCutieName(event.target.value);
-    }
+  const [profileData, setProfileData] = useState({
+    profileName: storedProfileData?.profileName
+      ? storedProfileData.profileName
+      : 'Garfield',
+    profilePetName: storedProfileData?.profileData
+      ? storedProfileData.profilePetName
+      : 'cutie',
+    profileAge: storedProfileData?.profileAge
+      ? storedProfileData.profileAge
+      : '0',
+    profileNote: storedProfileData?.profileNote
+      ? storedProfileData.profileNote
+      : '...',
+  });
+
+  const onKeyDownName = event => {
+    event.key === 'Enter'
+      ? setStoredProfileData({
+          ...storedProfileData,
+          profileName: event.target.value,
+        })
+      : setStoredProfileData(profileData);
   };
 
-  const [catAge, setStorageCatAge] = useLocalStorage('catAge', 0);
-
-  const [editingCatAgeValue, setEditingCatAgeValue] = useState(catAge);
-
-  const onBlurCatAge = event => {
-    if (event.target.value.trim() === '') {
-      setEditingCutieNameValue(catAge);
-    } else {
-      setStorageCatAge(event.target.value);
-    }
+  const onKeyDownPetName = event => {
+    event.key === 'Enter'
+      ? setStoredProfileData({
+          ...storedProfileData,
+          profilePetName: event.target.value,
+        })
+      : setStoredProfileData(profileData);
   };
 
-  const [note, setStorageNote] = useLocalStorage('note', '...');
-
-  const [editingNoteValue, setEditingNoteValue] = useState(note);
-
-  const onBlurNote = event => {
-    if (event.target.value.trim() === '') {
-      setEditingNoteValue(note);
-    } else {
-      setStorageNote(event.target.value);
-    }
+  const onKeyDownAge = event => {
+    event.key === 'Enter'
+      ? setStoredProfileData({
+          ...storedProfileData,
+          profileAge: event.target.value,
+        })
+      : setStoredProfileData(profileData);
   };
 
-  const onKeyDown = event => {
-    if (event.key === 'Enter' || event.key === 'Escape') {
-      event.target.blur();
-    }
+  const onKeyDownNote = event => {
+    event.key === 'Enter'
+      ? setStoredProfileData({
+          ...storedProfileData,
+          profileNote: event.target.value.trim(),
+        })
+      : setStoredProfileData(profileData);
   };
 
   return (
     <FormPageStyle>
       <Header>
-        <h1>Mein Katzenprofil</h1>
+        <h1>Cat Profile</h1>
         <ExitButton />
       </Header>
       <main>
         <ImgContainer min-width="280px" min-height="165px">
-          <img src={image} alt="" width="280px" height="165px" />
+          {image ? (
+            <UploadedImg
+              data-testid="inputImgUpload"
+              src={image}
+              alt=""
+              width="280px"
+              height="165px"
+            />
+          ) : (
+            <DefaultImg
+              src={imageUploadInfo}
+              alt="photoupload by clicking button with curved arrow right-hand-side, removing it by clicking the button with the bin on the left"
+              width="280px"
+              height="130px"
+            />
+          )}
           <RemoveButton onClick={onImageRemove} data-testid="buttonRemove">
             <span className="sr-only">Image remove button</span>
             <img src={iconbin} alt="icon rotate arrow to the left" />
@@ -111,7 +130,9 @@ export default function ProfilePage() {
             data-testid="inputImgUpload"
             id="imgUpload"
             type="file"
-            onChange={upload}
+            onChange={event => {
+              upload(event);
+            }}
             hidden
           />
           <UploadButton htmlFor="imgUpload" data-testid="inputLabelImgUpload">
@@ -120,72 +141,130 @@ export default function ProfilePage() {
           </UploadButton>
         </ImgContainer>
 
-        <FormContainer>
+        <FormContainer title="after editing press enter">
           <div>
-            <img src={iconpencil} width="20px" height="20px" alt="pen" />
+            <img
+              src={iconpencil}
+              width="20px"
+              height="20px"
+              alt="pen"
+              title="after editing press enter"
+            />
             <InputTextStyled
+              id="profileName"
               data-testid="inputCatName"
               type="text"
-              id="catname"
-              value={editingNameValue}
-              onChange={event => setEditingNameValue(event.target.value)}
-              onKeyDown={onKeyDown}
-              onBlur={onBlurName}
-              maxLength={30}
+              maxLength="25"
+              pattern={/^[A-Za-z ]+$/}
+              value={profileData.profileName}
+              onChange={event =>
+                setProfileData({
+                  ...profileData,
+                  profileName: event.target.value,
+                })
+              }
+              onKeyDown={onKeyDownName}
             />
-            <label className="sr-only" htmlFor="catname">
-              Katzenname
+            <label className="sr-only" htmlFor="profileName">
+              cat name
             </label>
           </div>
           <div>
-            <img src={iconpencil} width="20px" height="20px" alt="pen" />
+            <img
+              src={iconpencil}
+              width="20px"
+              height="20px"
+              alt="pen"
+              title="after editing press enter"
+            />
             <InputTextStyled
-              type="text"
-              id="petname"
+              id="profilePetName"
               data-testid="inputPetName"
-              value={editingCutieNameValue}
-              onChange={event => setEditingCutieNameValue(event.target.value)}
-              onKeyDown={onKeyDown}
-              onBlur={onBlurCutieName}
-              maxLength={30}
+              type="text"
+              maxLength="25"
+              pattern={/^[A-Za-z ]+$/}
+              value={profileData.profilePetName}
+              onChange={event =>
+                setProfileData({
+                  ...profileData,
+                  profilePetName: event.target.value,
+                })
+              }
+              onKeyDown={onKeyDownPetName}
             />
-            <label htmlFor="petName" className="sr-only">
-              Kosename der Katze
+            <label htmlFor="profilePetName" className="sr-only">
+              petname
             </label>
           </div>
           <div>
-            <img src={iconpencil} width="20px" height="20px" alt="pen" />
-            <LabelAgeStyled htmlFor="catage">
+            <img
+              src={iconpencil}
+              width="20px"
+              height="20px"
+              alt="pen"
+              title="after editing press enter"
+            />
+            <LabelAgeStyled htmlFor="profileAge">
               <InputAgeStyled
-                type="text"
-                id="catage"
-                value={editingCatAgeValue}
-                onChange={event => setEditingCatAgeValue(event.target.value)}
-                onKeyDown={onKeyDown}
-                onBlur={onBlurCatAge}
-                maxLength={2}
-                pattern={/^[0-9]{1,2}$/}
-              />{' '}
-              Jahre
+                id="profileAge"
+                data-testid="inputAge"
+                type="number"
+                maxLength="25"
+                min="0"
+                max="30"
+                pattern={/^[0-9{1,2}]+$/}
+                value={profileData.profileAge}
+                onChange={event =>
+                  setProfileData({
+                    ...profileData,
+                    profileAge: event.target.value.trim(),
+                  })
+                }
+                onKeyDown={onKeyDownAge}
+              />
+              years
             </LabelAgeStyled>
           </div>
           <NoteContainer>
             <div>
-              <img src={iconpencil} width="20px" height="20px" alt="pen" />
-              <label htmlFor="note">Notiz </label>
+              <img
+                src={iconpencil}
+                width="20px"
+                height="20px"
+                alt="pen"
+                title="after editing press enter"
+              />
+              <label htmlFor="note">Note </label>
             </div>
             <textarea
-              type="text"
               id="note"
-              value={editingNoteValue}
-              onChange={event => setEditingNoteValue(event.target.value)}
-              onKeyDown={onKeyDown}
-              onBlur={onBlurNote}
-              maxLength={300}
-              rows="5"
+              type="text"
+              rows="10"
+              value={profileData.profileNote}
+              onChange={event =>
+                setProfileData({
+                  ...profileData,
+                  profileNote: event.target.value,
+                })
+              }
+              onKeyDown={onKeyDownNote}
             />
           </NoteContainer>
         </FormContainer>
+        <div>
+          <CatInfoPageButton
+            onClick={() => navigate('/CatInfoPage', { replace: true })}
+          >
+            <span>about cat breeds</span>
+            <img
+              src={coralcatright}
+              alt="little cat looking to the right"
+              width="28"
+              height="28"
+            />
+            <img src={iconarrowright} alt="arrow icon showing to the right" />
+          </CatInfoPageButton>
+        </div>
       </main>
     </FormPageStyle>
   );
@@ -195,6 +274,7 @@ const FormPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
   grid-template-rows: 2.5rem 1fr 3rem;
+  position: relative;
 
   main {
     grid-row: 2 / 3;
@@ -207,7 +287,7 @@ const FormPageStyle = styled.section`
 `;
 
 const Header = styled.header`
-  background-color: var(--peach);
+  background-color: var(--lightsteel);
   padding: 1rem;
   width: 100%;
   position: fixed;
@@ -219,11 +299,12 @@ const Header = styled.header`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  border-bottom: 2px solid var(--steelblue);
 
   h1 {
     width: 100%;
-    font-size: 1.2rem;
-    color: var(--steelblue);
+    font-size: 1.1rem;
+    color: var(--black);
     letter-spacing: 1px;
   }
 `;
@@ -234,11 +315,15 @@ const ImgContainer = styled.div`
   align-items: center;
   margin-top: 0.5rem;
   position: relative;
+`;
 
-  img {
-    margin-bottom: 1rem;
-    border-radius: 5px;
-  }
+const UploadedImg = styled.img`
+  margin-bottom: 1rem;
+  border-radius: 5px;
+`;
+
+const DefaultImg = styled.img`
+  margin-bottom: 3rem;
 `;
 
 const UploadButton = styled.label`
@@ -251,6 +336,10 @@ const UploadButton = styled.label`
   position: absolute;
   bottom: 14px;
   right: 0;
+  &:hover {
+    cursor: pointer;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 `;
 
 const RemoveButton = styled.button`
@@ -264,6 +353,10 @@ const RemoveButton = styled.button`
   bottom: 14px;
   left: 0;
   border: none;
+  &:hover {
+    cursor: pointer;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 
   & > img {
     z-index: 2;
@@ -297,7 +390,7 @@ const InputTextStyled = styled.input`
 `;
 
 const InputAgeStyled = styled.input`
-  max-width: 25px;
+  max-width: 50px;
   border: none;
   background-color: var(--peach);
   box-shadow: var(--box-shadow-inputfields);
@@ -336,10 +429,27 @@ const NoteContainer = styled.div`
     background-color: var(--peach);
     border: none;
     border-radius: 5px;
-    padding: 3px;
+    padding: 5px;
+    font-family: inherit;
     font-size: 0.9rem;
     &:focus {
       outline: 1px solid var(--coral);
     }
+  }
+`;
+
+const CatInfoPageButton = styled.button`
+  padding: 2px;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  border: none;
+  text-decoration: none;
+  background-color: var(--white);
+  position: absolute;
+  bottom: 65px;
+  right: 1.5rem;
+  &:hover {
+    cursor: pointer;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 `;

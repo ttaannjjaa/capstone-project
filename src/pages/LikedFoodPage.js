@@ -32,7 +32,7 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
     <LikedFoodPageStyle>
       <Header>
         <div>
-          <h1>Mir schmeckt...</h1>
+          <h1>I really like to eat...</h1>
           <ExitButton />
         </div>
         <section>
@@ -101,7 +101,6 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
 }
 
 const LikedFoodPageStyle = styled.section`
-  background-color: var(--white);
   display: grid;
   grid-template-rows: 8.5rem 1fr 3rem;
 
@@ -117,25 +116,27 @@ const LikedFoodPageStyle = styled.section`
 `;
 
 const Header = styled.header`
-  background-color: var(--peach);
+  background-color: var(--lightsteel);
   padding: 1rem;
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 10;
   overflow: hidden;
+  border-bottom: 2px solid var(--steelblue);
   box-shadow: var(--box-shadow-header-drop);
   grid-row: 1 / 2;
 
   div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   h1 {
     width: 100%;
-    font-size: 1.2rem;
-    color: var(--steelblue);
+    font-size: 1.1rem;
+    color: var(--black);
     letter-spacing: 1px;
     padding-bottom: 1rem;
   }
@@ -143,13 +144,13 @@ const Header = styled.header`
   section {
     border-top: 1px solid var(--steelblue);
     padding-top: 0.3rem;
-    color: var(--steelblue);
+    color: var(--black);
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
 
     span {
-      padding-bottom: 4px;
+      padding: 4px 0;
     }
 
     div {

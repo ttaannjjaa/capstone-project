@@ -1,8 +1,8 @@
 <svg width="34" height="34" viewBox="0 0 1740 1459" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_108_295)">
-<ellipse cx="856" cy="891.5" rx="605" ry="559.5" fill="#597A91"/>
-<path d="M241.742 217.952L730.394 427.683L313.364 744.865L241.742 217.952Z" fill="#597A91"/>
-<path d="M1494.4 178.027L1397.12 760.324L972.312 453.631L1494.4 178.027Z" fill="#597A91"/>
+<ellipse cx="856" cy="891.5" rx="605" ry="559.5" fill="black"/>
+<path d="M241.742 217.952L730.394 427.683L313.364 744.865L241.742 217.952Z" fill="black"/>
+<path d="M1494.4 178.027L1397.12 760.324L972.312 453.631L1494.4 178.027Z" fill="black"/>
 </g>
 <defs>
 <filter id="filter0_d_108_295" x="237.742" y="178.027" width="1260.66" height="1280.97" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">

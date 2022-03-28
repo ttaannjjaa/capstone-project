@@ -48,12 +48,13 @@ const NavigationWrapper = styled.nav`
 `;
 
 const NavButton = styled(NavLink)`
-  background-color: var(--peach);
+  background-color: var(--lightsteel);
   min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   &.active {
     border-top: 5px solid ${'var(--coral)'};
+    background-color: var(--steelblue);
   }
 `;

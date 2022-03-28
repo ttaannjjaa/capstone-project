@@ -1,12 +1,14 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from './ErrorFallback.js';
 import { Routes, Route } from 'react-router-dom';
+
 import Navigation from './components/Navigation.js';
+
+import CatInfoPage from './pages/CatInfoPage.js';
 import FormPage from './pages/FormPage.js';
 import LandingPage from './pages/Landingpage.js';
 import LikedFoodPage from './pages/LikedFoodPage.js';
 import ProfilePage from './pages/ProfilePage.js';
-
 import UnLikedFoodPage from './pages/UnLikedFoodPage.js';
 
 import useLocalStorage from './hooks/useLocalStorage.js';
@@ -71,6 +73,7 @@ function App() {
             </>
           }
         />
+        <Route path="/CatInfoPage" element={<CatInfoPage />} />
       </Routes>
     </ErrorBoundary>
   );
