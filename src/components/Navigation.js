@@ -8,10 +8,10 @@ import iconcathead from '../images/icon_cathead.svg';
 export default function Navigation() {
   return (
     <NavigationWrapper>
-      <NavButton to="/FormPage">
+      <NavButton to="/formpage">
         <img src={iconform} alt={'form icon'} width="32px" height="34px" />
       </NavButton>
-      <NavButton to="/LikedFoodPage">
+      <NavButton to="/likedfoodpage">
         <img
           src={iconheartblack}
           alt={'thumbup icon'}
@@ -19,7 +19,7 @@ export default function Navigation() {
           height="25px"
         />
       </NavButton>
-      <NavButton to="/UnLikedFoodPage">
+      <NavButton to="/unlikedfoodpage">
         <img
           src={iconcrossmarkred}
           alt={'thumbdown icon'}
@@ -27,7 +27,7 @@ export default function Navigation() {
           height="22px"
         />
       </NavButton>
-      <NavButton to="/ProfilePage">
+      <NavButton to="/profilepage">
         <img
           src={iconcathead}
           alt={'cathead icon'}

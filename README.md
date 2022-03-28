@@ -31,6 +31,7 @@ You can have a look at the last update of CatYummy on Vercel: [DemoVersion](http
 - [npm](https://www.npmjs.com/package/npm)
 - [axios](https://axios-http.com/)
 - [nanoid](https://www.npmjs.com/package/nanoid)
+- [The Cat API](https://thecatapi.com/)
 - [Vercel](https://vercel.com)
 
 ### Project Setup

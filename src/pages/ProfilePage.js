@@ -51,7 +51,7 @@ export default function ProfilePage() {
     profileName: storedProfileData?.profileName
       ? storedProfileData.profileName
       : 'Garfield',
-    profilePetName: storedProfileData?.profileData
+    profilePetName: storedProfileData?.profilePetName
       ? storedProfileData.profilePetName
       : 'cutie',
     profileAge: storedProfileData?.profileAge

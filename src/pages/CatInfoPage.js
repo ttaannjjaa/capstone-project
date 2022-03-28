@@ -23,7 +23,6 @@ export default function CatInfoPage() {
           return response.data;
         })
         .then(data => {
-          console.log(data);
           setCatData(data);
         })
         .catch(error => console.log(error, 'sorry, there is a problem'));

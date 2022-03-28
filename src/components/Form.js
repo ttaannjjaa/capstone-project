@@ -48,6 +48,7 @@ export default function Form({ handleData }) {
         <TextInput
           id="foodName"
           type="text"
+          minLength="3"
           maxLength="21"
           aria-invalid={errors.foodName ? 'true' : 'false'}
           {...register('foodName', {
@@ -70,6 +71,7 @@ export default function Form({ handleData }) {
         <label htmlFor="foodTaste">variety/taste *</label>
         <TextField
           id="foodTaste"
+          minLength="3"
           maxLength="85"
           rows="4"
           placeholder="z.B. chicken, salmon"
@@ -94,6 +96,7 @@ export default function Form({ handleData }) {
         <TextInput
           id="foodStyle"
           type="text"
+          minLength="3"
           maxLength="21"
           placeholder="e.g. jelly, ragu, pate"
           aria-invalid={errors.foodStyle ? 'true' : 'false'}
