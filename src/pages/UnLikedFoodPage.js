@@ -98,7 +98,6 @@ const UnLikedFoodPageStyled = styled.section`
   grid-template-rows: fit-content 1fr 3rem;
 
   main {
-    margin-top: 6rem;
     grid-row: 2 / 3;
     min-height: 100vh;
     background-color: var(--peach);
@@ -113,9 +112,6 @@ const UnLikedFoodPageStyled = styled.section`
 const Header = styled.header`
   background-color: var(--lightsteel);
   width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 10;
   overflow: hidden;
   border-top: 4px solid var(--steelblue);
   border-bottom: 2px solid var(--steelblue);

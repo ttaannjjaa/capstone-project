@@ -64,12 +64,8 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
               >
                 date
               </SortButtonStyled>
-              <SortButtonStyled
-                type="button"
-                style={{ color: 'var(--coral)' }}
-                onClick={() => setSortValue('')}
-              >
-                all
+              <SortButtonStyled type="button" onClick={() => setSortValue('')}>
+                entry
               </SortButtonStyled>
             </div>
           </section>

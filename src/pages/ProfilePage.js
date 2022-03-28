@@ -130,6 +130,7 @@ export default function ProfilePage() {
             data-testid="inputImgUpload"
             id="imgUpload"
             type="file"
+            accept="image/*"
             onChange={event => {
               upload(event);
             }}
