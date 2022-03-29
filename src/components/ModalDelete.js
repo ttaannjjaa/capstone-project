@@ -22,7 +22,7 @@ export default function ModalDelete({ onConfirm, onCancel, visible, id }) {
   );
 }
 
-const ModalDeleteStyled = styled.dialog`
+const ModalDeleteStyled = styled.section`
   border: 5px solid var(--coral);
   border-radius: 10px;
   background-color: var(--lightsteel);
@@ -31,9 +31,6 @@ const ModalDeleteStyled = styled.dialog`
   display: grid;
   grid-template-rows: fit-content fit-content 1fr;
   place-items: center;
-  ::backdrop {
-    opacity: 0.4;
-  }
 
   h2 {
     font-size: 1rem;
