@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import iconwarning from '../images/icon_warning.svg';
 import { SortButtonStyled } from './SortButtonStyled.js';
 
 export default function ModalDelete({ onConfirm, onCancel, visible, id }) {
@@ -10,11 +11,12 @@ export default function ModalDelete({ onConfirm, onCancel, visible, id }) {
       aria-labelledby="dialog1Title"
       aria-describedby="dialog1Desc"
     >
-      <h2 id="dialog1Title">Confirmation Delete Requested</h2>
+      <h2 id="dialog1Title">Confirmation Requested</h2>
       <p id="dialog1Desc">Do you really want to delete this?</p>
       <ButtonWrapper>
         <SortButtonStyled onClick={onConfirm} id={id}>
-          ⚠️ Yes
+          <img src={iconwarning} alt="icon warning" width="14" height="14" />{' '}
+          Yes
         </SortButtonStyled>
         <SortButtonStyled onClick={onCancel}>No</SortButtonStyled>
       </ButtonWrapper>
