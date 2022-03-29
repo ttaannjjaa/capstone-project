@@ -2,14 +2,15 @@
 
 ## Capstone Project of the IT bootcamp at neuefische
 
-CatYummy allows you to track your cat's decisions about its food. After adding the food your cat likes or does not, CatYummy will help your memory out when you will stand in front of a long row with cat food products in the supermarket or pet supplies shop next time, trying to remember which food your cat has already tested...and didn' t like it. CatYummy will save your money, helps to reduce waste and makes your cat happier.
+CatYummy allows you to track your cat's decisions about its food preferences. After adding the food your cat likes or dislikes, CatYummy will store this information in its database. This will save you from trying to remember which food your cat has already tested. CatYummy will save your money, help reduce waste and will make your cat happier.
 
 CatYummy is under construction.
 
-From the landing page the most important features are just one click away without any login for a better user experience while shopping time, but you will find even more inside. To leave the app there is a button (cat nearby an open door) on all main navigation pages in the upper right corner.  
-A good start is the form to add a listcontent: how did your cat accept the last food you gave to it. Then you can see the new listitem on the according voting page. The data is stored in the local storage of your browser, so the app will (most probably) not loose them, when you reload or re-open the app. Cats don't change their mind so often, but maybe you want to remove an item from one of your lists nevertheless. You can do this with a click of the bin in the upper right corner of each listed card.  
-There is a searchbar in the list of not liked food, so you can search for catfood (you have already added) with its name, taste or its preparation without scrolling along the whole list. On the page with the list of cat food your cat like I have added a function to sort the listitems according to key words, also used in the form.
-Informations about your cat you can add to the profile page including a picture upload. For more informations about cat breeds you can use the cat info page clicking on the little cat in the right bottom corner.
+From the homepage, the most important features are just one click away without any login, giving a better user experience while you're shopping. With just a few extra clicks you'll have access to even more features. To leave the app there is a button (cat nearby an open door) on all main navigation pages in the upper right corner.
+
+A good start is the form to add an entry about how your cat responded to the last food you gave it. Then you can see the new listitem on the voting page. The data is stored in the local storage of your browser, so the app will (most probably) not lose them, when you reload or re-open the app. Cats don't change their mind so often, but maybe you want to remove an item from one of your lists nevertheless. The app allows you to do this with a click of the bin in the upper right corner of each listed card.
+
+There is a search bar in the list of disliked food, so you can search for cat food (you have already added) with its name, taste or its preparation without scrolling along the whole list. On the page with the list of cat food your cat likes I have added a function to sort all the listed entries according to key words that are used in the form. The app can be customised to include information about your cat in the profile page including an option to upload a photo. For more information about cat breeds you can use the cat info page you can reach from the profile page.
 
 LandingPage  
 Photo by [Charlie Deets](https://unsplash.com/@charliedeets?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@charliedeets?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) - many thanks for that awesome picture :sparkles:
@@ -25,6 +26,7 @@ You can have a look at the last update of CatYummy on Vercel: [DemoVersion](http
 - [React](https://reactjs.org/) - [React Docs BETA](https://beta.reactjs.org/)
 - [React Router](https://reactrouter.com/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) / [Jest](https://jestjs.io/)
+- [React Hook Form](https://react-hook-form.com/)
 - [Storybook](https://storybook.js.org/)
 - [styled components](https://styled-components.com/)
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript#tutorials)

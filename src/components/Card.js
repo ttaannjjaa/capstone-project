@@ -23,7 +23,7 @@ export default function Card({
           {foodName}
         </li>
         <li>
-          <span>taste: </span>
+          <span>flavour: </span>
           {foodTaste}
         </li>
         <li>
@@ -32,7 +32,7 @@ export default function Card({
         </li>
         <li>
           <span>rating: </span>
-          {foodRating === 'liked' ? 'yummy' : 'not for me'}
+          {foodRating === 'liked' ? 'liked' : 'not for me'}
         </li>
         <li>
           <span>fed on: </span>
