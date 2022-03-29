@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ExitButton from '../components/ExitButton.js';
 import coralcatright from '../images/coral_cat_head_right.svg';
-import iconarrowright from '../images/icon_arrow_right_circle_fill.svg';
-import iconbin from '../images/icon_bin.svg';
+import iconaddpic from '../images/icon_add_image.svg';
+import iconarrow from '../images/icon_arrow_right_circle_fill.svg';
+import iconbin from '../images/icon_bin_black.svg';
 import iconpencil from '../images/icon_pencil.svg';
-import iconrotate from '../images/icon_rotate.svg';
 import imageUploadInfo from '../images/imageUploadInfo.svg';
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
@@ -50,10 +50,10 @@ export default function ProfilePage() {
   const [profileData, setProfileData] = useState({
     profileName: storedProfileData?.profileName
       ? storedProfileData.profileName
-      : 'Garfield',
+      : 'cat name',
     profilePetName: storedProfileData?.profilePetName
       ? storedProfileData.profilePetName
-      : 'cutie',
+      : 'pet name',
     profileAge: storedProfileData?.profileAge
       ? storedProfileData.profileAge
       : '0',
@@ -114,7 +114,6 @@ export default function ProfilePage() {
               alt="photoupload by clicking button with curved arrow right-hand-side, removing it by clicking the button with the bin on the left"
             />
           )}
-
           <input
             data-testid="inputImgUpload"
             id="imgUpload"
@@ -129,11 +128,11 @@ export default function ProfilePage() {
         <ButtonContainer>
           <UploadButton htmlFor="imgUpload" data-testid="inputLabelImgUpload">
             <span className="sr-only">Image upload and change</span>
-            <img src={iconrotate} alt="bin icon" />
+            <img src={iconaddpic} alt="icon for adding" />
           </UploadButton>
           <RemoveButton onClick={onImageRemove} data-testid="buttonRemove">
             <span className="sr-only">Image remove button</span>
-            <img src={iconbin} alt="icon rotate arrow to the left" />
+            <img src={iconbin} alt="bin icon" />
           </RemoveButton>
         </ButtonContainer>
         <FormContainer title="after editing press enter">
@@ -257,7 +256,7 @@ export default function ProfilePage() {
             height="28"
           />
           <IconArrowRight
-            src={iconarrowright}
+            src={iconarrow}
             alt="arrow icon showing to the right"
           />
         </CatInfoPageButton>
@@ -334,6 +333,8 @@ const UploadButton = styled.label`
   padding: 4px;
   background-color: transparent;
   box-shadow: var(--box-shadow-inset);
+  border-bottom: 1px coral solid;
+  border-right: 1px coral solid;
   border-radius: 10px;
   &:hover {
     cursor: pointer;
@@ -347,8 +348,9 @@ const RemoveButton = styled.button`
   padding: 4px;
   background-color: transparent;
   box-shadow: var(--box-shadow-inset);
+  border-bottom: 1px coral solid;
+  border-right: 1px coral solid;
   border-radius: 10px;
-  border: none;
   &:hover {
     cursor: pointer;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -441,6 +443,18 @@ const NoteContainer = styled.div`
   }
 `;
 
+const IconPencil = styled.img`
+  margin-right: 12px;
+`;
+
+const IconArrowRight = styled.img`
+  margin-right: 2px;
+`;
+
+const IconCatCoralRight = styled.img`
+  margin-right: 2px;
+`;
+
 const CatInfoPageButton = styled.button`
   padding: 2px;
   font-size: 0.8rem;
@@ -453,16 +467,4 @@ const CatInfoPageButton = styled.button`
     cursor: pointer;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
-`;
-
-const IconPencil = styled.img`
-  margin-right: 12px;
-`;
-
-const IconArrowRight = styled.img`
-  margin-right: 2px;
-`;
-
-const IconCatCoralRight = styled.img`
-  margin-right: 2px;
 `;

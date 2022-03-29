@@ -25,7 +25,7 @@ describe('ProfilePage', () => {
     );
 
     const binicon = screen.getByAltText('bin icon');
-    const updateicon = screen.getByAltText('icon rotate arrow to the left');
+    const updateicon = screen.getByAltText('icon for adding');
 
     expect(binicon).toBeInTheDocument();
     expect(updateicon).toBeInTheDocument();
