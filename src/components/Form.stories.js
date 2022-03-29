@@ -11,9 +11,10 @@ export const Default = Template.bind();
 Default.args = {
   formData: {
     id: nanoid(),
-    foodJudge: 'liked',
-    foodName: 'schnurrkatz',
-    foodTaste: 'Huhn',
-    foodStyle: 'Gelee',
+    foodRating: 'liked',
+    foodName: 'purrcat',
+    foodTaste: 'chicken',
+    foodStyle: 'jelly',
+    selectedDate: '2022-03-24',
   },
 };

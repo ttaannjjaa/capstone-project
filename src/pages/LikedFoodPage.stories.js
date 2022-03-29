@@ -10,17 +10,17 @@ export const Default = Template.bind({});
 Default.args = {
   storageData: [
     {
-      foodJudge: 'liked',
-      foodName: 'schnurrkatz',
-      foodTaste: 'Huhn',
-      foodStyle: 'Gelee',
+      foodRating: 'liked',
+      foodName: 'purrpurr',
+      foodTaste: 'chicken',
+      foodStyle: 'jelly',
       selectedDate: '2022-03-22',
     },
     {
-      foodJudge: 'unliked',
-      foodName: 'katzlecker',
-      foodTaste: 'Lachs',
-      foodStyle: 'Ragout',
+      foodRating: 'unliked',
+      foodName: 'superschmacko',
+      foodTaste: 'salmon',
+      foodStyle: 'ragu',
       selectedDate: '2022-03-21',
     },
   ],

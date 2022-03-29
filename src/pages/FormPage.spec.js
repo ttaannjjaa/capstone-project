@@ -8,16 +8,17 @@ describe('FormPage', () => {
       <MemoryRouter>
         <FormPage
           formData={{
-            foodJudge: 'liked',
-            foodName: 'schnurrkatz',
-            foodTaste: 'Huhn',
-            foodStyle: 'Gelee',
+            foodRating: 'liked',
+            foodName: 'purrcat',
+            foodTaste: 'chicken',
+            foodStyle: 'jelly',
+            selectedDate: 'date',
           }}
         />
       </MemoryRouter>
     );
 
-    const formHeading = screen.getByText(/My Vote/i);
+    const formHeading = screen.getByText(/CAT FOOD RATING/i);
     const form = screen.getByTestId('form');
     const buttonSave = screen.getByRole('button', { name: 'SAVE' });
 

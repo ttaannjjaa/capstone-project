@@ -6,7 +6,7 @@ export default function FormPage({ handleData }) {
   return (
     <FormPageStyle>
       <Header>
-        <h1>My Vote</h1>
+        <h1>CAT FOOD RATING</h1>
         <ExitButton />
       </Header>
       <main>
@@ -25,9 +25,14 @@ const FormPageStyle = styled.section`
     grid-row: 2 / 3;
     min-height: 100vh;
   }
+
+  h1 {
+    text-overflow: ellipsis;
+  }
 `;
 
 const Header = styled.header`
+  border-top: 4px solid var(--steelblue);
   background-color: var(--lightsteel);
   padding: 1rem;
   width: 100%;

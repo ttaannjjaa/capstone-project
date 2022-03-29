@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" exact={true} element={<LandingPage />} />
         <Route
-          path="/FormPage"
+          path="/formpage"
           element={
             <>
               <FormPage handleData={handleData} />
@@ -41,7 +41,7 @@ function App() {
         />
 
         <Route
-          path="/LikedFoodpage"
+          path="/likedfoodpage"
           element={
             <>
               <LikedFoodPage
@@ -53,7 +53,7 @@ function App() {
           }
         />
         <Route
-          path="/UnLikedFoodpage"
+          path="/unlikedfoodpage"
           element={
             <>
               <UnLikedFoodPage
@@ -65,7 +65,7 @@ function App() {
           }
         />
         <Route
-          path="/ProfilePage"
+          path="/profilepage"
           element={
             <>
               <ProfilePage />
@@ -73,7 +73,7 @@ function App() {
             </>
           }
         />
-        <Route path="/CatInfoPage" element={<CatInfoPage />} />
+        <Route path="/catinfopage" element={<CatInfoPage />} />
       </Routes>
     </ErrorBoundary>
   );

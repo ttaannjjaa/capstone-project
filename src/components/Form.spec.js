@@ -9,10 +9,10 @@ describe('Form', () => {
       <MemoryRouter>
         <Form
           formData={{
-            foodJudge: 'liked',
-            foodName: 'schnurrkatz',
-            foodTaste: 'Huhn',
-            foodStyle: 'Gelee',
+            foodRating: 'liked',
+            foodName: 'purrkitty',
+            foodTaste: 'chicken',
+            foodStyle: 'jelly',
             selectedDate: '2022-03-22',
           }}
         />
@@ -20,8 +20,7 @@ describe('Form', () => {
     );
 
     const FormComponent = screen.getByTestId('form', {
-      accessibleName:
-        'form to document the judgement of your cat about its food',
+      accessibleName: 'form to document the rating of your cat about its food',
     });
     expect(FormComponent).toBeInTheDocument();
   });
@@ -30,10 +29,10 @@ describe('Form', () => {
     render(
       <Form
         formData={{
-          foodJudge: 'liked',
-          foodName: 'schnurrkatz',
-          foodTaste: 'Huhn',
-          foodStyle: 'Gelee',
+          foodRating: 'liked',
+          foodName: 'purrkitty',
+          foodTaste: 'chicken',
+          foodStyle: 'jelly',
           selectedDate: '2022-03-22',
         }}
       />

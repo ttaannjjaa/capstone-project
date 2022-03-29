@@ -5,7 +5,7 @@ export default function Card({
   id,
   foodName,
   foodTaste,
-  foodJudge,
+  foodRating,
   foodStyle,
   selectedDate,
   handleDelete,
@@ -19,23 +19,23 @@ export default function Card({
         aria-describedby="list of catfood properties"
       >
         <li>
-          <span>Marke: </span>
+          <span>name: </span>
           {foodName}
         </li>
         <li>
-          <span>Sorte: </span>
+          <span>taste: </span>
           {foodTaste}
         </li>
         <li>
-          <span>Zubereitung: </span>
+          <span>preparation: </span>
           {foodStyle}
         </li>
         <li>
-          <span>Bewertung: </span>
-          {foodJudge === 'liked' ? 'lecker' : 'mag ich nicht'}
+          <span>rating: </span>
+          {foodRating === 'liked' ? 'yummy' : 'not for me'}
         </li>
         <li>
-          <span>verfüttert am: </span>
+          <span>fed on: </span>
           {selectedDate}
         </li>
       </CardContent>

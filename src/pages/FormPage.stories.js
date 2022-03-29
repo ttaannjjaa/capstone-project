@@ -9,9 +9,10 @@ const Template = args => <FormPage {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   formData: {
-    foodJudge: 'liked',
-    foodName: 'schnurrkatz',
-    foodTaste: 'Huhn',
-    foodStyle: 'Gelee',
+    foodRating: 'liked',
+    foodName: 'purrcat',
+    foodTaste: 'chicken',
+    foodStyle: 'jelly',
+    selectedDate: '2022-03-24',
   },
 };

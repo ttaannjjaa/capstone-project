@@ -13,10 +13,12 @@ export default function Form({ handleData }) {
       foodName: '',
       foodTaste: '',
       foodStyle: '',
-      foodJudge: '',
+      foodRating: '',
       date: '',
     },
   });
+
+  const dateToday = new Date().toISOString().substring(0, 10);
 
   const onSubmit = data => {
     const message = `successfully saved`;
@@ -26,14 +28,12 @@ export default function Form({ handleData }) {
       foodName: data.foodName.trim(),
       foodTaste: data.foodTaste.trim(),
       foodStyle: data.foodStyle.trim(),
-      foodJudge: data.foodJudge.trim(),
+      foodRating: data.foodRating.trim(),
       selectedDate: data.date,
     };
     handleData(formData);
     reset();
   };
-
-  const dateToday = new Date().toISOString().substring(0, 10);
 
   return (
     <FormContainer>
@@ -48,6 +48,7 @@ export default function Form({ handleData }) {
         <TextInput
           id="foodName"
           type="text"
+          minLength="3"
           maxLength="21"
           aria-invalid={errors.foodName ? 'true' : 'false'}
           {...register('foodName', {
@@ -70,6 +71,7 @@ export default function Form({ handleData }) {
         <label htmlFor="foodTaste">variety/taste *</label>
         <TextField
           id="foodTaste"
+          minLength="3"
           maxLength="85"
           rows="4"
           placeholder="z.B. chicken, salmon"
@@ -94,6 +96,7 @@ export default function Form({ handleData }) {
         <TextInput
           id="foodStyle"
           type="text"
+          minLength="3"
           maxLength="21"
           placeholder="e.g. jelly, ragu, pate"
           aria-invalid={errors.foodStyle ? 'true' : 'false'}
@@ -110,14 +113,14 @@ export default function Form({ handleData }) {
         />
         {errors.foodStyle && <span>{errors.foodStyle.message}</span>}
 
-        <Judge>
+        <RatingField>
           <RadioStyled>
             <RadioButton
               id="liked"
-              name="foodJudge"
+              name="foodRating"
               type="radio"
               value="liked"
-              {...register('foodJudge', { required: { value: true } })}
+              {...register('foodRating', { required: { value: true } })}
               defaultChecked
             />
             <label htmlFor="liked">yummy</label>
@@ -125,14 +128,14 @@ export default function Form({ handleData }) {
           <RadioStyled>
             <RadioButton
               id="unliked"
-              name="foodJudge"
+              name="foodRating"
               type="radio"
               value="unliked"
-              {...register('foodJudge', { required: { value: true } })}
+              {...register('foodRating', { required: { value: true } })}
             />
             <label htmlFor="unliked">not liked</label>
           </RadioStyled>
-        </Judge>
+        </RatingField>
         <label htmlFor="date">fed on </label>
         <DateInput
           id="date"
@@ -179,8 +182,10 @@ const FormStyled = styled.form`
 const TextInput = styled.input`
   min-width: 280px;
   width: 100%;
+  font-family: inherit;
   font-size: 1rem;
   line-height: 1.5rem;
+  text-overflow: ellipsis;
   margin-top: 8px;
   padding: 5px;
   background-color: var(--peach);
@@ -195,8 +200,10 @@ const TextInput = styled.input`
 const TextField = styled.textarea`
   min-width: 280px;
   width: 100%;
+  font-family: inherit;
   font-size: 1rem;
   line-height: 1.5rem;
+  text-overflow: ellipsis;
   margin-top: 8px;
   padding: 5px;
   background-color: var(--peach);
@@ -208,7 +215,7 @@ const TextField = styled.textarea`
   }
 `;
 
-const Judge = styled.fieldset`
+const RatingField = styled.fieldset`
   min-width: 280px;
   width: 100%;
   display: flex;
@@ -222,7 +229,7 @@ const Judge = styled.fieldset`
 
 const RadioStyled = styled.div`
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 const RadioButton = styled.input`
@@ -278,4 +285,14 @@ const SaveButton = styled.button`
   box-shadow: var(--box-shadow-inset);
   border-radius: 10px;
   letter-spacing: 1px;
+  align-self: center;
+  :hover {
+    background-color: var(--lightsteel);
+    color: var(--black);
+    border: 1px var(--coral) solid;
+  }
+  &:active {
+    opacity: 0.9;
+    border: 2px solid var(--steelblue);
+  }
 `;

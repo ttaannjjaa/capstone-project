@@ -9,23 +9,25 @@ describe('LikedFoodPage', () => {
         <LikedFoodPage
           storageData={[
             {
-              foodJudge: 'liked',
-              foodName: 'schnurrkatz',
-              foodTaste: 'Huhn',
-              foodStyle: 'Gelee',
+              foodRating: 'liked',
+              foodName: 'purrpurr',
+              foodTaste: 'chicken',
+              foodStyle: 'jelly',
+              selectedDate: '2022-03-18',
             },
             {
-              foodJudge: 'unliked',
-              foodName: 'katzlecker',
-              foodTaste: 'Lachs',
-              foodStyle: 'Ragout',
+              foodRating: 'unliked',
+              foodName: 'yummyyummy',
+              foodTaste: 'salmon',
+              foodStyle: 'ragu',
+              selectedDate: '2022-03-18',
             },
           ]}
         />
       </MemoryRouter>
     );
 
-    const headline = screen.getByText('I really like to eat...');
+    const headline = screen.getByText('WHAT I LIKE TO EAT');
     const ulAccessibility = screen.getByTestId('likedlist', {
       accessibleName: 'list of cards about catfood that your cat like',
     });
@@ -34,36 +36,42 @@ describe('LikedFoodPage', () => {
     expect(ulAccessibility).toBeInTheDocument();
   });
 
-  it('renders a section for a sortfunction with 3 buttons', () => {
+  it('renders a section for a sortfunction with 5 buttons', () => {
     render(
       <MemoryRouter>
         <LikedFoodPage
           storageData={[
             {
-              foodJudge: 'liked',
-              foodName: 'schnurrkatz',
-              foodTaste: 'Huhn',
-              foodStyle: 'Gelee',
+              foodRating: 'liked',
+              foodName: 'purrpurr',
+              foodTaste: 'chicken',
+              foodStyle: 'jelly',
+              selectedDate: '2022-03-18',
             },
             {
-              foodJudge: 'unliked',
-              foodName: 'katzlecker',
-              foodTaste: 'Lachs',
-              foodStyle: 'Ragout',
+              foodRating: 'unliked',
+              foodName: 'yummyyummy',
+              foodTaste: 'salmon',
+              foodStyle: 'ragu',
+              selectedDate: '2022-03-18',
             },
           ]}
         />
       </MemoryRouter>
     );
 
-    const sortSection = screen.getByText('Du kannst sortieren nach...');
-    const button1 = screen.getByRole('button', { name: 'Marke' });
-    const button2 = screen.getByRole('button', { name: 'Sorte' });
-    const button3 = screen.getByRole('button', { name: 'Zubereitung' });
+    const sortSection = screen.getByText('Sort by ...');
+    const button1 = screen.getByRole('button', { name: 'name' });
+    const button2 = screen.getByRole('button', { name: 'taste' });
+    const button3 = screen.getByRole('button', { name: 'preparation' });
+    const button4 = screen.getByRole('button', { name: 'date' });
+    const button5 = screen.getByRole('button', { name: 'all' });
 
     expect(sortSection).toBeInTheDocument();
     expect(button1).toBeInTheDocument();
     expect(button2).toBeInTheDocument();
     expect(button3).toBeInTheDocument();
+    expect(button4).toBeInTheDocument();
+    expect(button5).toBeInTheDocument();
   });
 });

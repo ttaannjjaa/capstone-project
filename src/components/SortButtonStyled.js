@@ -11,4 +11,13 @@ export const SortButtonStyled = styled.button`
   box-shadow: var(--box-shadow-inset);
   margin-right: 10px;
   flex-wrap: nowrap;
+  :hover {
+    background-color: var(--lightsteel);
+    color: var(--black);
+    border: 1px var(--coral) solid;
+  }
+  &:active {
+    opacity: 0.9;
+    border: 2px solid var(--steelblue);
+  }
 `;

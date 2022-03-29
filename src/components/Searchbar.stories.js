@@ -7,6 +7,4 @@ export default {
 const Template = args => <Searchbar {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  value: 'katzlecker',
-};
+Default.args = {};

@@ -23,7 +23,6 @@ export default function CatInfoPage() {
           return response.data;
         })
         .then(data => {
-          console.log(data);
           setCatData(data);
         })
         .catch(error => console.log(error, 'sorry, there is a problem'));
@@ -37,7 +36,7 @@ export default function CatInfoPage() {
       <Header>
         <button
           type="button"
-          onClick={() => navigate('/ProfilePage', { replace: true })}
+          onClick={() => navigate('/profilepage', { replace: true })}
         >
           <span className="sr-only">back button</span>
           <img src={iconarrowleft} alt="arrow icon showing to the left" />
@@ -48,7 +47,7 @@ export default function CatInfoPage() {
             height="28px"
           />
         </button>
-        <h1>Cat Breeds</h1>
+        <h1>CAT BREEDS</h1>
       </Header>
       <Main>
         {catData && (
@@ -95,6 +94,7 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   padding: 0.5rem;
+  border-top: 4px solid var(--steelblue);
   border-bottom: 2px solid var(--steelblue);
   box-shadow: var(--box-shadow-header-drop);
   position: relative;
@@ -110,6 +110,14 @@ const Header = styled.header`
       cursor: pointer;
       transition: cubic-bezier(0.075, 0.82, 0.165, 1);
     }
+  }
+
+  h1 {
+    font-size: 1.1rem;
+    text-overflow: ellipsis;
+    color: var(--black);
+    letter-spacing: 1px;
+    padding: 0.5rem 0;
   }
 `;
 
