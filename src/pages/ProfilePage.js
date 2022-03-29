@@ -137,7 +137,7 @@ export default function ProfilePage() {
           </RemoveButton>
         </ButtonContainer>
         <FormContainer title="after editing press enter">
-          <div>
+          <InputTextContainer>
             <IconPencil
               src={iconpencil}
               width="20px"
@@ -163,8 +163,8 @@ export default function ProfilePage() {
             <label className="sr-only" htmlFor="profileName">
               cat name
             </label>
-          </div>
-          <div>
+          </InputTextContainer>
+          <InputTextContainer>
             <IconPencil
               src={iconpencil}
               width="20px"
@@ -190,7 +190,7 @@ export default function ProfilePage() {
             <label htmlFor="profilePetName" className="sr-only">
               petname
             </label>
-          </div>
+          </InputTextContainer>
           <div>
             <IconPencil
               src={iconpencil}
@@ -244,23 +244,23 @@ export default function ProfilePage() {
               }
               onKeyDown={onKeyDownNote}
             />
-            <CatInfoPageButton
-              onClick={() => navigate('/catinfopage', { replace: true })}
-            >
-              <span>cat breeds</span>
-              <IconCatCoralRight
-                src={coralcatright}
-                alt="little cat looking to the right"
-                width="28"
-                height="28"
-              />
-              <IconArrowRight
-                src={iconarrowright}
-                alt="arrow icon showing to the right"
-              />
-            </CatInfoPageButton>
           </NoteContainer>
         </FormContainer>
+        <CatInfoPageButton
+          onClick={() => navigate('/catinfopage', { replace: true })}
+        >
+          <span>cat breeds</span>
+          <IconCatCoralRight
+            src={coralcatright}
+            alt="little cat looking to the right"
+            width="28"
+            height="28"
+          />
+          <IconArrowRight
+            src={iconarrowright}
+            alt="arrow icon showing to the right"
+          />
+        </CatInfoPageButton>
       </main>
     </FormPageStyle>
   );
@@ -368,6 +368,11 @@ const FormContainer = styled.form`
   margin-top: 2rem;
 `;
 
+const InputTextContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const InputTextStyled = styled.input`
   text-overflow: ellipsis;
   width: 100%;
@@ -443,9 +448,7 @@ const CatInfoPageButton = styled.button`
   border: none;
   text-decoration: none;
   background-color: var(--white);
-  position: absolute;
-  right: -4px;
-  top: 0px;
+
   &:hover {
     cursor: pointer;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
