@@ -105,27 +105,16 @@ export default function ProfilePage() {
         <ExitButton />
       </Header>
       <main>
-        <ImgContainer min-width="280px" min-height="165px">
+        <ImgContainer>
           {image ? (
-            <UploadedImg
-              data-testid="inputImgUpload"
-              src={image}
-              alt=""
-              width="280px"
-              height="165px"
-            />
+            <UploadedImg data-testid="inputImgUpload" src={image} alt="" />
           ) : (
             <DefaultImg
               src={imageUploadInfo}
               alt="photoupload by clicking button with curved arrow right-hand-side, removing it by clicking the button with the bin on the left"
-              width="280px"
-              height="130px"
             />
           )}
-          <RemoveButton onClick={onImageRemove} data-testid="buttonRemove">
-            <span className="sr-only">Image remove button</span>
-            <img src={iconbin} alt="icon rotate arrow to the left" />
-          </RemoveButton>
+
           <input
             data-testid="inputImgUpload"
             id="imgUpload"
@@ -136,12 +125,17 @@ export default function ProfilePage() {
             }}
             hidden
           />
+        </ImgContainer>
+        <ButtonContainer>
           <UploadButton htmlFor="imgUpload" data-testid="inputLabelImgUpload">
             <span className="sr-only">Image upload and change</span>
             <img src={iconrotate} alt="bin icon" />
           </UploadButton>
-        </ImgContainer>
-
+          <RemoveButton onClick={onImageRemove} data-testid="buttonRemove">
+            <span className="sr-only">Image remove button</span>
+            <img src={iconbin} alt="icon rotate arrow to the left" />
+          </RemoveButton>
+        </ButtonContainer>
         <FormContainer title="after editing press enter">
           <div>
             <IconPencil
@@ -309,20 +303,29 @@ const Header = styled.header`
 `;
 
 const ImgContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   align-items: center;
   margin-top: 0.5rem;
-  position: relative;
+  width: 40%;
+  min-width: 280px;
+  min-height: 113px;
 `;
 
 const UploadedImg = styled.img`
-  margin-bottom: 1rem;
   border-radius: 5px;
+  width: 100%;
 `;
 
 const DefaultImg = styled.img`
-  margin-bottom: 3rem;
+  width: 100%;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  min-width: 280px;
+  width: 40%;
+  align-items: center;
+  margin-top: 0.5rem;
 `;
 
 const UploadButton = styled.label`
@@ -332,9 +335,6 @@ const UploadButton = styled.label`
   background-color: transparent;
   box-shadow: var(--box-shadow-inset);
   border-radius: 10px;
-  position: absolute;
-  bottom: 14px;
-  right: 0;
   &:hover {
     cursor: pointer;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -348,9 +348,6 @@ const RemoveButton = styled.button`
   background-color: transparent;
   box-shadow: var(--box-shadow-inset);
   border-radius: 10px;
-  position: absolute;
-  bottom: 14px;
-  left: 0;
   border: none;
   &:hover {
     cursor: pointer;
@@ -365,12 +362,15 @@ const RemoveButton = styled.button`
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
+  min-width: 280px;
+  width: 40%;
   gap: 10px;
   margin-top: 2rem;
 `;
 
 const InputTextStyled = styled.input`
   text-overflow: ellipsis;
+  width: 100%;
   font-size: 1rem;
   line-height: 1.5rem;
   margin-top: 8px;
