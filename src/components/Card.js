@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import DeleteButton from './DeleteButton.js';
+import ModalDelete from './ModalDelete.js';
+import { useState } from 'react';
 
 export default function Card({
   id,
@@ -10,9 +12,17 @@ export default function Card({
   selectedDate,
   handleDelete,
 }) {
+  const [visible, setVisible] = useState(false);
+
   return (
     <CardStyled role="listbox">
-      <DeleteButton handleDelete={handleDelete} id={id} />
+      <DeleteButton id={id} setVisible={setVisible} />
+      <ModalDelete
+        visible={visible}
+        onConfirm={handleDelete}
+        onCancel={() => setVisible(false)}
+        setVisible={setVisible}
+      />
       <CardContent
         role="list"
         data-testid="cardcontent list"
@@ -32,7 +42,7 @@ export default function Card({
         </li>
         <li>
           <span>rating: </span>
-          {foodRating === 'liked' ? 'liked' : 'not for me'}
+          {foodRating === 'liked' ? 'liked' : 'disliked'}
         </li>
         <li>
           <span>fed on: </span>

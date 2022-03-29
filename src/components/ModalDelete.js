@@ -1,18 +1,22 @@
 import styled from 'styled-components';
 import { SortButtonStyled } from './SortButtonStyled.js';
 
-export default function ModalDelete() {
+export default function ModalDelete({ onConfirm, onCancel, visible, id }) {
+  if (!visible) {
+    return null;
+  }
   return (
     <ModalDeleteStyled
       aria-labelledby="dialog1Title"
       aria-describedby="dialog1Desc"
-      open
     >
       <h2 id="dialog1Title">Confirmation Delete Requested</h2>
       <p id="dialog1Desc">Do you really want to delete this?</p>
       <ButtonWrapper>
-        <SortButtonStyled>⚠️ Yes</SortButtonStyled>
-        <SortButtonStyled>No</SortButtonStyled>
+        <SortButtonStyled onClick={onConfirm} id={id}>
+          ⚠️ Yes
+        </SortButtonStyled>
+        <SortButtonStyled onClick={onCancel}>No</SortButtonStyled>
       </ButtonWrapper>
     </ModalDeleteStyled>
   );
@@ -25,12 +29,14 @@ const ModalDeleteStyled = styled.dialog`
   opacity: 0.9;
   padding: 10px;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: fit-content fit-content 1fr;
   place-items: center;
+  ::backdrop {
+    opacity: 0.4;
+  }
 
   h2 {
     font-size: 1rem;
-    margin-bottom: 0.5rem;
   }
 
   p {

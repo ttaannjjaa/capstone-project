@@ -7,4 +7,6 @@ export default {
 const Template = args => <ModalDelete {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  visible: true,
+};

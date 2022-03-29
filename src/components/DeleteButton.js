@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import icon_bin from '../images/icon_bin.svg';
 
-export default function DeleteButton({ handleDelete, id }) {
+export default function DeleteButton({ setVisible, id }) {
   return (
-    <DeleteButtonStyled type="button" onClick={handleDelete} id={id}>
+    <DeleteButtonStyled id={id} onClick={() => setVisible(true)}>
       <img src={icon_bin} alt="bin icon" width="13px" height="16px" />
     </DeleteButtonStyled>
   );
