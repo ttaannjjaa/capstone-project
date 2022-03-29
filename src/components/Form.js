@@ -68,7 +68,7 @@ export default function Form({ handleData }) {
           })}
         />
         {errors.foodName && <span>{errors.foodName.message}</span>}
-        <label htmlFor="foodTaste">variety/taste *</label>
+        <label htmlFor="foodTaste">flavour *</label>
         <TextField
           id="foodTaste"
           minLength="3"
@@ -123,7 +123,7 @@ export default function Form({ handleData }) {
               {...register('foodRating', { required: { value: true } })}
               defaultChecked
             />
-            <label htmlFor="liked">yummy</label>
+            <label htmlFor="liked">liked</label>
           </RadioStyled>
           <RadioStyled>
             <RadioButton
@@ -133,10 +133,10 @@ export default function Form({ handleData }) {
               value="unliked"
               {...register('foodRating', { required: { value: true } })}
             />
-            <label htmlFor="unliked">not liked</label>
+            <label htmlFor="unliked">disliked</label>
           </RadioStyled>
         </RatingField>
-        <label htmlFor="date">fed on </label>
+        <label htmlFor="date">fed on (input optional)</label>
         <DateInput
           id="date"
           name="date"

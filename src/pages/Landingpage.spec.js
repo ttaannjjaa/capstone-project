@@ -1,8 +1,6 @@
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import Landingpage from './Landingpage';
-import { act } from 'react-dom/test-utils';
-//import { userEvent } from '@storybook/testing-library';
 
 describe('Landingpage', () => {
   it('renders a h1 headline, three buttons', () => {

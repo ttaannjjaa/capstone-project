@@ -49,7 +49,7 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
                 type="button"
                 onClick={() => setSortValue('foodTaste')}
               >
-                taste
+                flavour
               </SortButtonStyled>
               <SortButtonStyled
                 type="button"

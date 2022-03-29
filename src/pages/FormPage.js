@@ -36,9 +36,6 @@ const Header = styled.header`
   background-color: var(--lightsteel);
   padding: 1rem;
   width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 10;
   overflow: hidden;
   box-shadow: 0 1px 4px 0 rgba(30, 30, 33, 0.3);
   grid-row: 1 / 2;

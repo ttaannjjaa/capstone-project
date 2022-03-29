@@ -7,7 +7,7 @@ describe('Card', () => {
 
     const showsCard = screen.getByRole('listbox');
     const liElement1 = screen.getByText(/name/);
-    const liElement2 = screen.getByText(/taste/);
+    const liElement2 = screen.getByText(/flavour/);
     const liElement3 = screen.getByText(/preparation/);
     const liElement4 = screen.getByText(/rating/);
     const liElement5 = screen.getByText(/fed on/i);

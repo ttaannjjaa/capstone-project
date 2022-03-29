@@ -275,12 +275,12 @@ export default function ProfilePage() {
 const FormPageStyle = styled.section`
   background-color: var(--white);
   display: grid;
-  grid-template-rows: 2.5rem 1fr 3rem;
+  grid-template-rows: 4rem 1fr 3rem;
 
   main {
     grid-row: 2 / 3;
     min-height: 100vh;
-    margin-top: 4rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -292,9 +292,6 @@ const Header = styled.header`
   background-color: var(--lightsteel);
   padding: 1rem;
   width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 10;
   overflow: hidden;
   box-shadow: 0 1px 4px 0 rgba(30, 30, 33, 0.3);
   grid-row: 1 / 2;

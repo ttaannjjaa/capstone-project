@@ -62,10 +62,10 @@ describe('LikedFoodPage', () => {
 
     const sortSection = screen.getByText('Sort by ...');
     const button1 = screen.getByRole('button', { name: 'name' });
-    const button2 = screen.getByRole('button', { name: 'taste' });
+    const button2 = screen.getByRole('button', { name: 'flavour' });
     const button3 = screen.getByRole('button', { name: 'preparation' });
     const button4 = screen.getByRole('button', { name: 'date' });
-    const button5 = screen.getByRole('button', { name: 'all' });
+    const button5 = screen.getByRole('button', { name: 'entry' });
 
     expect(sortSection).toBeInTheDocument();
     expect(button1).toBeInTheDocument();
