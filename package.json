@@ -2,7 +2,9 @@
   "name": "catyummy",
   "version": "0.1.0",
   "private": true,
-  "description": "tracking app for cat food"
+  "description": "a tracking app for cat food",
+  "author": "Tanja Süß",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.26.1",
     "nanoid": "^3.3.1",
