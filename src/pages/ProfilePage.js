@@ -307,7 +307,7 @@ const ImgContainer = styled.div`
   margin-top: 0.5rem;
   width: 40%;
   min-width: 280px;
-  min-height: 113px;
+  min-height: 115px;
 `;
 
 const UploadedImg = styled.img`
