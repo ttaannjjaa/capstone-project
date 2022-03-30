@@ -39,29 +39,22 @@ function App() {
             </>
           }
         />
-
         <Route
           path="/likedfoodpage"
           element={
-            <>
-              <LikedFoodPage
-                storageData={storageData}
-                handleDelete={handleDelete}
-              />
-              <Navigation />
-            </>
+            <LikedFoodPage
+              storageData={storageData}
+              handleDelete={handleDelete}
+            />
           }
         />
         <Route
           path="/unlikedfoodpage"
           element={
-            <>
-              <UnLikedFoodPage
-                storageData={storageData}
-                handleDelete={handleDelete}
-              />
-              <Navigation />
-            </>
+            <UnLikedFoodPage
+              storageData={storageData}
+              handleDelete={handleDelete}
+            />
           }
         />
         <Route
