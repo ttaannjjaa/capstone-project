@@ -122,7 +122,7 @@ const LikedFoodPageStyle = styled.section`
 
 const Header = styled.header`
   background-color: var(--lightsteel);
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   width: 100%;
   overflow: hidden;
   border-top: 4px solid var(--steelblue);
@@ -134,6 +134,7 @@ const Header = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 1rem;
   }
 
   h1 {

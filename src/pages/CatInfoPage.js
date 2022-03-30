@@ -57,12 +57,9 @@ export default function CatInfoPage() {
                 <CatCard>
                   <CatCardHeading name={cat.name}>{cat.name}</CatCardHeading>
                   {cat.image ? (
-                    <CatCardFetchedImage
-                      src={cat.image.url}
-                      alt=""
-                      width="320px"
-                      height="250px"
-                    />
+                    <CatImgContainer>
+                      <CatCardFetchedImage src={cat.image.url} alt="" />
+                    </CatImgContainer>
                   ) : (
                     <CatCardImageErrorMessage>
                       sorry, no image available here
@@ -160,10 +157,16 @@ const CatCardHeading = styled.h2`
   font-size: 1.1rem;
 `;
 
-const CatCardFetchedImage = styled.img`
+const CatImgContainer = styled.div`
   justify-self: center;
-  max-width: 300px;
-  max-height: 500px;
+  margin-top: 0.5rem;
+  width: 40%;
+  min-width: 280px;
+  min-height: 120px;
+`;
+
+const CatCardFetchedImage = styled.img`
+  width: 100%;
   display: block;
 `;
 

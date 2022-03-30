@@ -44,9 +44,12 @@ const SearchbarContainer = styled.section`
     text-overflow: ellipsis;
     border-radius: 5px;
     border: none;
-    padding: 3px 3px 3px 4px;
+    padding: 3px 3px 3px 6px;
     margin-bottom: 12px;
     box-shadow: 3px 2px 0px 2px rgba(89, 122, 145, 0.44);
+    :hover {
+      cursor: pointer;
+    }
     &:focus {
       outline: 1px solid var(--coral);
     }

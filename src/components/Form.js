@@ -21,8 +21,6 @@ export default function Form({ handleData }) {
   const dateToday = new Date().toISOString().substring(0, 10);
 
   const onSubmit = data => {
-    const message = `successfully saved`;
-    alert(JSON.stringify(message));
     const formData = {
       id: nanoid(),
       foodName: data.foodName.trim(),
@@ -170,13 +168,6 @@ const FormStyled = styled.form`
   label {
     margin-top: 15px;
   }
-
-  span {
-    color: var(--coral);
-    font-size: 0.7rem;
-    padding: 3px;
-    margin: 0;
-  }
 `;
 
 const TextInput = styled.input`
@@ -192,6 +183,9 @@ const TextInput = styled.input`
   box-shadow: var(--box-shadow-inputfields);
   border-radius: 5px;
   border: none;
+  :hover {
+    cursor: pointer;
+  }
   &:focus {
     outline: 1px solid var(--coral);
   }
@@ -210,6 +204,9 @@ const TextField = styled.textarea`
   box-shadow: var(--box-shadow-inputfields);
   border-radius: 5px;
   border: none;
+  :hover {
+    cursor: pointer;
+  }
   &:focus {
     outline: 1px solid var(--coral);
   }
@@ -259,6 +256,9 @@ const RadioButton = styled.input`
     transition: 120ms transform ease-in-out;
     background-color: var(--coral);
   }
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const DateInput = styled.input`
@@ -268,6 +268,9 @@ const DateInput = styled.input`
   margin: 8px 0 18px 0;
   border-radius: 5px;
   font-family: inherit;
+  :hover {
+    cursor: pointer;
+  }
   &:focus {
     outline: 1px solid var(--coral);
   }
@@ -290,6 +293,7 @@ const SaveButton = styled.button`
     background-color: var(--lightsteel);
     color: var(--black);
     border: 1px var(--coral) solid;
+    cursor: pointer;
   }
   &:active {
     opacity: 0.9;

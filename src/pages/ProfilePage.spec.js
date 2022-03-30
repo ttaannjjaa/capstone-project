@@ -6,7 +6,7 @@ describe('ProfilePage', () => {
   it('renders a headline and an exit-button', () => {
     render(
       <MemoryRouter>
-        <ProfilePage />
+        <ProfilePage></ProfilePage>
       </MemoryRouter>
     );
 
@@ -25,16 +25,16 @@ describe('ProfilePage', () => {
     );
 
     const binicon = screen.getByAltText('bin icon');
-    const updateicon = screen.getByAltText('icon rotate arrow to the left');
+    const updateicon = screen.getByAltText('icon for adding');
 
     expect(binicon).toBeInTheDocument();
     expect(updateicon).toBeInTheDocument();
   });
 
-  it('renders 2 inputelements for text, 1 inputelement for file, 1 inputelement for a number and one textarea', () => {
+  it('renders 2 inputelements for text, 1 inputelement for a file (while hidden tested by its label), 1 inputelement for a number and one textarea', () => {
     render(
       <MemoryRouter>
-        <ProfilePage />
+        <ProfilePage hidden="false" />
       </MemoryRouter>
     );
 
@@ -42,12 +42,12 @@ describe('ProfilePage', () => {
     const inputElementAge = screen.getByTestId('inputAge');
     const inputElementPetName = screen.getByTestId('inputPetName');
     const inputElementName = screen.getByTestId('inputCatName');
-    const inputElementImg = screen.getByTestId('inputImgUpload');
+    const labelInputElementImg = screen.getByTestId('inputLabelImgUpload');
 
     expect(inputElementNote).toBeInTheDocument();
     expect(inputElementAge).toBeInTheDocument();
     expect(inputElementPetName).toBeInTheDocument();
     expect(inputElementName).toBeInTheDocument();
-    expect(inputElementImg).toBeInTheDocument();
+    expect(labelInputElementImg).toBeInTheDocument();
   });
 });

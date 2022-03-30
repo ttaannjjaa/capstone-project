@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ExitButton from '../components/ExitButton.js';
 import coralcatright from '../images/coral_cat_head_right.svg';
-import iconarrowright from '../images/icon_arrow_right_circle_fill.svg';
-import iconbin from '../images/icon_bin.svg';
+import iconaddpic from '../images/icon_add_image.svg';
+import iconarrow from '../images/icon_arrow_right_circle_fill.svg';
+import iconbin from '../images/icon_bin_black.svg';
 import iconpencil from '../images/icon_pencil.svg';
-import iconrotate from '../images/icon_rotate.svg';
 import imageUploadInfo from '../images/imageUploadInfo.svg';
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
@@ -36,7 +36,7 @@ export default function ProfilePage() {
   }
 
   function onImageSave(response) {
-    setImage(response.data.url);
+    setImage(response.data.url.replace('http', 'https'));
   }
 
   function onImageRemove() {
@@ -50,16 +50,16 @@ export default function ProfilePage() {
   const [profileData, setProfileData] = useState({
     profileName: storedProfileData?.profileName
       ? storedProfileData.profileName
-      : 'Garfield',
+      : '',
     profilePetName: storedProfileData?.profilePetName
       ? storedProfileData.profilePetName
-      : 'cutie',
+      : '',
     profileAge: storedProfileData?.profileAge
       ? storedProfileData.profileAge
       : '0',
     profileNote: storedProfileData?.profileNote
       ? storedProfileData.profileNote
-      : ' ',
+      : '',
   });
 
   const onKeyDownName = event => {
@@ -105,29 +105,16 @@ export default function ProfilePage() {
         <ExitButton />
       </Header>
       <main>
-        <ImgContainer min-width="280px" min-height="165px">
+        <ImgContainer>
           {image ? (
-            <UploadedImg
-              data-testid="inputImgUpload"
-              src={image}
-              alt=""
-              width="280px"
-              height="165px"
-            />
+            <UploadedImg src={image} alt="" />
           ) : (
             <DefaultImg
               src={imageUploadInfo}
-              alt="photoupload by clicking button with curved arrow right-hand-side, removing it by clicking the button with the bin on the left"
-              width="280px"
-              height="130px"
+              alt="photoupload by clicking button with add symbol, removing it by clicking the button with the bin on the left"
             />
           )}
-          <RemoveButton onClick={onImageRemove} data-testid="buttonRemove">
-            <span className="sr-only">Image remove button</span>
-            <img src={iconbin} alt="icon rotate arrow to the left" />
-          </RemoveButton>
           <input
-            data-testid="inputImgUpload"
             id="imgUpload"
             type="file"
             accept="image/*"
@@ -136,25 +123,31 @@ export default function ProfilePage() {
             }}
             hidden
           />
+        </ImgContainer>
+        <ButtonContainer>
           <UploadButton htmlFor="imgUpload" data-testid="inputLabelImgUpload">
             <span className="sr-only">Image upload and change</span>
-            <img src={iconrotate} alt="bin icon" />
+            <img src={iconaddpic} alt="icon for adding" />
           </UploadButton>
-        </ImgContainer>
-
+          <RemoveButton onClick={onImageRemove} data-testid="buttonRemove">
+            <span className="sr-only">Image remove button</span>
+            <img src={iconbin} alt="bin icon" />
+          </RemoveButton>
+        </ButtonContainer>
         <FormContainer title="after editing press enter">
-          <div>
+          <InputTextContainer>
             <IconPencil
+              title="after editing press enter"
               src={iconpencil}
               width="20px"
               height="20px"
               alt="pen"
-              title="after editing press enter"
             />
             <InputTextStyled
               id="profileName"
               data-testid="inputCatName"
               type="text"
+              placeholder="name of cat"
               maxLength="25"
               pattern={/^[A-Za-z ]+$/}
               value={profileData.profileName}
@@ -169,8 +162,8 @@ export default function ProfilePage() {
             <label className="sr-only" htmlFor="profileName">
               cat name
             </label>
-          </div>
-          <div>
+          </InputTextContainer>
+          <InputTextContainer>
             <IconPencil
               src={iconpencil}
               width="20px"
@@ -181,6 +174,7 @@ export default function ProfilePage() {
             <InputTextStyled
               id="profilePetName"
               data-testid="inputPetName"
+              placeholder="nickname"
               type="text"
               maxLength="25"
               pattern={/^[A-Za-z ]+$/}
@@ -194,9 +188,9 @@ export default function ProfilePage() {
               onKeyDown={onKeyDownPetName}
             />
             <label htmlFor="profilePetName" className="sr-only">
-              petname
+              nickname
             </label>
-          </div>
+          </InputTextContainer>
           <div>
             <IconPencil
               src={iconpencil}
@@ -210,7 +204,6 @@ export default function ProfilePage() {
                 id="profileAge"
                 data-testid="inputAge"
                 type="number"
-                maxLength="25"
                 min="0"
                 max="30"
                 pattern={/^[0-9{1,2}]+$/}
@@ -241,6 +234,7 @@ export default function ProfilePage() {
               id="note"
               type="text"
               rows="8"
+              maxLength="350"
               value={profileData.profileNote}
               onChange={event =>
                 setProfileData({
@@ -250,23 +244,23 @@ export default function ProfilePage() {
               }
               onKeyDown={onKeyDownNote}
             />
-            <CatInfoPageButton
-              onClick={() => navigate('/catinfopage', { replace: true })}
-            >
-              <span>cat breeds</span>
-              <IconCatCoralRight
-                src={coralcatright}
-                alt="little cat looking to the right"
-                width="28"
-                height="28"
-              />
-              <IconArrowRight
-                src={iconarrowright}
-                alt="arrow icon showing to the right"
-              />
-            </CatInfoPageButton>
           </NoteContainer>
         </FormContainer>
+        <CatInfoPageButton
+          onClick={() => navigate('/catinfopage', { replace: true })}
+        >
+          <span>cat breeds</span>
+          <IconCatCoralRight
+            src={coralcatright}
+            alt="little cat looking to the right"
+            width="28"
+            height="28"
+          />
+          <IconArrowRight
+            src={iconarrow}
+            alt="arrow icon showing to the right"
+          />
+        </CatInfoPageButton>
       </main>
     </FormPageStyle>
   );
@@ -309,20 +303,29 @@ const Header = styled.header`
 `;
 
 const ImgContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   align-items: center;
   margin-top: 0.5rem;
-  position: relative;
+  width: 40%;
+  min-width: 280px;
+  min-height: 115px;
 `;
 
 const UploadedImg = styled.img`
-  margin-bottom: 1rem;
   border-radius: 5px;
+  width: 100%;
 `;
 
 const DefaultImg = styled.img`
-  margin-bottom: 3rem;
+  width: 100%;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  min-width: 280px;
+  width: 40%;
+  align-items: center;
+  margin-top: 0.5rem;
 `;
 
 const UploadButton = styled.label`
@@ -331,10 +334,9 @@ const UploadButton = styled.label`
   padding: 4px;
   background-color: transparent;
   box-shadow: var(--box-shadow-inset);
+  border-bottom: 1px coral solid;
+  border-right: 1px coral solid;
   border-radius: 10px;
-  position: absolute;
-  bottom: 14px;
-  right: 0;
   &:hover {
     cursor: pointer;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -347,11 +349,9 @@ const RemoveButton = styled.button`
   padding: 4px;
   background-color: transparent;
   box-shadow: var(--box-shadow-inset);
+  border-bottom: 1px coral solid;
+  border-right: 1px coral solid;
   border-radius: 10px;
-  position: absolute;
-  bottom: 14px;
-  left: 0;
-  border: none;
   &:hover {
     cursor: pointer;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -365,12 +365,20 @@ const RemoveButton = styled.button`
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
+  min-width: 280px;
+  width: 40%;
   gap: 10px;
   margin-top: 2rem;
 `;
 
+const InputTextContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const InputTextStyled = styled.input`
   text-overflow: ellipsis;
+  width: 100%;
   font-size: 1rem;
   line-height: 1.5rem;
   margin-top: 8px;
@@ -379,6 +387,9 @@ const InputTextStyled = styled.input`
   box-shadow: var(--box-shadow-inputfields);
   border-radius: 5px;
   border: none;
+  :hover {
+    cursor: pointer;
+  }
   &:focus {
     outline: 1px solid var(--coral);
   }
@@ -430,25 +441,12 @@ const NoteContainer = styled.div`
     font-family: inherit;
     font-size: 0.9rem;
     text-overflow: ellipsis;
+    :hover {
+      cursor: pointer;
+    }
     &:focus {
       outline: 1px solid var(--coral);
     }
-  }
-`;
-
-const CatInfoPageButton = styled.button`
-  padding: 2px;
-  font-size: 0.8rem;
-  border-radius: 10px;
-  border: none;
-  text-decoration: none;
-  background-color: var(--white);
-  position: absolute;
-  right: -4px;
-  top: 0px;
-  &:hover {
-    cursor: pointer;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 `;
 
@@ -462,4 +460,18 @@ const IconArrowRight = styled.img`
 
 const IconCatCoralRight = styled.img`
   margin-right: 2px;
+`;
+
+const CatInfoPageButton = styled.button`
+  padding: 2px;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  border: none;
+  text-decoration: none;
+  background-color: var(--white);
+
+  &:hover {
+    cursor: pointer;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 `;
