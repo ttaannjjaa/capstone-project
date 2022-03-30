@@ -7,7 +7,8 @@ export const SortButtonStyled = styled.button`
   background-color: var(--steelblue);
   color: var(--white);
   border-radius: 5px;
-  border: 1px var(--coral) dotted;
+  border-bottom: 1px var(--coral) solid;
+  border-right: 1px var(--coral) solid;
   box-shadow: var(--box-shadow-inset);
   margin-right: 10px;
   flex-wrap: nowrap;
@@ -15,9 +16,10 @@ export const SortButtonStyled = styled.button`
     background-color: var(--lightsteel);
     color: var(--black);
     border: 1px var(--coral) solid;
+    cursor: pointer;
   }
   &:active {
     opacity: 0.9;
-    border: 2px solid var(--steelblue);
+    border: 1px solid var(--steelblue);
   }
 `;
