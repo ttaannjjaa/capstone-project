@@ -36,7 +36,7 @@ export default function ProfilePage() {
   }
 
   function onImageSave(response) {
-    setImage(response.data.url);
+    setImage(response.data.url.replace('http', 'https'));
   }
 
   function onImageRemove() {
@@ -50,16 +50,16 @@ export default function ProfilePage() {
   const [profileData, setProfileData] = useState({
     profileName: storedProfileData?.profileName
       ? storedProfileData.profileName
-      : 'cat name',
+      : '',
     profilePetName: storedProfileData?.profilePetName
       ? storedProfileData.profilePetName
-      : 'pet name',
+      : '',
     profileAge: storedProfileData?.profileAge
       ? storedProfileData.profileAge
       : '0',
     profileNote: storedProfileData?.profileNote
       ? storedProfileData.profileNote
-      : ' ',
+      : '',
   });
 
   const onKeyDownName = event => {
@@ -107,15 +107,14 @@ export default function ProfilePage() {
       <main>
         <ImgContainer>
           {image ? (
-            <UploadedImg data-testid="inputImgUpload" src={image} alt="" />
+            <UploadedImg src={image} alt="" />
           ) : (
             <DefaultImg
               src={imageUploadInfo}
-              alt="photoupload by clicking button with curved arrow right-hand-side, removing it by clicking the button with the bin on the left"
+              alt="photoupload by clicking button with add symbol, removing it by clicking the button with the bin on the left"
             />
           )}
           <input
-            data-testid="inputImgUpload"
             id="imgUpload"
             type="file"
             accept="image/*"
@@ -138,16 +137,17 @@ export default function ProfilePage() {
         <FormContainer title="after editing press enter">
           <InputTextContainer>
             <IconPencil
+              title="after editing press enter"
               src={iconpencil}
               width="20px"
               height="20px"
               alt="pen"
-              title="after editing press enter"
             />
             <InputTextStyled
               id="profileName"
               data-testid="inputCatName"
               type="text"
+              placeholder="name of cat"
               maxLength="25"
               pattern={/^[A-Za-z ]+$/}
               value={profileData.profileName}
@@ -174,6 +174,7 @@ export default function ProfilePage() {
             <InputTextStyled
               id="profilePetName"
               data-testid="inputPetName"
+              placeholder="nickname"
               type="text"
               maxLength="25"
               pattern={/^[A-Za-z ]+$/}
@@ -187,7 +188,7 @@ export default function ProfilePage() {
               onKeyDown={onKeyDownPetName}
             />
             <label htmlFor="profilePetName" className="sr-only">
-              petname
+              nickname
             </label>
           </InputTextContainer>
           <div>
@@ -203,7 +204,6 @@ export default function ProfilePage() {
                 id="profileAge"
                 data-testid="inputAge"
                 type="number"
-                maxLength="25"
                 min="0"
                 max="30"
                 pattern={/^[0-9{1,2}]+$/}
@@ -234,6 +234,7 @@ export default function ProfilePage() {
               id="note"
               type="text"
               rows="8"
+              maxLength="350"
               value={profileData.profileNote}
               onChange={event =>
                 setProfileData({
@@ -386,6 +387,9 @@ const InputTextStyled = styled.input`
   box-shadow: var(--box-shadow-inputfields);
   border-radius: 5px;
   border: none;
+  :hover {
+    cursor: pointer;
+  }
   &:focus {
     outline: 1px solid var(--coral);
   }
@@ -437,6 +441,9 @@ const NoteContainer = styled.div`
     font-family: inherit;
     font-size: 0.9rem;
     text-overflow: ellipsis;
+    :hover {
+      cursor: pointer;
+    }
     &:focus {
       outline: 1px solid var(--coral);
     }
