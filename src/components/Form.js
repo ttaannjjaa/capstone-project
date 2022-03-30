@@ -21,8 +21,6 @@ export default function Form({ handleData }) {
   const dateToday = new Date().toISOString().substring(0, 10);
 
   const onSubmit = data => {
-    const message = `successfully saved`;
-    alert(JSON.stringify(message));
     const formData = {
       id: nanoid(),
       foodName: data.foodName.trim(),
