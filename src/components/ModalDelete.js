@@ -7,41 +7,55 @@ export default function ModalDelete({ onConfirm, onCancel, visible, id }) {
     return null;
   }
   return (
-    <ModalDeleteStyled
-      aria-labelledby="dialog1Title"
-      aria-describedby="dialog1Desc"
-    >
-      <h2 id="dialog1Title">Confirmation Requested</h2>
-      <p id="dialog1Desc">Do you really want to delete this?</p>
-      <ButtonWrapper>
-        <SortButtonStyled onClick={onConfirm} id={id}>
-          <img src={iconwarning} alt="icon warning" width="14" height="14" />{' '}
-          Yes
-        </SortButtonStyled>
-        <SortButtonStyled onClick={onCancel}>No</SortButtonStyled>
-      </ButtonWrapper>
-    </ModalDeleteStyled>
+    <Background>
+      <ModalDeleteStyled aria-describedby="dialog1Desc">
+        <h2>Confirmation Requested</h2>
+        <Question id="dialog1Desc">Do you really want to delete this?</Question>
+        <ButtonWrapper>
+          <SortButtonStyled onClick={onConfirm} id={id}>
+            <img src={iconwarning} alt="icon warning" width="14" height="14" />{' '}
+            Yes
+          </SortButtonStyled>
+          <SortButtonStyled onClick={onCancel}>No</SortButtonStyled>
+        </ButtonWrapper>
+      </ModalDeleteStyled>
+    </Background>
   );
 }
 
+const Background = styled.div`
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+`;
+
 const ModalDeleteStyled = styled.section`
+  width: 290px;
   border: 5px solid var(--coral);
   border-radius: 10px;
   background-color: var(--lightsteel);
-  opacity: 0.9;
   padding: 10px;
+  margin: 30% auto;
   display: grid;
   grid-template-rows: fit-content fit-content 1fr;
   place-items: center;
+  z-index: 20;
 
   h2 {
+    padding-top: 5px;
     font-size: 1rem;
+    text-decoration: none;
   }
+`;
 
-  p {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
+const Question = styled.h3`
+  font-size: 0.8rem;
+  margin: 0.5rem 0 1rem 0;
+  white-space: no-wrap;
 `;
 
 const ButtonWrapper = styled.div`

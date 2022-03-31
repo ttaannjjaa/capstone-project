@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import Card from '../components/Card.js';
 import ExitButton from '../components/ExitButton.js';
+import Navigation from '../components/Navigation.js';
 import { SortButtonStyled } from '../components/SortButtonStyled.js';
 
 export default function LikedFoodPage({ storageData, handleDelete }) {
@@ -100,6 +101,7 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
           </ListStyle>
         )}
       </main>
+      <Navigation />
     </LikedFoodPageStyle>
   );
 }
