@@ -118,6 +118,7 @@ const StartButton = styled.button`
     background-color: var(--lightsteel);
     color: var(--black);
     border: 1px var(--coral) solid;
+    cursor: pointer;
   }
   &:active {
     opacity: 0.9;
