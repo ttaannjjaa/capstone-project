@@ -11,8 +11,8 @@ export default function Form({ handleData }) {
   } = useForm({
     defaultValues: {
       foodName: '',
-      foodTaste: '',
-      foodStyle: '',
+      foodTaste: 'tuna',
+      foodStyle: 'soup',
       foodRating: '',
       date: '',
     },
@@ -167,6 +167,13 @@ const FormStyled = styled.form`
 
   label {
     margin-top: 15px;
+  }
+
+  span {
+    color: var(--coral);
+    font-size: 0.7rem;
+    padding: 3px;
+    margin: 0;
   }
 `;
 

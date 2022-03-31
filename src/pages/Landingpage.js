@@ -81,7 +81,7 @@ const StyledLandingPage = styled.main`
   }
 
   h1 {
-    margin-top: 4rem;
+    margin-top: 3.5rem;
     @media (orientation: landscape) {
       margin-top: 1rem;
     }
