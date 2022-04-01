@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import LikedFoodPage from './LikedFoodPage.js';
 import { MemoryRouter } from 'react-router-dom';
+import ScrollToTop from '../components/ScrollToTop.js';
 
 describe('LikedFoodPage', () => {
   it('renders a headline and an unordered list of cards, the list has an accessible name', () => {
@@ -73,5 +74,19 @@ describe('LikedFoodPage', () => {
     expect(button3).toBeInTheDocument();
     expect(button4).toBeInTheDocument();
     expect(button5).toBeInTheDocument();
+  });
+
+  it('renders a scrolltotop button', () => {
+    global.scrollTo = jest.fn();
+
+    render(
+      <MemoryRouter>
+        <ScrollToTop noScrollToTopButton={false} />
+      </MemoryRouter>
+    );
+
+    const ScrollToTopButtonImg = screen.getByAltText('icon with arrow up');
+
+    expect(ScrollToTopButtonImg).toBeInTheDocument();
   });
 });

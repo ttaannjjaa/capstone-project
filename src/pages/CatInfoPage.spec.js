@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import CatInfoPage from './CatInfoPage.js';
+import ScrollToTop from '../components/ScrollToTop.js';
 
 describe('CatInfoPage', () => {
   it('renders a headline and a return button with an image', () => {
@@ -38,5 +39,19 @@ describe('CatInfoPage', () => {
 
     const catDataList = screen.getByRole('list');
     expect(catDataList).toBeInTheDocument();
+  });
+
+  it('renders a scrolltotop button', () => {
+    global.scrollTo = jest.fn();
+
+    render(
+      <MemoryRouter>
+        <ScrollToTop noScrollToTopButton={false} />
+      </MemoryRouter>
+    );
+
+    const ScrollToTopButtonImg = screen.getByAltText('icon with arrow up');
+
+    expect(ScrollToTopButtonImg).toBeInTheDocument();
   });
 });

@@ -6,11 +6,18 @@ export default function ScrollToTop() {
   const [noScrollToTopButton, setNoScrollToTopButton] = useState(true);
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 2000) {
+      if (window.pageYOffset > 100) {
         setNoScrollToTopButton(false);
       } else {
         setNoScrollToTopButton(true);
       }
+      return () => {
+        if (window.pageYOffset > 100) {
+          setNoScrollToTopButton(false);
+        } else {
+          setNoScrollToTopButton(true);
+        }
+      };
     });
   }, []);
 
@@ -34,12 +41,12 @@ export default function ScrollToTop() {
 }
 
 const ScrollToTopButton = styled.button`
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   text-decoration: none;
   border-radius: 50%;
   position: fixed;
-  bottom: 2rem;
+  bottom: 3.2rem;
   right: 10px;
   background-color: var(--coral);
   z-index: 6;
