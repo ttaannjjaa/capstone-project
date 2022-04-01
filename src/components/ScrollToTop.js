@@ -44,6 +44,7 @@ const ScrollToTopButton = styled.button`
   width: 32px;
   height: 32px;
   text-decoration: none;
+  border: none;
   border-radius: 50%;
   position: fixed;
   bottom: 3.2rem;

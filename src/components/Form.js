@@ -11,8 +11,8 @@ export default function Form({ handleData }) {
   } = useForm({
     defaultValues: {
       foodName: '',
-      foodTaste: 'tuna',
-      foodStyle: 'soup',
+      foodTaste: '',
+      foodStyle: '',
       foodRating: '',
       date: '',
     },
@@ -60,7 +60,7 @@ export default function Form({ handleData }) {
               message: 'ups, limit of 2o characters reached',
             },
             pattern: {
-              value: /^[A-Za-z ]+$/,
+              value: /^[A-Za-z &]+$/,
               message: 'no numbers or special characters allowed',
             },
           })}
@@ -84,7 +84,7 @@ export default function Form({ handleData }) {
               message: '84 letters should be enough.',
             },
             pattern: {
-              value: /^[A-Za-z ]+$/,
+              value: /^[A-Za-z &]+$/,
               message: 'no numbers or special characters allowed',
             },
           })}
