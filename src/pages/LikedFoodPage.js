@@ -4,8 +4,14 @@ import Card from '../components/Card.js';
 import ExitButton from '../components/ExitButton.js';
 import Navigation from '../components/Navigation.js';
 import { SortButtonStyled } from '../components/SortButtonStyled.js';
+import ScrollToTop from '../components/ScrollToTop.js';
 
-export default function LikedFoodPage({ storageData, handleDelete }) {
+export default function LikedFoodPage({
+  storageData,
+  handleDelete,
+  onScrollToTop,
+  noScrollToTopButton,
+}) {
   const likedData = storageData.filter(data => data.foodRating === 'liked');
 
   const [sortValue, setSortValue] = useState('');
@@ -101,6 +107,7 @@ export default function LikedFoodPage({ storageData, handleDelete }) {
           </ListStyle>
         )}
       </main>
+      <ScrollToTop onClick={onScrollToTop} hidden={noScrollToTopButton} />
       <Navigation />
     </LikedFoodPageStyle>
   );

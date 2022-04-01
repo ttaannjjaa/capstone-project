@@ -5,8 +5,9 @@ import { useState, useEffect } from 'react';
 
 import iconarrowleft from '../images/icon_arrow_left_circle_fill.svg';
 import coralcatleft from '../images/coral_cat_head_left.svg';
+import ScrollToTop from '../components/ScrollToTop.js';
 
-export default function CatInfoPage() {
+export default function CatInfoPage({ noScrollToTopButton, onScrollToTop }) {
   const navigate = useNavigate();
   const [catData, setCatData] = useState([]);
   const apiKey = process.env.API_KEY;
@@ -32,7 +33,7 @@ export default function CatInfoPage() {
   );
 
   return (
-    <>
+    <CatInfoPageStyled>
       <Header>
         <button
           type="button"
@@ -49,7 +50,7 @@ export default function CatInfoPage() {
         </button>
         <h1>CAT BREEDS</h1>
       </Header>
-      <Main>
+      <main>
         {catData && (
           <UL role="list">
             {catData.map(cat => (
@@ -81,10 +82,22 @@ export default function CatInfoPage() {
             Sorry, there is a problem. Please try again later.
           </CatDataFetchErrorMessage>
         )}
-      </Main>
-    </>
+      </main>
+      <ScrollToTop onClick={onScrollToTop} hidden={noScrollToTopButton} />
+    </CatInfoPageStyled>
   );
 }
+
+const CatInfoPageStyled = styled.section`
+  display: grid;
+  grid-template-rows: fit-content 1fr;
+
+  main {
+    grid-row: 2 / 3;
+    min-height: 100vh;
+    background-color: var(--peach);
+  }
+`;
 
 const Header = styled.header`
   background-color: var(--lightsteel);
@@ -94,7 +107,9 @@ const Header = styled.header`
   border-top: 4px solid var(--steelblue);
   border-bottom: 2px solid var(--steelblue);
   box-shadow: var(--box-shadow-header-drop);
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
   button {
     position: absolute;
@@ -118,12 +133,8 @@ const Header = styled.header`
   }
 `;
 
-const Main = styled.main`
-  background-color: var(--peach);
-  min-height: 100vh;
-`;
-
 const UL = styled.ul`
+  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   gap: 15px;

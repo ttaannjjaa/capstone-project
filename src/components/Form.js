@@ -60,7 +60,7 @@ export default function Form({ handleData }) {
               message: 'ups, limit of 2o characters reached',
             },
             pattern: {
-              value: /^[A-Za-z ]+$/,
+              value: /^[A-Za-z &]+$/,
               message: 'no numbers or special characters allowed',
             },
           })}
@@ -84,7 +84,7 @@ export default function Form({ handleData }) {
               message: '84 letters should be enough.',
             },
             pattern: {
-              value: /^[A-Za-z ]+$/,
+              value: /^[A-Za-z &]+$/,
               message: 'no numbers or special characters allowed',
             },
           })}
@@ -167,6 +167,13 @@ const FormStyled = styled.form`
 
   label {
     margin-top: 15px;
+  }
+
+  span {
+    color: var(--coral);
+    font-size: 0.7rem;
+    padding: 3px;
+    margin: 0;
   }
 `;
 

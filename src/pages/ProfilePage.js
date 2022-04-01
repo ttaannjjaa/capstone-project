@@ -469,6 +469,7 @@ const CatInfoPageButton = styled.button`
   border: none;
   text-decoration: none;
   background-color: var(--white);
+  align-self: flex-end;
 
   &:hover {
     cursor: pointer;

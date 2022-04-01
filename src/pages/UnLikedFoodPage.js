@@ -3,9 +3,15 @@ import { useState } from 'react';
 import Card from '../components/Card.js';
 import ExitButton from '../components/ExitButton.js';
 import Navigation from '../components/Navigation.js';
+import ScrollToTop from '../components/ScrollToTop.js';
 import Searchbar from '../components/Searchbar.js';
 
-export default function UnLikedFoodPage({ storageData, handleDelete }) {
+export default function UnLikedFoodPage({
+  storageData,
+  handleDelete,
+  onScrollToTop,
+  noScrollToTopButton,
+}) {
   const unLikedData = storageData.filter(data => data.foodRating === 'unliked');
 
   const [userInput, setUserInput] = useState('');
@@ -90,6 +96,7 @@ export default function UnLikedFoodPage({ storageData, handleDelete }) {
         )}
       </main>
       <Navigation />
+      <ScrollToTop onClick={onScrollToTop} hidden={noScrollToTopButton} />
     </UnLikedFoodPageStyled>
   );
 }
