@@ -4,10 +4,9 @@ import iconarrowup from '../images/icon_arrow-up_circle_fill.svg';
 
 export default function ScrollToTop() {
   const [noScrollToTopButton, setNoScrollToTopButton] = useState(true);
-
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (Window.pageYOffset > 400) {
+      if (window.pageYOffset > 2000) {
         setNoScrollToTopButton(false);
       } else {
         setNoScrollToTopButton(true);
@@ -35,10 +34,13 @@ export default function ScrollToTop() {
 }
 
 const ScrollToTopButton = styled.button`
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   text-decoration: none;
   border-radius: 50%;
-
-  background-color: var(--lightsteel);
+  position: fixed;
+  bottom: 2rem;
+  right: 10px;
+  background-color: var(--coral);
+  z-index: 6;
 `;

@@ -37,6 +37,8 @@ You can have a look at the last update of CatYummy on Vercel: [DemoVersion](http
 - [nanoid](https://www.npmjs.com/package/nanoid)
 - [The Cat API](https://thecatapi.com/)
 
+This project was created using [Create React App](https://github.com/facebook/create-react-app).
+
 ### Project Setup
 
 you can clone this repository

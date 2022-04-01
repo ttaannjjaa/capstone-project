@@ -8,5 +8,5 @@ const Template = args => <ScrollToTop {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  hidden: false,
+  noScrollToTopButton: false,
 };

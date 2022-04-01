@@ -5,8 +5,9 @@ import { useState, useEffect } from 'react';
 
 import iconarrowleft from '../images/icon_arrow_left_circle_fill.svg';
 import coralcatleft from '../images/coral_cat_head_left.svg';
+import ScrollToTop from '../components/ScrollToTop.js';
 
-export default function CatInfoPage() {
+export default function CatInfoPage({ noScrollToTopButton, onScrollToTop }) {
   const navigate = useNavigate();
   const [catData, setCatData] = useState([]);
   const apiKey = process.env.API_KEY;
@@ -82,6 +83,7 @@ export default function CatInfoPage() {
           </CatDataFetchErrorMessage>
         )}
       </main>
+      <ScrollToTop onClick={onScrollToTop} hidden={noScrollToTopButton} />
     </CatInfoPageStyled>
   );
 }
