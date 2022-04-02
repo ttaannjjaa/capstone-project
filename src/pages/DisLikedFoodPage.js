@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import Card from '../components/Card.js';
 import ExitButton from '../components/ExitButton.js';
+import Header from '../components/Header.js';
 import Navigation from '../components/Navigation.js';
 import ScrollToTop from '../components/ScrollToTop.js';
 import Searchbar from '../components/Searchbar.js';
@@ -32,7 +33,7 @@ export default function DisLikedFoodPage({
 
   return (
     <DisLikedFoodPageStyled>
-      <Header>
+      <HeaderDisLikedFoodPage variant="dislikedfoodpage">
         <HeadingStyled>
           <h1>NOT MY TASTE</h1>
           <ExitButton />
@@ -40,7 +41,7 @@ export default function DisLikedFoodPage({
         <SearchStyled>
           <Searchbar handleUserInput={handleUserInput} userInput={userInput} />
         </SearchStyled>
-      </Header>
+      </HeaderDisLikedFoodPage>
       <main>
         {disLikedData.length === 0 && (
           <p>
@@ -120,16 +121,8 @@ const DisLikedFoodPageStyled = styled.section`
   }
 `;
 
-const Header = styled.header`
-  background-color: var(--lightsteel);
-  width: 100%;
-  overflow: hidden;
-  border-top: 4px solid var(--steelblue);
-  border-bottom: 2px solid var(--steelblue);
-  box-shadow: var(--box-shadow-header-drop);
+const HeaderDisLikedFoodPage = styled(Header)`
   grid-row: 1 / 2;
-  display: grid;
-  grid-template-rows: fit-content fit-content;
 
   h1 {
     width: 100%;
