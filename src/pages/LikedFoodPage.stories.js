@@ -17,7 +17,7 @@ Default.args = {
       selectedDate: '2022-03-22',
     },
     {
-      foodRating: 'unliked',
+      foodRating: 'disliked',
       foodName: 'superschmacko',
       foodTaste: 'salmon',
       foodStyle: 'ragu',

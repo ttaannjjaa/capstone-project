@@ -125,13 +125,13 @@ export default function Form({ handleData }) {
           </RadioStyled>
           <RadioStyled>
             <RadioButton
-              id="unliked"
+              id="disliked"
               name="foodRating"
               type="radio"
-              value="unliked"
+              value="disliked"
               {...register('foodRating', { required: { value: true } })}
             />
-            <label htmlFor="unliked">disliked</label>
+            <label htmlFor="disliked">disliked</label>
           </RadioStyled>
         </RatingField>
         <label htmlFor="date">fed on (input optional)</label>

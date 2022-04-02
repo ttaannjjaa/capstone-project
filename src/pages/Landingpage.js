@@ -51,7 +51,7 @@ export default function LandingPage() {
           )}
         </StartButton>
         <StartButton
-          onClick={() => navigate('/unlikedfoodpage', { replace: true })}
+          onClick={() => navigate('/dislikedfoodpage', { replace: true })}
         >
           CAT FOOD
           <ImgIcon

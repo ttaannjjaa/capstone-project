@@ -14,15 +14,15 @@ export default function Navigation() {
       <NavButton to="/likedfoodpage">
         <img
           src={iconheartblack}
-          alt={'thumbup icon'}
+          alt={'black heart icon'}
           width="25px"
           height="25px"
         />
       </NavButton>
-      <NavButton to="/unlikedfoodpage">
+      <NavButton to="/dislikedfoodpage">
         <img
           src={iconcrossmarkred}
-          alt={'thumbdown icon'}
+          alt={'icon red crossmark'}
           width="22px"
           height="22px"
         />

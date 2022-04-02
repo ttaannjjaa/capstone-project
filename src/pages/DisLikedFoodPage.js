@@ -6,13 +6,15 @@ import Navigation from '../components/Navigation.js';
 import ScrollToTop from '../components/ScrollToTop.js';
 import Searchbar from '../components/Searchbar.js';
 
-export default function UnLikedFoodPage({
+export default function DisLikedFoodPage({
   storageData,
   handleDelete,
   onScrollToTop,
   noScrollToTopButton,
 }) {
-  const unLikedData = storageData.filter(data => data.foodRating === 'unliked');
+  const disLikedData = storageData.filter(
+    data => data.foodRating === 'disliked'
+  );
 
   const [userInput, setUserInput] = useState('');
 
@@ -22,14 +24,14 @@ export default function UnLikedFoodPage({
     setUserInput(input);
   }
 
-  const filteredUnlikedData = unLikedData.filter(data =>
+  const filteredDislikedData = disLikedData.filter(data =>
     Object.values(data).some(val =>
       val.toLowerCase().includes(userInput.trim().toLowerCase())
     )
   );
 
   return (
-    <UnLikedFoodPageStyled>
+    <DisLikedFoodPageStyled>
       <Header>
         <HeadingStyled>
           <h1>NOT MY TASTE</h1>
@@ -40,7 +42,7 @@ export default function UnLikedFoodPage({
         </SearchStyled>
       </Header>
       <main>
-        {unLikedData.length === 0 && (
+        {disLikedData.length === 0 && (
           <p>
             You don't have any list entries here yet. List entries appear when
             the form is filled out and saved.
@@ -52,7 +54,7 @@ export default function UnLikedFoodPage({
             aria-describedby="list of cards about catfood that your cat does not like"
             role="list"
           >
-            {unLikedData.map(data => (
+            {disLikedData.map(data => (
               <li key={data.id}>
                 <Card
                   id={data.id}
@@ -67,19 +69,19 @@ export default function UnLikedFoodPage({
             ))}
           </ListStyle>
         )}
-        {userInput.length > 0 && filteredUnlikedData.length === 0 && (
+        {userInput.length > 0 && filteredDislikedData.length === 0 && (
           <p>
             Either your cat likes the food or it's not here yet as list entry
             available.
           </p>
         )}
-        {userInput.length > 0 && filteredUnlikedData.length > 0 && (
+        {userInput.length > 0 && filteredDislikedData.length > 0 && (
           <ListStyle
             data-testid="unlikedlist"
             aria-describedby="list of cards about catfood that your cat does not like"
             role="list"
           >
-            {filteredUnlikedData.map(data => (
+            {filteredDislikedData.map(data => (
               <li key={data.id}>
                 <Card
                   id={data.id}
@@ -97,11 +99,11 @@ export default function UnLikedFoodPage({
       </main>
       <Navigation />
       <ScrollToTop onClick={onScrollToTop} hidden={noScrollToTopButton} />
-    </UnLikedFoodPageStyled>
+    </DisLikedFoodPageStyled>
   );
 }
 
-const UnLikedFoodPageStyled = styled.section`
+const DisLikedFoodPageStyled = styled.section`
   background-color: var(--white);
   display: grid;
   grid-template-rows: fit-content 1fr 3rem;

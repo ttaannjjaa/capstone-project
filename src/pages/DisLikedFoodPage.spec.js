@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import UnLikedFoodPage from './UnLikedFoodPage.js';
+import DisLikedFoodPage from './DisLikedFoodPage.js';
 import { MemoryRouter } from 'react-router-dom';
 import ScrollToTop from '../components/ScrollToTop.js';
 
-describe('UnLikedFoodPage', () => {
+describe('DisLikedFoodPage', () => {
   it('renders a headline and an unordered list of cards, which has an accessible name', () => {
     render(
       <MemoryRouter>
-        <UnLikedFoodPage
+        <DisLikedFoodPage
           storageData={[
             {
               foodRating: 'liked',
@@ -17,7 +17,7 @@ describe('UnLikedFoodPage', () => {
               selectedDate: '2022-03-22',
             },
             {
-              foodRating: 'unliked',
+              foodRating: 'disliked',
               foodName: 'catmax',
               foodTaste: 'salmon',
               foodStyle: 'ragu',
@@ -42,7 +42,7 @@ describe('UnLikedFoodPage', () => {
   it('renders a searchbar with the label "Suche" and a search icon', () => {
     render(
       <MemoryRouter>
-        <UnLikedFoodPage
+        <DisLikedFoodPage
           storageData={[
             {
               foodRating: 'liked',
@@ -52,7 +52,7 @@ describe('UnLikedFoodPage', () => {
               selectedDate: '2022-03-22',
             },
             {
-              foodRating: 'unliked',
+              foodRating: 'disliked',
               foodName: 'catmax',
               foodTaste: 'salmon',
               foodStyle: 'ragu',

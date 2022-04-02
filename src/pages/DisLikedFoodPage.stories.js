@@ -1,10 +1,10 @@
-import UnLikedFoodPage from './UnLikedFoodPage';
+import DisLikedFoodPage from './DisLikedFoodPage.js';
 export default {
-  title: 'Pages/UnLikedFoodPage',
-  component: UnLikedFoodPage,
+  title: 'Pages/DisLikedFoodPage',
+  component: DisLikedFoodPage,
 };
 
-const Template = args => <UnLikedFoodPage {...args} />;
+const Template = args => <DisLikedFoodPage {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -17,7 +17,7 @@ Default.args = {
       selectedDate: '2022-03-22',
     },
     {
-      foodRating: 'unliked',
+      foodRating: 'disliked',
       foodName: 'catmax',
       foodTaste: 'salmon',
       foodStyle: 'ragu',
