@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+import Header from '../components/Header.js';
 import iconarrowleft from '../images/icon_arrow_left_circle_fill.svg';
 import coralcatleft from '../images/coral_cat_head_left.svg';
 import ScrollToTop from '../components/ScrollToTop.js';
@@ -34,7 +35,7 @@ export default function CatInfoPage({ noScrollToTopButton, onScrollToTop }) {
 
   return (
     <CatInfoPageStyled>
-      <Header>
+      <HeaderCatInfoPage variant="catinfopage">
         <button
           type="button"
           onClick={() => navigate('/profilepage', { replace: true })}
@@ -49,7 +50,7 @@ export default function CatInfoPage({ noScrollToTopButton, onScrollToTop }) {
           />
         </button>
         <h1>CAT BREEDS</h1>
-      </Header>
+      </HeaderCatInfoPage>
       <main>
         {catData && (
           <UL role="list">
@@ -99,17 +100,8 @@ const CatInfoPageStyled = styled.section`
   }
 `;
 
-const Header = styled.header`
-  background-color: var(--lightsteel);
-  display: flex;
-  justify-content: center;
-  padding: 0.5rem;
-  border-top: 4px solid var(--steelblue);
-  border-bottom: 2px solid var(--steelblue);
-  box-shadow: var(--box-shadow-header-drop);
-  position: fixed;
-  top: 0;
-  width: 100%;
+const HeaderCatInfoPage = styled(Header)`
+  grid-row: 1/2;
 
   button {
     position: absolute;

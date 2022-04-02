@@ -31,7 +31,7 @@ describe('DisLikedFoodPage', () => {
     const headline = screen.getByRole('heading', {
       textcontent: 'NOT MY TASTE',
     });
-    const ulAccessibility = screen.getByTestId('unlikedlist', {
+    const ulAccessibility = screen.getByTestId('dislikedlist', {
       accessibleName: 'list of cards about catfood that your cat does not like',
     });
 

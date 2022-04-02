@@ -50,7 +50,7 @@ export default function DisLikedFoodPage({
         )}
         {userInput.length === 0 && (
           <ListStyle
-            data-testid="unlikedlist"
+            data-testid="dislikedlist"
             aria-describedby="list of cards about catfood that your cat does not like"
             role="list"
           >
@@ -77,7 +77,7 @@ export default function DisLikedFoodPage({
         )}
         {userInput.length > 0 && filteredDislikedData.length > 0 && (
           <ListStyle
-            data-testid="unlikedlist"
+            data-testid="dislikedlist"
             aria-describedby="list of cards about catfood that your cat does not like"
             role="list"
           >

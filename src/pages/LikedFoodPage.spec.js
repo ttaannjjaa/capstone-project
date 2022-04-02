@@ -17,7 +17,7 @@ describe('LikedFoodPage', () => {
               selectedDate: '2022-03-18',
             },
             {
-              foodRating: 'unliked',
+              foodRating: 'disliked',
               foodName: 'yummyyummy',
               foodTaste: 'salmon',
               foodStyle: 'ragu',
@@ -50,7 +50,7 @@ describe('LikedFoodPage', () => {
               selectedDate: '2022-03-18',
             },
             {
-              foodRating: 'unliked',
+              foodRating: 'disliked',
               foodName: 'yummyyummy',
               foodTaste: 'salmon',
               foodStyle: 'ragu',
