@@ -25,7 +25,7 @@ export default styled.header`
       grid-template-rows: fit-content fit-content;
     `}
 
-${props =>
+  ${props =>
     props.variant === 'formpage' &&
     css`
       padding: 0.5rem;
@@ -40,7 +40,7 @@ ${props =>
       padding: 1rem 1rem 0 1rem;
     `}
 
-${props =>
+  ${props =>
     props.variant === 'profilepage' &&
     css`
       padding: 1rem;
