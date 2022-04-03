@@ -7,32 +7,32 @@ export default {
 
 const Template = args => <Header {...args} />;
 
-export const CatInfoPage = Template.bind({});
-CatInfoPage.args = {
-  children: 'children',
+export const HeaderCatInfoPage = Template.bind({});
+HeaderCatInfoPage.args = {
   variant: 'catinfopage',
+  children: 'catinfopage',
 };
 
-export const DisLikedFoodPage = Template.bind({});
-CatInfoPage.args = {
-  children: 'children',
+export const HeaderDisLikedFoodPage = Template.bind({});
+HeaderDisLikedFoodPage.args = {
   variant: 'dislikedfoodpage',
+  children: 'dislikedfoodpage',
 };
 
-export const FormPage = Template.bind({});
-CatInfoPage.args = {
-  children: 'children',
+export const HeaderFormPage = Template.bind({});
+HeaderFormPage.args = {
   variant: 'formpage',
+  children: 'formpage',
 };
 
-export const LikedFoodPage = Template.bind({});
-CatInfoPage.args = {
-  children: 'children',
+export const HeaderLikedFoodPage = Template.bind({});
+HeaderLikedFoodPage.args = {
   variant: 'likedfoodpage',
+  children: 'likedfoodpage',
 };
 
-export const ProfileFoodPage = Template.bind({});
-CatInfoPage.args = {
-  children: 'children',
+export const HeaderProfilePage = Template.bind({});
+HeaderProfilePage.args = {
   variant: 'profilepage',
+  children: 'profilepage',
 };
