@@ -39,69 +39,64 @@ export default function Form({ handleData }) {
         onSubmit={handleSubmit(onSubmit)}
         id="formCatFood"
         autocomplete="off"
-        aria-describedby="form to document the judgement of your cat about its food"
+        aria-describedby="aria-text"
         data-testid="form"
       >
+        <span className="sr-only" id="aria-text">
+          Form to enter information about catfood including the vote of the cat
+        </span>
         <label htmlFor="foodName">brand name *</label>
         <TextInput
-          id="foodName"
           type="text"
-          minLength="3"
-          maxLength="21"
-          aria-invalid={errors.foodName ? 'true' : 'false'}
+          aria-invalid={errors?.foodName ? 'true' : 'false'}
           {...register('foodName', {
-            required: {
-              value: true,
-              message:
-                'How do you want to find something again without a name?',
+            required: 'Please enter the (brand) name of th cat food',
+            min: {
+              value: 3,
+              message: 'sorry, you should enter at least 3 characters',
             },
-            maxLength: {
-              value: 20,
-              message: 'ups, limit of 2o characters reached',
+            max: {
+              value: 25,
+              message: 'sorry, 25 character limit reached',
             },
             pattern: {
               value: /^[A-Za-z &]+$/,
-              message: 'no numbers or special characters allowed',
+              message: 'sorry, no numbers or other special characters allowed',
             },
           })}
         />
-        {errors.foodName && <span>{errors.foodName.message}</span>}
+        {errors?.foodName && <span>{errors.foodName.message}</span>}
         <label htmlFor="foodTaste">flavour *</label>
         <TextField
-          id="foodTaste"
-          minLength="3"
-          maxLength="85"
           rows="4"
           placeholder="z.B. chicken, salmon"
           aria-invalid={errors.foodTaste ? 'true' : 'false'}
           {...register('foodTaste', {
-            required: {
-              value: true,
-              message: 'The app cannot function without this information.',
+            required: 'Please enter this information.',
+            min: {
+              value: 3,
+              message: 'sorry, you should enter at least 3 characters',
             },
-            maxLength: {
-              value: 84,
-              message: '84 letters should be enough.',
+            max: {
+              value: 85,
+              message: 'sorry, 85 character limit reached',
             },
             pattern: {
               value: /^[A-Za-z &]+$/,
-              message: 'no numbers or special characters allowed',
+              message: 'no numbers or other special characters allowed',
             },
           })}
         />
-        {errors.foodTaste && <span>{errors.foodTaste.message}</span>}
+        {errors?.foodTaste && <span>{errors.foodTaste.message}</span>}
         <label htmlFor="foodStyle">preparation (input optional)</label>
         <TextInput
-          id="foodStyle"
           type="text"
-          minLength="3"
-          maxLength="21"
           placeholder="e.g. jelly, ragu, pate"
-          aria-invalid={errors.foodStyle ? 'true' : 'false'}
+          aria-invalid={errors?.foodStyle ? 'true' : 'false'}
           {...register('foodStyle', {
-            maxLength: {
+            max: {
               value: 20,
-              message: 'ups, limit of 2o characters reached',
+              message: 'sorry, 2o character limit reached',
             },
             pattern: {
               value: /^[A-Za-z ]+$/,
@@ -109,7 +104,7 @@ export default function Form({ handleData }) {
             },
           })}
         />
-        {errors.foodStyle && <span>{errors.foodStyle.message}</span>}
+        {errors?.foodStyle && <span>{errors.foodStyle.message}</span>}
 
         <RatingField>
           <RadioStyled>
@@ -135,13 +130,7 @@ export default function Form({ handleData }) {
           </RadioStyled>
         </RatingField>
         <label htmlFor="date">fed on (input optional)</label>
-        <DateInput
-          id="date"
-          name="date"
-          type="date"
-          max={dateToday}
-          {...register('date')}
-        />
+        <DateInput type="date" max={dateToday} {...register('date')} />
         <SaveButton type="submit">SAVE</SaveButton>
       </FormStyled>
     </FormContainer>
