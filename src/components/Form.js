@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 import { useForm } from 'react-hook-form';
+import ButtonText from './ButtonText.js';
 
 export default function Form({ handleData }) {
   const {
@@ -50,7 +51,7 @@ export default function Form({ handleData }) {
           type="text"
           aria-invalid={errors?.foodName ? 'true' : 'false'}
           {...register('foodName', {
-            required: 'Please enter the (brand) name of th cat food',
+            required: 'Please enter the (brand) name of the cat food',
             min: {
               value: 3,
               message: 'sorry, you should enter at least 3 characters',
@@ -130,8 +131,15 @@ export default function Form({ handleData }) {
           </RadioStyled>
         </RatingField>
         <label htmlFor="date">fed on (input optional)</label>
-        <DateInput type="date" max={dateToday} {...register('date')} />
-        <SaveButton type="submit">SAVE</SaveButton>
+        <DateInput
+          id="date"
+          type="date"
+          max={dateToday}
+          {...register('date')}
+        />
+        <ButtonText variant="savebutton" type="submit">
+          SAVE
+        </ButtonText>
       </FormStyled>
     </FormContainer>
   );
@@ -269,30 +277,5 @@ const DateInput = styled.input`
   }
   &:focus {
     outline: 1px solid var(--coral);
-  }
-`;
-
-const SaveButton = styled.button`
-  min-width: 280px;
-  width: 95%;
-  padding: 6px;
-  margin-bottom: 1.5rem;
-  line-height: 1.5rem;
-  font-size: 1rem;
-  color: var(--white);
-  background-color: var(--steelblue);
-  box-shadow: var(--box-shadow-inset);
-  border-radius: 10px;
-  letter-spacing: 1px;
-  align-self: center;
-  :hover {
-    background-color: var(--lightsteel);
-    color: var(--black);
-    border: 1px var(--coral) solid;
-    cursor: pointer;
-  }
-  &:active {
-    opacity: 0.9;
-    border: 2px solid var(--steelblue);
   }
 `;

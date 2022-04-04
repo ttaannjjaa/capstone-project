@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import ButtonText from '../components/ButtonText.js';
 import Card from '../components/Card.js';
 import ExitButton from '../components/ExitButton.js';
 import Header from '../components/Header.js';
 import Navigation from '../components/Navigation.js';
-import { SortButtonStyled } from '../components/SortButtonStyled.js';
 import ScrollToTop from '../components/ScrollToTop.js';
 
 export default function LikedFoodPage({
@@ -47,34 +47,41 @@ export default function LikedFoodPage({
           <section>
             <span>Sort by ...</span>
             <div>
-              <SortButtonStyled
+              <ButtonText
+                variant="sortbutton"
                 type="button"
                 onClick={() => setSortValue('foodName')}
               >
                 name
-              </SortButtonStyled>
-              <SortButtonStyled
+              </ButtonText>
+              <ButtonText
+                variant="sortbutton"
                 type="button"
                 onClick={() => setSortValue('foodTaste')}
               >
                 flavour
-              </SortButtonStyled>
-              <SortButtonStyled
+              </ButtonText>
+              <ButtonText
+                variant="sortbutton"
                 type="button"
                 onClick={() => setSortValue('foodStyle')}
               >
                 preparation
-              </SortButtonStyled>
-
-              <SortButtonStyled
+              </ButtonText>
+              <ButtonText
+                variant="sortbutton"
                 type="button"
                 onClick={() => setSortValue('selectedDate')}
               >
                 date
-              </SortButtonStyled>
-              <SortButtonStyled type="button" onClick={() => setSortValue('')}>
+              </ButtonText>
+              <ButtonText
+                variant="sortbutton"
+                type="button"
+                onClick={() => setSortValue('')}
+              >
                 entry
-              </SortButtonStyled>
+              </ButtonText>
             </div>
           </section>
         )}

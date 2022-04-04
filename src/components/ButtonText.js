@@ -53,4 +53,14 @@ ${props =>
       align-self: center;
       }
     `};
+
+  ${props =>
+    props.variant === 'modalbutton' &&
+    css`
+      max-height: 2rem;
+      margin-right: 10px;
+      padding: 5px;
+      border-bottom: 1px var(--coral) solid;
+      border-right: 1px var(--coral) solid;
+    `};
 `;
