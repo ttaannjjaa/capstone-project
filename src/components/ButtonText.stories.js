@@ -1,20 +1,22 @@
 import ButtonText from './ButtonText';
+
 export default {
   title: 'Components/ButtonText',
-  component: ButtonText,
+  component: 'ButtonText',
 };
 
 const Template = args => <ButtonText {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {};
-
-export const LandingPageButton = Template.bind({});
-LandingPageButton.args = {
+export const LandingPageButton1 = Template.bind({});
+LandingPageButton1.args = {
   variant: 'landingpagebutton',
   children: 'CAT FOOD RATING',
-  children2: 'CAT FOOD LIKED',
-  children3: 'CAT FOOD DISLIKED',
+};
+
+export const ModalButton = Template.bind({});
+ModalButton.args = {
+  variant: 'modalbutton',
+  children: 'No',
 };
 
 export const SaveButton = Template.bind({});
@@ -27,8 +29,4 @@ export const SortButton = Template.bind({});
 SortButton.args = {
   variant: 'sortbutton',
   children: 'name',
-  children2: 'flavour',
-  children3: 'preparation',
-  children4: 'date',
-  children5: 'entry',
 };

@@ -19,16 +19,6 @@ export default styled.button`
   }
 
   ${props =>
-    props.variant === 'sortbutton' &&
-    css`
-      max-height: 2rem;
-      margin-right: 10px;
-      padding: 5px;
-      border-bottom: 1px var(--coral) solid;
-      border-right: 1px var(--coral) solid;
-    `}
-
-  ${props =>
     props.variant === 'landingpagebutton' &&
     css`
       height: 40px;
@@ -40,7 +30,17 @@ export default styled.button`
       justify-content: center;
     `}
 
-${props =>
+  ${props =>
+    props.variant === 'modalbutton' &&
+    css`
+      max-height: 2rem;
+      margin-right: 10px;
+      padding: 5px;
+      border-bottom: 1px var(--coral) solid;
+      border-right: 1px var(--coral) solid;
+    `};
+
+  ${props =>
     props.variant === 'savebutton' &&
     css`
       min-width: 280px;
@@ -55,12 +55,12 @@ ${props =>
     `};
 
   ${props =>
-    props.variant === 'modalbutton' &&
+    props.variant === 'sortbutton' &&
     css`
       max-height: 2rem;
       margin-right: 10px;
       padding: 5px;
       border-bottom: 1px var(--coral) solid;
       border-right: 1px var(--coral) solid;
-    `};
+    `}
 `;

@@ -1,7 +1,7 @@
 import { userEvent } from '@storybook/testing-library';
 import { render, screen } from '@testing-library/react';
 
-import ButtonText from './ButtonText';
+import ButtonText from './ButtonText.js';
 
 describe('ButtonText', () => {
   it('renders a button and calls a function when the user clicks', () => {
