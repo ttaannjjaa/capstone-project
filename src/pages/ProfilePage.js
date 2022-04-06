@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ExitButton from '../components/ExitButton.js';
 import coralcatright from '../images/coral_cat_head_right.svg';
+import Header from '../components/Header.js';
 import iconaddpic from '../images/icon_add_image.svg';
 import iconarrow from '../images/icon_arrow_right_circle_fill.svg';
 import iconbin from '../images/icon_bin_black.svg';
@@ -100,10 +101,10 @@ export default function ProfilePage() {
 
   return (
     <FormPageStyle>
-      <Header>
+      <HeaderProfilePage variant="profilepage">
         <h1>CAT PROFILE</h1>
         <ExitButton />
-      </Header>
+      </HeaderProfilePage>
       <main>
         <ImgContainer>
           {image ? (
@@ -215,6 +216,7 @@ export default function ProfilePage() {
                   })
                 }
                 onKeyDown={onKeyDownAge}
+                onBlur={onKeyDownAge}
               />
               years
             </LabelAgeStyled>
@@ -243,6 +245,7 @@ export default function ProfilePage() {
                 })
               }
               onKeyDown={onKeyDownNote}
+              onBlur={onKeyDownNote}
             />
           </NoteContainer>
         </FormContainer>
@@ -281,18 +284,8 @@ const FormPageStyle = styled.section`
   }
 `;
 
-const Header = styled.header`
-  border-top: 4px solid var(--steelblue);
-  background-color: var(--lightsteel);
-  padding: 1rem;
-  width: 100%;
-  overflow: hidden;
-  box-shadow: 0 1px 4px 0 rgba(30, 30, 33, 0.3);
+const HeaderProfilePage = styled(Header)`
   grid-row: 1 / 2;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  border-bottom: 2px solid var(--steelblue);
 
   h1 {
     width: 100%;

@@ -5,11 +5,11 @@ import { Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation.js';
 
 import CatInfoPage from './pages/CatInfoPage.js';
+import DisLikedFoodPage from './pages/DisLikedFoodPage.js';
 import FormPage from './pages/FormPage.js';
 import LandingPage from './pages/Landingpage.js';
 import LikedFoodPage from './pages/LikedFoodPage.js';
 import ProfilePage from './pages/ProfilePage.js';
-import UnLikedFoodPage from './pages/UnLikedFoodPage.js';
 
 import useLocalStorage from './hooks/useLocalStorage.js';
 
@@ -49,9 +49,9 @@ function App() {
           }
         />
         <Route
-          path="/unlikedfoodpage"
+          path="/dislikedfoodpage"
           element={
-            <UnLikedFoodPage
+            <DisLikedFoodPage
               storageData={storageData}
               handleDelete={handleDelete}
             />

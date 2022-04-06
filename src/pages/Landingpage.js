@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import ButtonText from '../components/ButtonText.js';
 import catPictureBackground from '../images/backgroundimg.png';
 import iconheartblack from '../images/icon_heartfilled_black.svg';
 import iconheartwhite from '../images/icon_heartfilled_white.svg';
@@ -25,10 +26,14 @@ export default function LandingPage() {
         <Headlinestyled width="310px" height="150px" />
       </h1>
       <StartNavigation>
-        <StartButton onClick={() => navigate('/formpage', { replace: true })}>
+        <ButtonText
+          variant="landingpagebutton"
+          onClick={() => navigate('/formpage', { replace: true })}
+        >
           CAT FOOD RATING
-        </StartButton>
-        <StartButton
+        </ButtonText>
+        <ButtonText
+          variant="landingpagebutton"
           onClick={() => navigate('/likedfoodpage', { replace: true })}
           onMouseEnter={() => handleMouseHover()}
           onMouseLeave={() => handleMouseLeave()}
@@ -49,9 +54,10 @@ export default function LandingPage() {
               height="14px"
             />
           )}
-        </StartButton>
-        <StartButton
-          onClick={() => navigate('/unlikedfoodpage', { replace: true })}
+        </ButtonText>
+        <ButtonText
+          variant="landingpagebutton"
+          onClick={() => navigate('/dislikedfoodpage', { replace: true })}
         >
           CAT FOOD
           <ImgIcon
@@ -60,7 +66,7 @@ export default function LandingPage() {
             width="14px"
             height="14px"
           />
-        </StartButton>
+        </ButtonText>
       </StartNavigation>
     </StyledLandingPage>
   );
@@ -100,28 +106,4 @@ const StartNavigation = styled.nav`
 
 const ImgIcon = styled.img`
   margin-left: 6px;
-`;
-
-const StartButton = styled.button`
-  background-color: var(--steelblue);
-  color: var(--white);
-  height: 40px;
-  width: 250px;
-  border: 2px solid var(--steelblue);
-  border-radius: 10px;
-  box-shadow: var(--box-shadow-inset);
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  :hover {
-    background-color: var(--lightsteel);
-    color: var(--black);
-    border: 1px var(--coral) solid;
-    cursor: pointer;
-  }
-  &:active {
-    opacity: 0.9;
-    border: 2px solid var(--steelblue);
-  }
 `;

@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import ButtonText from '../components/ButtonText.js';
 import Card from '../components/Card.js';
 import ExitButton from '../components/ExitButton.js';
+import Header from '../components/Header.js';
 import Navigation from '../components/Navigation.js';
-import { SortButtonStyled } from '../components/SortButtonStyled.js';
 import ScrollToTop from '../components/ScrollToTop.js';
 
 export default function LikedFoodPage({
@@ -37,7 +38,7 @@ export default function LikedFoodPage({
 
   return (
     <LikedFoodPageStyle>
-      <Header>
+      <HeaderLikedFoodPage variant="likedfoodpage">
         <div>
           <h1>WHAT I LIKE TO EAT</h1>
           <ExitButton />
@@ -46,38 +47,45 @@ export default function LikedFoodPage({
           <section>
             <span>Sort by ...</span>
             <div>
-              <SortButtonStyled
+              <ButtonText
+                variant="sortbutton"
                 type="button"
                 onClick={() => setSortValue('foodName')}
               >
                 name
-              </SortButtonStyled>
-              <SortButtonStyled
+              </ButtonText>
+              <ButtonText
+                variant="sortbutton"
                 type="button"
                 onClick={() => setSortValue('foodTaste')}
               >
                 flavour
-              </SortButtonStyled>
-              <SortButtonStyled
+              </ButtonText>
+              <ButtonText
+                variant="sortbutton"
                 type="button"
                 onClick={() => setSortValue('foodStyle')}
               >
                 preparation
-              </SortButtonStyled>
-
-              <SortButtonStyled
+              </ButtonText>
+              <ButtonText
+                variant="sortbutton"
                 type="button"
                 onClick={() => setSortValue('selectedDate')}
               >
                 date
-              </SortButtonStyled>
-              <SortButtonStyled type="button" onClick={() => setSortValue('')}>
+              </ButtonText>
+              <ButtonText
+                variant="sortbutton"
+                type="button"
+                onClick={() => setSortValue('')}
+              >
                 entry
-              </SortButtonStyled>
+              </ButtonText>
             </div>
           </section>
         )}
-      </Header>
+      </HeaderLikedFoodPage>
       <main>
         {likedData.length === 0 && (
           <p>
@@ -129,16 +137,9 @@ const LikedFoodPageStyle = styled.section`
   }
 `;
 
-const Header = styled.header`
-  background-color: var(--lightsteel);
-  padding: 1rem 1rem 0 1rem;
-  width: 100%;
-  overflow: hidden;
-  border-top: 4px solid var(--steelblue);
-  border-bottom: 2px solid var(--steelblue);
-  box-shadow: var(--box-shadow-header-drop);
+const HeaderLikedFoodPage = styled(Header)`
   grid-row: 1 / 2;
-
+  display: block;
   div {
     display: flex;
     justify-content: space-between;
@@ -150,7 +151,6 @@ const Header = styled.header`
     width: 100%;
     font-size: 1.1rem;
     text-overflow: ellipsis;
-    color: var(--black);
     padding-bottom: 1rem;
   }
 

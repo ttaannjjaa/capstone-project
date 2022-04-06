@@ -1,12 +1,12 @@
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
-import Landingpage from './Landingpage';
+import LandingPage from './Landingpage';
 
 describe('Landingpage', () => {
   it('renders a h1 headline, three buttons', () => {
     render(
       <MemoryRouter>
-        <Landingpage />
+        <LandingPage />
       </MemoryRouter>
     );
     const headline = screen.getByRole('heading');
