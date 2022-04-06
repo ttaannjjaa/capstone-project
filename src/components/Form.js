@@ -61,7 +61,7 @@ export default function Form({ handleData }) {
               message: 'sorry, 25 character limit reached',
             },
             pattern: {
-              value: /^[A-Za-z &]+$/,
+              value: /^[A-Za-z &-]+$/,
               message: 'sorry, no numbers or other special characters allowed',
             },
           })}
@@ -83,7 +83,7 @@ export default function Form({ handleData }) {
               message: 'sorry, 85 character limit reached',
             },
             pattern: {
-              value: /^[A-Za-z &]+$/,
+              value: /^[A-Za-z &-]+$/,
               message: 'no numbers or other special characters allowed',
             },
           })}

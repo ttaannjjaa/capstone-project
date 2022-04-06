@@ -216,6 +216,7 @@ export default function ProfilePage() {
                   })
                 }
                 onKeyDown={onKeyDownAge}
+                onBlur={onKeyDownAge}
               />
               years
             </LabelAgeStyled>
@@ -244,6 +245,7 @@ export default function ProfilePage() {
                 })
               }
               onKeyDown={onKeyDownNote}
+              onBlur={onKeyDownNote}
             />
           </NoteContainer>
         </FormContainer>
