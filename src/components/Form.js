@@ -48,6 +48,7 @@ export default function Form({ handleData }) {
         </span>
         <label htmlFor="foodName">brand name *</label>
         <TextInput
+          className="notranslate"
           type="text"
           aria-invalid={errors?.foodName ? 'true' : 'false'}
           {...register('foodName', {
@@ -61,12 +62,13 @@ export default function Form({ handleData }) {
               message: 'sorry, 25 character limit reached',
             },
             pattern: {
-              value: /^[A-Za-z &-]+$/,
+              value: /^[\u00C0-\u017FA-Z0-9a-z &-]+$/,
               message: 'sorry, no numbers or other special characters allowed',
             },
           })}
         />
         {errors?.foodName && <span>{errors.foodName.message}</span>}
+
         <label htmlFor="foodTaste">flavour *</label>
         <TextField
           rows="4"
@@ -83,7 +85,7 @@ export default function Form({ handleData }) {
               message: 'sorry, 85 character limit reached',
             },
             pattern: {
-              value: /^[A-Za-z &-]+$/,
+              value: /^[\u00C0-\u017FA-Z0-9a-z &-]+$/,
               message: 'no numbers or other special characters allowed',
             },
           })}
