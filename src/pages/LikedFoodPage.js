@@ -174,11 +174,11 @@ const HeaderLikedFoodPage = styled(Header)`
 `;
 
 const ListStyle = styled.ul`
-  margin-top: 1rem;
+  margin-top: 2rem;
   list-style: none;
   width: 100%;
   display: grid;
   grid-template-rows: 5;
-  gap: 1rem;
+  gap: 2.5rem;
   justify-content: center;
 `;
