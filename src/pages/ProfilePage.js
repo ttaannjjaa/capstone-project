@@ -178,7 +178,7 @@ export default function ProfilePage() {
               placeholder="nickname"
               type="text"
               maxLength="25"
-              pattern={/^[A-Za-z ]+$/}
+              pattern={/^[0-9A-Za-z &-]+$/}
               value={profileData.profilePetName}
               onChange={event =>
                 setProfileData({
@@ -187,6 +187,7 @@ export default function ProfilePage() {
                 })
               }
               onKeyDown={onKeyDownPetName}
+              onBlur={onKeyDownPetName}
             />
             <label htmlFor="profilePetName" className="sr-only">
               nickname
