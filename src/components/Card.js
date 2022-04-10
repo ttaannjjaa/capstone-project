@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import blackcatheadleft from '../images/black_cat_head_left.svg';
 import DeleteButton from './DeleteButton.js';
 import ModalDelete from './ModalDelete.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Card({
   id,
@@ -13,9 +14,29 @@ export default function Card({
   handleDelete,
 }) {
   const [visible, setVisible] = useState(false);
+  const [randomNumber, setRandomNumber] = useState(50);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRandomNumber(Math.round(Math.random() * 90));
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  console.log(randomNumber);
   return (
     <CardStyled role="listbox">
+      {(randomNumber < 31 || randomNumber > 81) && (
+        <img
+          style={{
+            position: 'absolute',
+            top: '-30px',
+            left: `${randomNumber}%`,
+          }}
+          src={blackcatheadleft}
+          alt="black cat looking to the left"
+        />
+      )}
       <DeleteButton id={id} setVisible={setVisible} />
       <ModalDelete
         visible={visible}

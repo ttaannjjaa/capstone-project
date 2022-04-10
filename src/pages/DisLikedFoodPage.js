@@ -155,6 +155,6 @@ const ListStyle = styled.ul`
   width: 100%;
   display: grid;
   grid-template-rows: 5;
-  gap: 1rem;
+  gap: 2.5rem;
   justify-content: center;
 `;

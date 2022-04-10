@@ -299,7 +299,7 @@ const HeaderProfilePage = styled(Header)`
 const ImgContainer = styled.div`
   align-items: center;
   margin-top: 0.5rem;
-  width: 40%;
+  width: 65%;
   min-width: 280px;
   min-height: 115px;
 `;
@@ -317,7 +317,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   min-width: 280px;
-  width: 40%;
+  width: 65%;
   align-items: center;
   margin-top: 0.5rem;
 `;
@@ -360,9 +360,9 @@ const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   min-width: 280px;
-  width: 40%;
+  width: 65%;
   gap: 10px;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 `;
 
 const InputTextContainer = styled.div`
@@ -397,7 +397,7 @@ const InputAgeStyled = styled.input`
   font-size: 1rem;
   line-height: 1.5rem;
   margin-top: 8px;
-  padding: 5px;
+  padding: 4px 4px 5px 3px;
   border-radius: 5px;
   display: inline;
   outline: none;

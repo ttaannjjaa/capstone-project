@@ -62,8 +62,8 @@ export default function Form({ handleData }) {
               message: 'sorry, 25 character limit reached',
             },
             pattern: {
-              value: /^[\u00C0-\u017FA-Z0-9a-z &-]+$/,
-              message: 'sorry, no numbers or other special characters allowed',
+              value: /^[\u00C0-\u017FA-Z0-9a-z &-+,]+$/,
+              message: 'sorry, no other special characters allowed',
             },
           })}
         />
@@ -85,8 +85,8 @@ export default function Form({ handleData }) {
               message: 'sorry, 85 character limit reached',
             },
             pattern: {
-              value: /^[\u00C0-\u017FA-Z0-9a-z &-]+$/,
-              message: 'no numbers or other special characters allowed',
+              value: /^[\u00C0-\u017FA-Z0-9a-z &-+,;]+$/,
+              message: 'sorry, no other special characters allowed',
             },
           })}
         />
@@ -102,7 +102,7 @@ export default function Form({ handleData }) {
               message: 'sorry, 2o character limit reached',
             },
             pattern: {
-              value: /^[A-Za-z ]+$/,
+              value: /^[\u00C0-\u017FA-Z0-9a-z &-+,;]+$/,
               message: 'no numbers or special characters allowed',
             },
           })}
@@ -271,7 +271,7 @@ const DateInput = styled.input`
   background-color: var(--peach);
   border: none;
   padding: 5px;
-  margin: 8px 0 18px 0;
+  margin: 8px 0 30px 0;
   border-radius: 5px;
   font-family: inherit;
   :hover {
