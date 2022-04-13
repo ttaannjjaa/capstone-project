@@ -8,8 +8,9 @@ export default function Form({ handleData }) {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm({
+    mode: 'all',
     defaultValues: {
       foodName: '',
       foodTaste: '',
@@ -62,7 +63,7 @@ export default function Form({ handleData }) {
               message: 'sorry, 25 character limit reached',
             },
             pattern: {
-              value: /^[\u00C0-\u017FA-Z0-9a-z &-+,]+$/,
+              value: /^[\u00C0-\u017FA-Z0-9a-z &-+,'.]+$/,
               message: 'sorry, no other special characters allowed',
             },
           })}
@@ -139,9 +140,13 @@ export default function Form({ handleData }) {
           max={dateToday}
           {...register('date')}
         />
-        <ButtonText variant="savebutton" type="submit">
+        <SaveButton
+          variant="savebutton"
+          type="submit"
+          disabled={!isDirty || !isValid}
+        >
           SAVE
-        </ButtonText>
+        </SaveButton>
       </FormStyled>
     </FormContainer>
   );
@@ -279,5 +284,14 @@ const DateInput = styled.input`
   }
   &:focus {
     outline: 1px solid var(--coral);
+  }
+`;
+
+const SaveButton = styled(ButtonText)`
+  background-color: ${props => (props.disabled ? 'var(--grey)' : '')};
+  :hover {
+    background-color: ${props => (props.disabled ? 'var(--grey)' : '')};
+    color: ${props => (props.disabled ? 'var(--white)' : '')};
+    border: ${props => props.disabled && 'none'};
   }
 `;
