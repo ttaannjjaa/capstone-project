@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import ButtonText from './ButtonText.js';
 
 export default function Form({ handleData }) {
@@ -21,6 +22,7 @@ export default function Form({ handleData }) {
   });
 
   const dateToday = new Date().toISOString().substring(0, 10);
+  const navigate = useNavigate();
 
   const onSubmit = data => {
     const formData = {
@@ -33,6 +35,12 @@ export default function Form({ handleData }) {
     };
     handleData(formData);
     reset();
+    if (data.foodRating === 'liked') {
+      navigate('/likedfoodpage', { replace: true });
+    }
+    if (data.foodRating === 'disliked') {
+      navigate('/dislikedfoodpage', { replace: true });
+    }
   };
 
   return (

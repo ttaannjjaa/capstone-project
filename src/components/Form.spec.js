@@ -27,15 +27,17 @@ describe('Form', () => {
 
   it('renders two inputfields, one textarea, two radio-buttons, a date inputfield and one button', () => {
     render(
-      <Form
-        formData={{
-          foodRating: 'liked',
-          foodName: 'purrkitty',
-          foodTaste: 'chicken',
-          foodStyle: 'jelly',
-          selectedDate: '2022-03-22',
-        }}
-      />
+      <MemoryRouter>
+        <Form
+          formData={{
+            foodRating: 'liked',
+            foodName: 'purrkitty',
+            foodTaste: 'chicken',
+            foodStyle: 'jelly',
+            selectedDate: '2022-03-22',
+          }}
+        />
+      </MemoryRouter>
     );
 
     const inputFields = screen.getAllByRole('textbox');
