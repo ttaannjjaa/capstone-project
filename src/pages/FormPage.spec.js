@@ -14,6 +14,13 @@ describe('FormPage', () => {
             foodStyle: 'jelly',
             selectedDate: 'date',
           }}
+          editData={{
+            foodRating: 'disliked',
+            foodName: 'meowmeow',
+            foodTaste: 'beef',
+            foodStyle: 'sauce',
+            selectedDate: '2022-03-28',
+          }}
         />
       </MemoryRouter>
     );

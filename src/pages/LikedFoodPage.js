@@ -10,6 +10,7 @@ import ScrollToTop from '../components/ScrollToTop.js';
 export default function LikedFoodPage({
   storageData,
   handleDelete,
+  handleEditing,
   onScrollToTop,
   noScrollToTopButton,
 }) {
@@ -43,48 +44,46 @@ export default function LikedFoodPage({
           <h1>WHAT I LIKE TO EAT</h1>
           <ExitButton />
         </div>
-        {likedData.length > 0 && (
-          <section>
-            <span>Sort by ...</span>
-            <div>
-              <ButtonText
-                variant="sortbutton"
-                type="button"
-                onClick={() => setSortValue('foodName')}
-              >
-                name
-              </ButtonText>
-              <ButtonText
-                variant="sortbutton"
-                type="button"
-                onClick={() => setSortValue('foodTaste')}
-              >
-                flavour
-              </ButtonText>
-              <ButtonText
-                variant="sortbutton"
-                type="button"
-                onClick={() => setSortValue('foodStyle')}
-              >
-                preparation
-              </ButtonText>
-              <ButtonText
-                variant="sortbutton"
-                type="button"
-                onClick={() => setSortValue('selectedDate')}
-              >
-                date
-              </ButtonText>
-              <ButtonText
-                variant="sortbutton"
-                type="button"
-                onClick={() => setSortValue('')}
-              >
-                entry
-              </ButtonText>
-            </div>
-          </section>
-        )}
+        <section>
+          <span>Sort by ...</span>
+          <div>
+            <ButtonText
+              variant="sortbutton"
+              type="button"
+              onClick={() => setSortValue('foodName')}
+            >
+              name
+            </ButtonText>
+            <ButtonText
+              variant="sortbutton"
+              type="button"
+              onClick={() => setSortValue('foodTaste')}
+            >
+              flavour
+            </ButtonText>
+            <ButtonText
+              variant="sortbutton"
+              type="button"
+              onClick={() => setSortValue('foodStyle')}
+            >
+              preparation
+            </ButtonText>
+            <ButtonText
+              variant="sortbutton"
+              type="button"
+              onClick={() => setSortValue('selectedDate')}
+            >
+              date
+            </ButtonText>
+            <ButtonText
+              variant="sortbutton"
+              type="button"
+              onClick={() => setSortValue('')}
+            >
+              last change
+            </ButtonText>
+          </div>
+        </section>
       </HeaderLikedFoodPage>
       <main>
         {likedData.length === 0 && (
@@ -109,6 +108,7 @@ export default function LikedFoodPage({
                   foodRating={data.foodRating}
                   selectedDate={data.selectedDate}
                   handleDelete={() => handleDelete(data.id)}
+                  handleEditing={() => handleEditing(data.id)}
                 />
               </li>
             ))}

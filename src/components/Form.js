@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import ButtonText from './ButtonText.js';
 
-export default function Form({ handleData }) {
+export default function Form({ handleData, editData, setToEdit }) {
   const {
     register,
     handleSubmit,
@@ -12,13 +12,21 @@ export default function Form({ handleData }) {
     formState: { errors, isDirty, isValid },
   } = useForm({
     mode: 'all',
-    defaultValues: {
-      foodName: '',
-      foodTaste: '',
-      foodStyle: '',
-      foodRating: '',
-      date: '',
-    },
+    defaultValues: editData[0]
+      ? {
+          foodName: editData[0].foodName,
+          foodTaste: editData[0].foodTaste,
+          foodStyle: editData[0].foodStyle,
+          foodRating: editData[0].foodRating,
+          date: editData[0].selectedDate,
+        }
+      : {
+          foodName: '',
+          foodTaste: '',
+          foodStyle: '',
+          foodRating: '',
+          date: '',
+        },
   });
 
   const dateToday = new Date().toISOString().substring(0, 10);
@@ -26,7 +34,7 @@ export default function Form({ handleData }) {
 
   const onSubmit = data => {
     const formData = {
-      id: nanoid(),
+      id: editData.id ? editData.id : nanoid(),
       foodName: data.foodName.trim(),
       foodTaste: data.foodTaste.trim(),
       foodStyle: data.foodStyle.trim(),
@@ -34,6 +42,7 @@ export default function Form({ handleData }) {
       selectedDate: data.date,
     };
     handleData(formData);
+    setToEdit(false);
     reset();
     if (data.foodRating === 'liked') {
       navigate('/likedfoodpage', { replace: true });

@@ -62,5 +62,6 @@ export default styled.button`
       padding: 5px;
       border-bottom: 1px var(--coral) solid;
       border-right: 1px var(--coral) solid;
+      white-space: nowrap;
     `}
 `;

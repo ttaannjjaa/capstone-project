@@ -10,6 +10,7 @@ import Searchbar from '../components/Searchbar.js';
 export default function DisLikedFoodPage({
   storageData,
   handleDelete,
+  handleEditing,
   onScrollToTop,
   noScrollToTopButton,
 }) {
@@ -65,6 +66,7 @@ export default function DisLikedFoodPage({
                   foodRating={data.foodRating}
                   selectedDate={data.selectedDate}
                   handleDelete={() => handleDelete(data.id)}
+                  handleEditing={() => handleEditing(data.id)}
                 />
               </li>
             ))}
@@ -92,6 +94,7 @@ export default function DisLikedFoodPage({
                   foodRating={data.foodRating}
                   selectedDate={data.selectedDate}
                   handleDelete={() => handleDelete(data.id)}
+                  handleEditing={() => handleEditing(data.id)}
                 />
               </li>
             ))}
