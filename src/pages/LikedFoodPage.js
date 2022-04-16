@@ -80,7 +80,7 @@ export default function LikedFoodPage({
               type="button"
               onClick={() => setSortValue('')}
             >
-              last change
+              changed
             </ButtonText>
           </div>
         </section>
@@ -169,6 +169,8 @@ const HeaderLikedFoodPage = styled(Header)`
     div {
       display: flex;
       flex-wrap: nowrap;
+      justify-content: space-between;
+      gap: 10px;
     }
   }
 `;
