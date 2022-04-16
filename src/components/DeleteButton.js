@@ -17,7 +17,8 @@ const DeleteButtonStyled = styled.button`
   width: 25px;
   border-radius: 100px;
   position: absolute;
-  right: 18px;
+  bottom: 10px;
+  right: 15px;
   &:hover {
     cursor: pointer;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);

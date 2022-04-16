@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import blackcatheadleft from '../images/black_cat_head_left.svg';
+import EditButton from './EditButton.js';
 import DeleteButton from './DeleteButton.js';
 import ModalDelete from './ModalDelete.js';
 import { useState, useEffect } from 'react';
@@ -12,6 +13,7 @@ export default function Card({
   foodStyle,
   selectedDate,
   handleDelete,
+  handleEditing,
 }) {
   const [visible, setVisible] = useState(false);
   const [randomNumber, setRandomNumber] = useState(50);
@@ -23,7 +25,6 @@ export default function Card({
     return () => clearInterval(interval);
   }, []);
 
-  console.log(randomNumber);
   return (
     <CardStyled role="listbox">
       {(randomNumber < 31 || randomNumber > 81) && (
@@ -37,6 +38,7 @@ export default function Card({
           alt="black cat looking to the left"
         />
       )}
+      <EditButton id={id} handleEditing={handleEditing} />
       <DeleteButton id={id} setVisible={setVisible} />
       <ModalDelete
         visible={visible}

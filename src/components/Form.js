@@ -1,29 +1,40 @@
 import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import ButtonText from './ButtonText.js';
 
-export default function Form({ handleData }) {
+export default function Form({ handleData, editData, setToEdit }) {
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm({
-    defaultValues: {
-      foodName: '',
-      foodTaste: '',
-      foodStyle: '',
-      foodRating: '',
-      date: '',
-    },
+    mode: 'all',
+    defaultValues: editData[0]
+      ? {
+          foodName: editData[0].foodName,
+          foodTaste: editData[0].foodTaste,
+          foodStyle: editData[0].foodStyle,
+          foodRating: editData[0].foodRating,
+          date: editData[0].selectedDate,
+        }
+      : {
+          foodName: '',
+          foodTaste: '',
+          foodStyle: '',
+          foodRating: '',
+          date: '',
+        },
   });
 
   const dateToday = new Date().toISOString().substring(0, 10);
+  const navigate = useNavigate();
 
   const onSubmit = data => {
     const formData = {
-      id: nanoid(),
+      id: editData.id ? editData.id : nanoid(),
       foodName: data.foodName.trim(),
       foodTaste: data.foodTaste.trim(),
       foodStyle: data.foodStyle.trim(),
@@ -31,7 +42,14 @@ export default function Form({ handleData }) {
       selectedDate: data.date,
     };
     handleData(formData);
+    setToEdit(false);
     reset();
+    if (data.foodRating === 'liked') {
+      navigate('/likedfoodpage', { replace: true });
+    }
+    if (data.foodRating === 'disliked') {
+      navigate('/dislikedfoodpage', { replace: true });
+    }
   };
 
   return (
@@ -62,7 +80,7 @@ export default function Form({ handleData }) {
               message: 'sorry, 25 character limit reached',
             },
             pattern: {
-              value: /^[\u00C0-\u017FA-Z0-9a-z &-+,]+$/,
+              value: /^[\u00C0-\u017FA-Z0-9a-z &-+,'.]+$/,
               message: 'sorry, no other special characters allowed',
             },
           })}
@@ -139,9 +157,13 @@ export default function Form({ handleData }) {
           max={dateToday}
           {...register('date')}
         />
-        <ButtonText variant="savebutton" type="submit">
+        <SaveButton
+          variant="savebutton"
+          type="submit"
+          disabled={!isDirty || !isValid}
+        >
           SAVE
-        </ButtonText>
+        </SaveButton>
       </FormStyled>
     </FormContainer>
   );
@@ -279,5 +301,14 @@ const DateInput = styled.input`
   }
   &:focus {
     outline: 1px solid var(--coral);
+  }
+`;
+
+const SaveButton = styled(ButtonText)`
+  background-color: ${props => (props.disabled ? 'var(--grey)' : '')};
+  :hover {
+    background-color: ${props => (props.disabled ? 'var(--grey)' : '')};
+    color: ${props => (props.disabled ? 'var(--white)' : '')};
+    border: ${props => props.disabled && 'none'};
   }
 `;

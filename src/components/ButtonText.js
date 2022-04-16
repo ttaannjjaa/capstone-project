@@ -58,9 +58,9 @@ export default styled.button`
     props.variant === 'sortbutton' &&
     css`
       max-height: 2rem;
-      margin-right: 10px;
       padding: 5px;
       border-bottom: 1px var(--coral) solid;
       border-right: 1px var(--coral) solid;
+      white-space: nowrap;
     `}
 `;

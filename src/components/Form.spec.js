@@ -15,6 +15,13 @@ describe('Form', () => {
             foodStyle: 'jelly',
             selectedDate: '2022-03-22',
           }}
+          editData={{
+            foodRating: 'disliked',
+            foodName: 'meowmeow',
+            foodTaste: 'beef',
+            foodStyle: 'sauce',
+            selectedDate: '2022-03-28',
+          }}
         />
       </MemoryRouter>
     );
@@ -27,15 +34,24 @@ describe('Form', () => {
 
   it('renders two inputfields, one textarea, two radio-buttons, a date inputfield and one button', () => {
     render(
-      <Form
-        formData={{
-          foodRating: 'liked',
-          foodName: 'purrkitty',
-          foodTaste: 'chicken',
-          foodStyle: 'jelly',
-          selectedDate: '2022-03-22',
-        }}
-      />
+      <MemoryRouter>
+        <Form
+          formData={{
+            foodRating: 'liked',
+            foodName: 'purrkitty',
+            foodTaste: 'chicken',
+            foodStyle: 'jelly',
+            selectedDate: '2022-03-22',
+          }}
+          editData={{
+            foodRating: 'disliked',
+            foodName: 'meowmeow',
+            foodTaste: 'beef',
+            foodStyle: 'sauce',
+            selectedDate: '2022-03-28',
+          }}
+        />
+      </MemoryRouter>
     );
 
     const inputFields = screen.getAllByRole('textbox');
@@ -54,7 +70,22 @@ describe('Form', () => {
   it('renders a submit button', () => {
     render(
       <MemoryRouter>
-        <Form />
+        <Form
+          formData={{
+            foodRating: 'liked',
+            foodName: 'purrkitty',
+            foodTaste: 'chicken',
+            foodStyle: 'jelly',
+            selectedDate: '2022-03-22',
+          }}
+          editData={{
+            foodRating: 'disliked',
+            foodName: 'meowmeow',
+            foodTaste: 'beef',
+            foodStyle: 'sauce',
+            selectedDate: '2022-03-28',
+          }}
+        />
       </MemoryRouter>
     );
 
@@ -65,10 +96,31 @@ describe('Form', () => {
   it('does not call the submit function when the submit button is clicked and the required fields are not filled', () => {
     const handleSubmit = jest.fn();
     const onSubmit = jest.fn();
+    const setToEdit = jest.fn();
+    const editData = [
+      {
+        foodRating: 'disliked',
+        foodName: 'meowmeow',
+        foodTaste: 'beef',
+        foodStyle: 'sauce',
+        selectedDate: '2022-03-28',
+      },
+    ];
 
     render(
       <MemoryRouter>
-        <Form onSubmit={handleSubmit(onSubmit)} />
+        <Form
+          formData={{
+            foodRating: 'liked',
+            foodName: 'purrkitty',
+            foodTaste: 'chicken',
+            foodStyle: 'jelly',
+            selectedDate: '2022-03-22',
+          }}
+          defaultValues={editData}
+          setToEdit={setToEdit}
+          onSubmit={handleSubmit(onSubmit)}
+        />
       </MemoryRouter>
     );
 

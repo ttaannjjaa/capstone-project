@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import ExitButton from './ExitButton';
 
 describe('ExitButton', () => {
-  it('renders a button which calls a function and an image', () => {
+  it('renders a button which calls a function and shows image', () => {
     const navigate = jest.fn();
     render(
       <MemoryRouter>
