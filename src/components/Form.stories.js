@@ -17,4 +17,11 @@ Default.args = {
     foodStyle: 'jelly',
     selectedDate: '2022-03-24',
   },
+  editData: {
+    foodRating: 'disliked',
+    foodName: 'meowmeow',
+    foodTaste: 'beef',
+    foodStyle: 'sauce',
+    selectedDate: '2022-03-28',
+  },
 };

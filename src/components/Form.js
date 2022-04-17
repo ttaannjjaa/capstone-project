@@ -12,6 +12,7 @@ export default function Form({ handleData, editData, setToEdit }) {
     formState: { errors, isDirty, isValid },
   } = useForm({
     mode: 'all',
+    reValidateMode: 'onChange',
     defaultValues: editData[0]
       ? {
           foodName: editData[0].foodName,
