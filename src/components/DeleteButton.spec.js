@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import DeleteButton from './DeleteButton';
+import DeleteButton from './DeleteButton.js';
 
 describe('DeleteButton', () => {
   it('renders a button with the image bin-icon', () => {

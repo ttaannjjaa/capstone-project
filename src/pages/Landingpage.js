@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import ButtonText from '../components/ButtonText.js';
+import ButtonText from '../components/ButtonTextStyles.js';
 import catPictureBackground from '../images/backgroundimg.png';
 import iconheartblack from '../images/icon_heartfilled_black.svg';
 import iconheartwhite from '../images/icon_heartfilled_white.svg';

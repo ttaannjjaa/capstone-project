@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import ButtonText from './ButtonText.js';
+import ButtonText from './ButtonTextStyles.js';
 
 export default function Form({ handleData, editData, setToEdit }) {
   const {

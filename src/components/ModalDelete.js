@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import iconwarning from '../images/icon_warning.svg';
-import ButtonText from './ButtonText.js';
+import ButtonText from './ButtonTextStyles.js';
 
 export default function ModalDelete({ onConfirm, onCancel, visible, id }) {
   if (!visible) {

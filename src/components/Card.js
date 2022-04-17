@@ -40,6 +40,7 @@ export default function Card({
       )}
       <EditButton id={id} handleEditing={handleEditing} />
       <DeleteButton id={id} setVisible={setVisible} />
+
       <ModalDelete
         visible={visible}
         onConfirm={handleDelete}

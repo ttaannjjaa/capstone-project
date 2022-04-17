@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import ButtonText from '../components/ButtonText.js';
+import ButtonText from '../components/ButtonTextStyles.js';
 import Card from '../components/Card.js';
 import ExitButton from '../components/ExitButton.js';
 import Header from '../components/Header.js';
