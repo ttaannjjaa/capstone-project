@@ -15,13 +15,15 @@ describe('Form', () => {
             foodStyle: 'jelly',
             selectedDate: '2022-03-22',
           }}
-          editData={{
-            foodRating: 'disliked',
-            foodName: 'meowmeow',
-            foodTaste: 'beef',
-            foodStyle: 'sauce',
-            selectedDate: '2022-03-28',
-          }}
+          editData={[
+            {
+              foodRating: 'disliked',
+              foodName: 'meowmeow',
+              foodTaste: 'beef',
+              foodStyle: 'sauce',
+              selectedDate: '2022-03-28',
+            },
+          ]}
         />
       </MemoryRouter>
     );
@@ -43,13 +45,15 @@ describe('Form', () => {
             foodStyle: 'jelly',
             selectedDate: '2022-03-22',
           }}
-          editData={{
-            foodRating: 'disliked',
-            foodName: 'meowmeow',
-            foodTaste: 'beef',
-            foodStyle: 'sauce',
-            selectedDate: '2022-03-28',
-          }}
+          editData={[
+            {
+              foodRating: 'disliked',
+              foodName: 'meowmeow',
+              foodTaste: 'beef',
+              foodStyle: 'sauce',
+              selectedDate: '2022-03-28',
+            },
+          ]}
         />
       </MemoryRouter>
     );
@@ -78,13 +82,15 @@ describe('Form', () => {
             foodStyle: 'jelly',
             selectedDate: '2022-03-22',
           }}
-          editData={{
-            foodRating: 'disliked',
-            foodName: 'meowmeow',
-            foodTaste: 'beef',
-            foodStyle: 'sauce',
-            selectedDate: '2022-03-28',
-          }}
+          editData={[
+            {
+              foodRating: 'disliked',
+              foodName: 'meowmeow',
+              foodTaste: 'beef',
+              foodStyle: 'sauce',
+              selectedDate: '2022-03-28',
+            },
+          ]}
         />
       </MemoryRouter>
     );

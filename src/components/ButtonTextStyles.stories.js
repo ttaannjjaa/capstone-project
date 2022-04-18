@@ -1,7 +1,7 @@
-import ButtonText from './ButtonText';
+import ButtonText from './ButtonTextStyles.js';
 
 export default {
-  title: 'Components/ButtonText',
+  title: 'Components/ButtonTextStyles',
   component: 'ButtonText',
 };
 

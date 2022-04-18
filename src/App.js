@@ -22,9 +22,13 @@ function App() {
 
   function handleEditing(id) {
     const logicrecord = storageData.filter(storeddata => storeddata.id === id);
+    const newStorageData = storageData.filter(
+      storeddata => storeddata.id !== id
+    );
     setEditData(() => [...logicrecord]);
     setToEdit(true);
     navigate('/formpage', { replace: true });
+    setStorageData(newStorageData);
     return editData;
   }
 
@@ -50,6 +54,7 @@ function App() {
                 handleData={handleData}
                 editData={editData}
                 setToEdit={setToEdit}
+                toEdit={toEdit}
               />
               <Navigation />
             </>

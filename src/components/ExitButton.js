@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { ExitButtonStyled } from './ButtonIconStyles.js';
 import exitCat from '../images/cat_with_door.svg';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,13 +20,3 @@ export default function ExitButton() {
     </ExitButtonStyled>
   );
 }
-
-const ExitButtonStyled = styled.button`
-  text-decoration: none;
-  border: none;
-  background-color: var(--lightsteel);
-  &:hover {
-    cursor: pointer;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-`;

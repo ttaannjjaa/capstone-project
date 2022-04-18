@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { DeleteButtonStyled } from './ButtonIconStyles.js';
 import icon_bin from '../images/icon_bin.svg';
 
 export default function DeleteButton({ setVisible, id }) {
@@ -8,20 +8,3 @@ export default function DeleteButton({ setVisible, id }) {
     </DeleteButtonStyled>
   );
 }
-
-const DeleteButtonStyled = styled.button`
-  text-decoration: none;
-  border: none;
-  background-color: var(--white);
-  height: 25px;
-  width: 25px;
-  border-radius: 100px;
-  position: absolute;
-  bottom: 10px;
-  right: 15px;
-  &:hover {
-    cursor: pointer;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-    background-color: var(--peach);
-  }
-`;
