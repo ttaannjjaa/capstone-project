@@ -10,6 +10,7 @@ export default function FormPage({
   handleDelete,
   handleEditing,
   storageData,
+  setEditData,
 }) {
   return (
     <FormPageStyle>
@@ -25,6 +26,7 @@ export default function FormPage({
           handleDelete={handleDelete}
           handleEditing={handleEditing}
           storageData={storageData}
+          setEditData={setEditData}
         ></Form>
       </main>
     </FormPageStyle>

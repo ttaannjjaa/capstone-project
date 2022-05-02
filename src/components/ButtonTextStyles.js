@@ -41,6 +41,13 @@ export default styled.button`
     `};
 
   ${props =>
+    props.variant === 'okayformmodalbutton' &&
+    css`
+      margin-top: 10px;
+      padding: 5px 20px;
+    `}
+
+  ${props =>
     props.variant === 'savebutton' &&
     css`
       min-width: 280px;

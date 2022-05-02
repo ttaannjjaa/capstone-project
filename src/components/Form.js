@@ -13,6 +13,7 @@ export default function Form({
   storageData,
   handleDelete,
   handleEditing,
+  setEditData,
 }) {
   const {
     register,
@@ -60,7 +61,7 @@ export default function Form({
   useEffect(() => {
     if (checkInputTaste.length > 0) {
       setCheckedTaste(
-        checkNameArray.filter(element =>
+        checkNameArray?.filter(element =>
           element.foodTaste
             .trim()
             .toLowerCase()
@@ -78,6 +79,11 @@ export default function Form({
       : setIsAlreadyListEntry(false);
   };
 
+  const confirm = () => {
+    setIsAlreadyListEntry(false);
+    reset();
+  };
+
   const onSubmit = data => {
     const formData = {
       id: editData.id ? editData.id : nanoid(),
@@ -90,6 +96,7 @@ export default function Form({
     handleData(formData);
     setToEdit(false);
     reset();
+    clear();
     if (data.foodRating === 'liked') {
       navigate('/likedfoodpage', { replace: true });
     }
@@ -97,6 +104,10 @@ export default function Form({
       navigate('/dislikedfoodpage', { replace: true });
     }
   };
+
+  function clear() {
+    setEditData([]);
+  }
 
   return (
     <FormContainer>
@@ -110,6 +121,7 @@ export default function Form({
         <span className="sr-only" id="aria-text">
           Form to enter information about catfood including the vote of the cat
         </span>
+
         <label htmlFor="foodName">brand name *</label>
         <TextInput
           className="notranslate"
@@ -160,9 +172,15 @@ export default function Form({
         />
         {errors?.foodTaste && <span>{errors.foodTaste.message}</span>}
         {isAlreadyListEntry && checkedTaste?.length > 0 && (
-          <div>
-            <h2>These list entries are already existing</h2>
-            <ul>
+          <Infobox>
+            <InfoboxHeading>
+              These list entries are already existing
+            </InfoboxHeading>
+            <ListStyle
+              data-testid="formduplicatelist"
+              aria-describedby="list of card/s about catfood that you already have as list entries"
+              role="list"
+            >
               {checkedTaste.map(element => (
                 <li key={element.id}>
                   <Card
@@ -177,11 +195,15 @@ export default function Form({
                   />
                 </li>
               ))}
-            </ul>
-            <button type="button" onClick={() => setIsAlreadyListEntry(false)}>
+            </ListStyle>
+            <ButtonText
+              variant="okayformmodalbutton"
+              type="button"
+              onClick={() => confirm()}
+            >
               Okay
-            </button>
-          </div>
+            </ButtonText>
+          </Infobox>
         )}
 
         <label htmlFor="foodStyle">preparation (input optional)</label>
@@ -313,6 +335,30 @@ const TextField = styled.textarea`
   &:focus {
     outline: 1px solid var(--coral);
   }
+`;
+
+const Infobox = styled.section`
+  margin-top: 5px;
+  align-self: center;
+  text-align: center;
+`;
+
+const InfoboxHeading = styled.h2`
+  margin: 10px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--steelblue);
+`;
+
+const ListStyle = styled.ul`
+  margin-top: 2rem;
+  list-style: none;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 5;
+  gap: 2.5rem;
+  justify-content: center;
 `;
 
 const RatingField = styled.fieldset`
