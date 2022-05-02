@@ -3,7 +3,14 @@ import ExitButton from '../components/ExitButton.js';
 import Form from '../components/Form.js';
 import Header from '../components/Header.js';
 
-export default function FormPage({ handleData, editData, setToEdit }) {
+export default function FormPage({
+  handleData,
+  editData,
+  setToEdit,
+  handleDelete,
+  handleEditing,
+  storageData,
+}) {
   return (
     <FormPageStyle>
       <HeaderFormPage variant="formpage">
@@ -15,6 +22,9 @@ export default function FormPage({ handleData, editData, setToEdit }) {
           setToEdit={setToEdit}
           handleData={handleData}
           editData={editData}
+          handleDelete={handleDelete}
+          handleEditing={handleEditing}
+          storageData={storageData}
         ></Form>
       </main>
     </FormPageStyle>

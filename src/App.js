@@ -55,6 +55,9 @@ function App() {
                 editData={editData}
                 setToEdit={setToEdit}
                 toEdit={toEdit}
+                handleDelete={handleDelete}
+                handleEditing={handleEditing}
+                storageData={storageData}
               />
               <Navigation />
             </>

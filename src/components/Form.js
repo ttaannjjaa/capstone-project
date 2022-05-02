@@ -2,9 +2,18 @@ import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import ButtonText from './ButtonTextStyles.js';
+import Card from './Card.js';
 
-export default function Form({ handleData, editData, setToEdit }) {
+export default function Form({
+  handleData,
+  editData,
+  setToEdit,
+  storageData,
+  handleDelete,
+  handleEditing,
+}) {
   const {
     register,
     handleSubmit,
@@ -32,6 +41,42 @@ export default function Form({ handleData, editData, setToEdit }) {
 
   const dateToday = new Date().toISOString().substring(0, 10);
   const navigate = useNavigate();
+
+  const [isAlreadyListEntry, setIsAlreadyListEntry] = useState(false);
+  const [checkInputName, setCheckInputName] = useState('');
+  const [checkInputTaste, setCheckInputTaste] = useState('');
+  const [checkNameArray, setCheckNameArray] = useState([]);
+  const [checkedTaste, setCheckedTaste] = useState([]);
+
+  useEffect(() => {
+    setCheckNameArray(
+      storageData.filter(element =>
+        element.foodName.toLowerCase().includes(checkInputName.toLowerCase())
+      )
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checkInputName]);
+
+  useEffect(() => {
+    if (checkInputTaste.length > 0) {
+      setCheckedTaste(
+        checkNameArray.filter(element =>
+          element.foodTaste
+            .trim()
+            .toLowerCase()
+            .includes(checkInputTaste.trim().toLowerCase())
+        )
+      );
+    }
+  }, [checkNameArray, checkInputTaste]);
+
+  const handleDouble = event => {
+    event.stopPropagation();
+    setCheckInputTaste(event.target.value);
+    checkedTaste.length > 0
+      ? setIsAlreadyListEntry(true)
+      : setIsAlreadyListEntry(false);
+  };
 
   const onSubmit = data => {
     const formData = {
@@ -70,6 +115,8 @@ export default function Form({ handleData, editData, setToEdit }) {
           className="notranslate"
           type="text"
           aria-invalid={errors?.foodName ? 'true' : 'false'}
+          onKeyDown={event => setCheckInputName(event.target.value)}
+          onClick={event => setCheckInputName(event.target.value)}
           {...register('foodName', {
             required: 'Please enter the (brand) name of the cat food',
             min: {
@@ -93,6 +140,8 @@ export default function Form({ handleData, editData, setToEdit }) {
           rows="4"
           placeholder="z.B. chicken, salmon"
           aria-invalid={errors.foodTaste ? 'true' : 'false'}
+          onKeyDown={event => handleDouble(event)}
+          onClick={event => handleDouble(event)}
           {...register('foodTaste', {
             required: 'Please enter this information.',
             min: {
@@ -110,6 +159,31 @@ export default function Form({ handleData, editData, setToEdit }) {
           })}
         />
         {errors?.foodTaste && <span>{errors.foodTaste.message}</span>}
+        {isAlreadyListEntry && checkedTaste?.length > 0 && (
+          <div>
+            <h2>These list entries are already existing</h2>
+            <ul>
+              {checkedTaste.map(element => (
+                <li key={element.id}>
+                  <Card
+                    id={element.id}
+                    foodName={element.foodName}
+                    foodTaste={element.foodTaste}
+                    foodStyle={element.foodStyle}
+                    foodRating={element.foodRating}
+                    selectedDate={element.selectedDate}
+                    handleDelete={() => handleDelete(element.id)}
+                    handleEditing={() => handleEditing(element.id)}
+                  />
+                </li>
+              ))}
+            </ul>
+            <button type="button" onClick={() => setIsAlreadyListEntry(false)}>
+              Okay
+            </button>
+          </div>
+        )}
+
         <label htmlFor="foodStyle">preparation (input optional)</label>
         <TextInput
           type="text"
